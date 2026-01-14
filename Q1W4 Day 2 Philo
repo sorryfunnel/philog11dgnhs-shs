@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 2: Philosophical Tests for Truth</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Merriweather', 'serif'],
+                    },
+                    colors: {
+                        'primary': '#2A4365', // Dark Blue
+                        'secondary': '#805AD5', // Purple (Day 2 Theme)
+                        'accent': '#D6BCFA', // Light Purple
+                        'correspondence': '#3182CE', // Blue
+                        'coherence': '#D69E2E', // Yellow/Gold
+                        'pragmatic': '#38A169', // Green
+                        'feedback-correct': '#D1FAE5',
+                        'feedback-incorrect': '#FEE2E2',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap');
+        
+        body {
+            background-color: #F7FAFC;
+        }
+
+        .slide {
+            display: none;
+            flex-direction: column;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        .slide.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .theory-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .theory-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .quiz-btn {
+            transition: all 0.2s;
+        }
+
+        /* Custom Scrollbar for Main Content */
+        main::-webkit-scrollbar {
+            width: 8px;
+        }
+        main::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        main::-webkit-scrollbar-thumb {
+            background: #cbd5e0; 
+            border-radius: 4px;
+        }
+        main::-webkit-scrollbar-thumb:hover {
+            background: #a0aec0; 
+        }
+
+        /* Specific styles for the matching activity buttons */
+        .match-btn.selected {
+            ring-width: 4px;
+            ring-opacity: 0.5;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans text-gray-800 h-screen flex flex-col overflow-hidden">
+
+    <nav class="sticky top-0 z-20 bg-primary text-white p-4 shadow-lg flex justify-between items-center shrink-0">
+        <div>
+            <h1 class="text-xl font-bold tracking-tight">Day 2: Philosophical Tests for Truth</h1>
+            <p class="text-xs text-blue-200 uppercase tracking-wider">Doing Philosophy - Grade 11</p>
+        </div>
+        <div class="flex items-center space-x-4">
+            <span id="slide-indicator" class="text-sm font-medium bg-blue-800 px-3 py-1 rounded-full">Stage 1 / 5</span>
+            <button onclick="prevSlide()" class="px-4 py-2 bg-blue-700 rounded-lg hover:bg-blue-600 transition disabled:opacity-50 disabled:cursor-not-allowed shadow-sm font-semibold text-sm" id="prev-btn" disabled>
+                &larr; Prev
+            </button>
+            <button onclick="nextSlide()" class="px-4 py-2 bg-secondary rounded-lg hover:bg-purple-500 transition shadow-sm font-semibold text-sm" id="next-btn">
+                Next &rarr;
+            </button>
+        </div>
+    </nav>
+
+    <main class="flex-grow overflow-y-auto p-4 md:p-8 relative">
+        <div class="max-w-5xl mx-auto pb-12">
+
+            <section class="slide active space-y-8" data-slide="1">
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+                    <h2 class="text-3xl font-extrabold text-primary mb-2">Stage 1: Review & Introduction</h2>
+                    <p class="text-gray-500 font-medium mb-6 uppercase text-sm tracking-wide">Time Allocation: 10 Minutes</p>
+                    
+                    <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg mb-8">
+                        <p class="text-lg text-blue-900 font-serif italic">
+                            "Yesterday, we learned that <strong>Verifiability</strong> separates Fact from Opinion. But how do we verify complex truths that we cannot see or touch?"
+                        </p>
+                    </div>
+
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Quick Recap: The Verifiability Check</h3>
+                    <p class="mb-4 text-gray-600">Select the correct answer for the question below to unlock the next section.</p>
+
+                    <div class="bg-gray-50 p-6 rounded-xl border border-gray-200" id="recap-container">
+                        <p class="font-bold text-lg mb-4">Which of the following is the defining characteristic of a TRUTH?</p>
+                        <div class="grid grid-cols-1 gap-3">
+                            <button onclick="checkRecap(this, false)" class="quiz-btn text-left p-4 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 font-medium">It feels right to the person saying it.</button>
+                            <button onclick="checkRecap(this, true)" class="quiz-btn text-left p-4 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 font-medium">It is supported by evidence and can be verified.</button>
+                            <button onclick="checkRecap(this, false)" class="quiz-btn text-left p-4 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 font-medium">It is believed by the majority of people.</button>
+                        </div>
+                        <div id="recap-feedback" class="mt-4 hidden p-4 rounded-lg bg-feedback-correct border border-green-200 text-green-800">
+                            <strong>Correct!</strong> Truth requires verification through evidence (empirical or logical), regardless of feelings or popularity.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="slide space-y-6" data-slide="2">
+                <div class="text-center mb-4">
+                    <h2 class="text-3xl font-extrabold text-primary">The Three Theories of Truth</h2>
+                    <p class="text-gray-600 mt-2 max-w-2xl mx-auto">Not all truths are tested the same way. Philosophers use three main "tools" to determine if a statement is true.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    
+                    <div class="theory-card bg-white rounded-xl shadow-lg border-t-8 border-correspondence overflow-hidden flex flex-col">
+                        <div class="p-6 bg-blue-50">
+                            <h3 class="text-2xl font-bold text-correspondence">1. Correspondence</h3>
+                            <p class="text-xs font-bold text-gray-500 mt-1 uppercase tracking-wider">The "Reality Check"</p>
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col space-y-4">
+                            <div>
+                                <h4 class="font-bold text-gray-700 text-sm uppercase">Definition:</h4>
+                                <p class="text-gray-600 text-sm leading-relaxed">A statement is true if it <strong>corresponds</strong> (matches) to the way the world actually is.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-700 text-sm uppercase">The Test:</h4>
+                                <p class="text-gray-800 font-medium bg-blue-100 p-2 rounded">Observation / Senses</p>
+                            </div>
+                            <div class="mt-auto pt-4 border-t border-gray-100">
+                                <p class="text-sm italic text-gray-500">Example: "The cat is on the mat." (True only if you look and see the cat on the mat).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="theory-card bg-white rounded-xl shadow-lg border-t-8 border-coherence overflow-hidden flex flex-col">
+                        <div class="p-6 bg-yellow-50">
+                            <h3 class="text-2xl font-bold text-coherence">2. Coherence</h3>
+                            <p class="text-xs font-bold text-gray-500 mt-1 uppercase tracking-wider">The "System Check"</p>
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col space-y-4">
+                            <div>
+                                <h4 class="font-bold text-gray-700 text-sm uppercase">Definition:</h4>
+                                <p class="text-gray-600 text-sm leading-relaxed">A statement is true if it <strong>coheres</strong> (fits logically) with a system of other established beliefs or rules.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-700 text-sm uppercase">The Test:</h4>
+                                <p class="text-gray-800 font-medium bg-yellow-100 p-2 rounded">Logic / Consistency</p>
+                            </div>
+                            <div class="mt-auto pt-4 border-t border-gray-100">
+                                <p class="text-sm italic text-gray-500">Example: "2 + 2 = 4" or "A bachelor is an unmarried male." (True because it fits the rules of Math/English).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="theory-card bg-white rounded-xl shadow-lg border-t-8 border-pragmatic overflow-hidden flex flex-col">
+                        <div class="p-6 bg-green-50">
+                            <h3 class="text-2xl font-bold text-pragmatic">3. Pragmatic</h3>
+                            <p class="text-xs font-bold text-gray-500 mt-1 uppercase tracking-wider">The "Utility Check"</p>
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col space-y-4">
+                            <div>
+                                <h4 class="font-bold text-gray-700 text-sm uppercase">Definition:</h4>
+                                <p class="text-gray-600 text-sm leading-relaxed">A statement is true if holding it to be true works useful or beneficial in practice.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-700 text-sm uppercase">The Test:</h4>
+                                <p class="text-gray-800 font-medium bg-green-100 p-2 rounded">Results / Application</p>
+                            </div>
+                            <div class="mt-auto pt-4 border-t border-gray-100">
+                                <p class="text-sm italic text-gray-500">Example: "Democracy is the best government." (True if it results in a better society than alternatives).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="slide space-y-8" data-slide="3">
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+                    <h2 class="text-3xl font-extrabold text-primary mb-2">Stage 3: The Truth Detective (10 Cases!)</h2>
+                    <p class="text-gray-500 font-medium mb-8">SLO: Apply the correct philosophical theory to verify different types of statements.</p>
+                    
+                    <p class="mb-6 text-gray-700 text-lg"><strong>Activity:</strong> For each statement below, choose the BEST method (theory) to verify if it is true.</p>
+
+                    <div id="matching-activity-3" class="space-y-6">
+                        </div>
+                </div>
+            </section>
+            
+            <section class="slide space-y-8" data-slide="4">
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+                    <h2 class="text-3xl font-extrabold text-secondary mb-2">Stage 4: Extension Challenge (10 New Cases!)</h2>
+                    <p class="text-gray-500 font-medium mb-8">SLO: Demonstrate mastery by applying the theories to new, diverse scenarios.</p>
+                    
+                    <p class="mb-6 text-gray-700 text-lg"><strong>Challenge:</strong> Test your understanding with 10 more statements. Choose the BEST theory.</p>
+
+                    <div id="matching-activity-4" class="space-y-6">
+                        </div>
+                </div>
+            </section>
+
+
+            <section class="slide space-y-8" data-slide="5">
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center">
+                    <h2 class="text-3xl font-extrabold text-primary mb-6">Stage 5: Reflection</h2>
+                    
+                    <div class="bg-purple-50 p-8 rounded-xl border border-purple-200 mb-8 max-w-3xl mx-auto">
+                        <h3 class="text-2xl font-bold text-secondary mb-4">Think-Pair-Share</h3>
+                        <p class="text-xl text-gray-700 font-serif italic leading-relaxed">
+                            "Which of the three theories (Correspondence, Coherence, or Pragmatic) is the hardest to apply to real life, and why?"
+                        </p>
+                    </div>
+
+                    <div class="text-left max-w-2xl mx-auto space-y-4">
+                        <h4 class="font-bold text-gray-800 uppercase text-sm tracking-wide border-b pb-2">Lesson Summary</h4>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <span class="text-correspondence mr-2 text-xl">•</span>
+                                <span class="text-gray-600"><strong>Correspondence:</strong> Best for physical facts (Is it raining?).</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-coherence mr-2 text-xl">•</span>
+                                <span class="text-gray-600"><strong>Coherence:</strong> Best for abstract systems like Math, Logic, or Law (Does it fit the rules?).</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-pragmatic mr-2 text-xl">•</span>
+                                <span class="text-gray-600"><strong>Pragmatic:</strong> Best for complex social/moral ideas where results matter (Does it work?).</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="mt-12">
+                        <p class="text-green-600 font-bold text-lg">End of Day 2 Session</p>
+                        <p class="text-sm text-gray-400 mt-2">Next up Day 3: Scientific vs. Philosophical Truth</p>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <script>
+        let currentSlide = 1;
+        // Total slides updated from 4 to 5
+        const totalSlides = 5; 
+        
+        // --- Navigation Logic ---
+        function updateSlideDisplay() {
+            document.querySelectorAll('.slide').forEach(slide => {
+                const slideNum = parseInt(slide.getAttribute('data-slide'));
+                slide.classList.remove('active');
+                if (slideNum === currentSlide) slide.classList.add('active');
+            });
+
+            // Update Header Text based on Stage
+            const indicator = document.getElementById('slide-indicator');
+            // Added time for Stage 4 (15 min), updated Stage 5 time
+            const times = ["10 min", "30 min", "15 min", "15 min", "5 min"]; 
+            indicator.textContent = `Stage ${currentSlide} / ${totalSlides} (${times[currentSlide-1]})`;
+
+            // Button States
+            document.getElementById('prev-btn').disabled = currentSlide === 1;
+            document.getElementById('next-btn').disabled = currentSlide === totalSlides;
+            
+            // Scroll to top
+            document.querySelector('main').scrollTo(0, 0);
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides) {
+                currentSlide++;
+                updateSlideDisplay();
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 1) {
+                currentSlide--;
+                updateSlideDisplay();
+            }
+        }
+
+        // --- Stage 1 Recap Logic ---
+        function checkRecap(btn, isCorrect) {
+            // Reset styles for siblings
+            const container = document.getElementById('recap-container');
+            const buttons = container.querySelectorAll('button');
+            buttons.forEach(b => {
+                b.classList.remove('bg-green-100', 'border-green-500', 'bg-red-100', 'border-red-500');
+                b.disabled = true; // Disable all after choice
+            });
+
+            if (isCorrect) {
+                btn.classList.add('bg-green-100', 'border-green-500', 'text-green-900');
+                document.getElementById('recap-feedback').classList.remove('hidden');
+            } else {
+                btn.classList.add('bg-red-100', 'border-red-500', 'text-red-900');
+                // Show feedback anyway so they learn
+                document.getElementById('recap-feedback').classList.remove('hidden');
+                document.getElementById('recap-feedback').innerHTML = "<strong>Not quite.</strong> While feelings (Option 1) and popularity (Option 3) influence opinion, <strong>Truth</strong> is defined by evidence and verifiability.";
+            }
+        }
+
+        // --- STAGE 3 Matching Activity Data & Logic ---
+        const matchingData = [
+            {
+                id: 1,
+                statement: "There is a coffee mug on the table.",
+                correct: 'correspondence',
+                explanation: "You verify this by <strong>looking</strong> (using senses) to see if the statement corresponds to the physical object in reality."
+            },
+            {
+                id: 2,
+                statement: "A 'Square' has four equal sides.",
+                correct: 'coherence',
+                explanation: "You verify this by checking definitions. It is true because it <strong>fits consistently</strong> within the rules of Geometry/Language."
+            },
+            {
+                id: 3,
+                statement: "Honesty is the best policy.",
+                correct: 'pragmatic',
+                explanation: "This is hard to prove physically. We verify it by looking at the <strong>results</strong>: Does being honest lead to better trust and society? It is 'true' because it works in practice."
+            },
+            {
+                id: 4,
+                statement: "It is currently raining outside.",
+                correct: 'correspondence',
+                explanation: "Simple observation. Does the statement match the weather you see?"
+            },
+            {
+                id: 5,
+                statement: "The sum of all angles in a Euclidean triangle is 180 degrees.",
+                correct: 'coherence',
+                explanation: "This truth relies entirely on the <strong>axioms and consistency</strong> of the mathematical system (Euclidean geometry). It's a logical fit."
+            },
+            {
+                id: 6,
+                statement: "Investing in renewable energy will lead to sustainable economic growth.",
+                correct: 'pragmatic',
+                explanation: "This is a prediction about what works best for the future. Its truth is determined by the <strong>beneficial, practical results</strong> it produces over time."
+            },
+            {
+                id: 7,
+                statement: "The capital of Australia is Canberra.",
+                correct: 'correspondence',
+                explanation: "You check maps, historical records, and official documents. Does the statement <strong>match</strong> the established, verifiable fact in the world?"
+            },
+            {
+                id: 8,
+                statement: "The law states that anyone over 18 can vote.",
+                correct: 'coherence',
+                explanation: "This is true because it <strong>coheres</strong> with the existing, established legal and constitutional system of the nation."
+            },
+            {
+                id: 9,
+                statement: "It is generally better for your mental health to forgive than to hold a grudge.",
+                correct: 'pragmatic',
+                explanation: "This is a psychological and moral claim. Its 'truth' is measured by its <strong>utility</strong>—does this belief lead to a better quality of life and better outcomes for the individual?"
+            },
+            {
+                id: 10,
+                statement: "Jupiter is the largest planet in our Solar System.",
+                correct: 'correspondence',
+                explanation: "This is a scientific fact verified through <strong>empirical observation and measurement</strong> (the reality of the cosmos)."
+            }
+        ];
+
+        // --- NEW STAGE 4 Extension Quiz Data (Items 12 and 13 simplified) ---
+        const extensionData = [
+            {
+                id: 11,
+                statement: "All swans in the lake are white.",
+                correct: 'correspondence',
+                explanation: "This is an empirical claim. You must <strong>observe</strong> the swans in the lake to verify if the statement matches reality."
+            },
+            {
+                id: 12,
+                // Changed from: "A syllogism's conclusion is valid if the premises are true."
+                statement: "In chess, moving the bishop diagonally is the correct move.",
+                correct: 'coherence',
+                explanation: "This is about rules within a system (chess). Its truth depends on whether it <strong>fits the rules</strong> and consistency of that established system."
+            },
+            {
+                id: 13,
+                // Changed from: "A free-market economy is better for the average citizen than a command economy."
+                statement: "Using a seatbelt will reduce the severity of injuries in a car accident.",
+                correct: 'pragmatic',
+                explanation: "The 'truth' of this statement is judged by its <strong>utility and effectiveness</strong>. Does the practice of wearing a seatbelt yield beneficial, practical results?"
+            },
+            {
+                id: 14,
+                statement: "The current time is exactly 10:00 AM.",
+                correct: 'correspondence',
+                explanation: "You look at a clock or device. Does the statement <strong>match</strong> the observable, physical fact of the time?"
+            },
+            {
+                id: 15,
+                statement: "No odd number can be a factor of an even number.",
+                correct: 'coherence',
+                explanation: "This statement is false, but its truth/falsity is determined by checking the <strong>rules and consistency</strong> of the number system (e.g., 3 is a factor of 6). It is a logical/mathematical truth."
+            },
+            {
+                id: 16,
+                statement: "Capital punishment serves as an effective deterrent to crime.",
+                correct: 'pragmatic',
+                explanation: "This is a social policy claim. Its truth is determined by examining <strong>real-world results</strong>: Does the policy actually reduce crime rates?"
+            },
+            {
+                id: 17,
+                statement: "The Earth revolves around the Sun.",
+                correct: 'correspondence',
+                explanation: "This is a well-established scientific fact, verified by **empirical evidence** and observation of the cosmos."
+            },
+            {
+                id: 18,
+                statement: "All citizens have the right to a fair trial.",
+                correct: 'coherence',
+                explanation: "This is a legal/moral truth whose truth value is derived from its **consistency** with the overarching system of law, constitution, or moral codes."
+            },
+            {
+                id: 19,
+                statement: "It's best to study for tests early rather than cramming the night before.",
+                correct: 'pragmatic',
+                explanation: "This is a practical advice claim. Its truth is measured by the <strong>utility and beneficial results</strong> (better grades, less stress) it provides."
+            },
+            {
+                id: 20,
+                statement: "The Mona Lisa is hanging in The Louvre Museum in Paris.",
+                correct: 'correspondence',
+                explanation: "A simple factual statement that can be verified by <strong>checking reality</strong> (traveling to the museum or looking at reliable records)."
+            }
+        ];
+
+        // Generalized function for rendering any matching activity
+        function renderMatchingActivity(containerId, data, startId) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = data.map((item, index) => `
+                <div class="bg-gray-50 rounded-xl border border-gray-200 overflow-hidden match-item" id="${containerId}-item-${item.id}">
+                    <div class="p-4 border-b border-gray-200 bg-white">
+                        <p class="font-bold text-lg text-gray-800"><span class="text-primary mr-2">${index+startId}.</span> "${item.statement}"</p>
+                    </div>
+                    <div class="p-4 bg-gray-50">
+                        <p class="text-sm text-gray-500 mb-3 uppercase font-bold tracking-wide">How would you verify this?</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                            <button onclick="handleMatch('${containerId}', ${item.id}, 'correspondence')" class="match-btn py-2 px-4 rounded shadow-sm bg-white border border-gray-300 hover:bg-blue-50 hover:border-blue-300 text-sm font-semibold text-gray-700 transition" data-type="correspondence">Correspondence</button>
+                            <button onclick="handleMatch('${containerId}', ${item.id}, 'coherence')" class="match-btn py-2 px-4 rounded shadow-sm bg-white border border-gray-300 hover:bg-yellow-50 hover:border-yellow-300 text-sm font-semibold text-gray-700 transition" data-type="coherence">Coherence</button>
+                            <button onclick="handleMatch('${containerId}', ${item.id}, 'pragmatic')" class="match-btn py-2 px-4 rounded shadow-sm bg-white border border-gray-300 hover:bg-green-50 hover:border-green-300 text-sm font-semibold text-gray-700 transition" data-type="pragmatic">Pragmatic</button>
+                        </div>
+                        <div id="feedback-${item.id}" class="hidden mt-4 text-sm p-3 rounded-lg border"></div>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        // Generalized function for handling match clicks
+        function handleMatch(containerId, itemId, selectedType) {
+            // Determine which data set to use
+            const isStage3 = containerId === 'matching-activity-3';
+            const data = isStage3 ? matchingData : extensionData;
+            
+            // Find the correct item object
+            const item = data.find(d => d.id === itemId);
+
+            const feedbackEl = document.getElementById(`feedback-${itemId}`);
+            const parent = document.getElementById(`${containerId}-item-${itemId}`);
+            const buttons = parent.querySelectorAll('.match-btn');
+            
+            // Disable buttons for this item
+            buttons.forEach(btn => {
+                btn.disabled = true;
+                btn.classList.add('opacity-50', 'cursor-not-allowed');
+                // Highlight the user's choice
+                if (btn.getAttribute('data-type') === selectedType) {
+                     btn.classList.remove('opacity-50');
+                     btn.classList.add('ring-2', 'ring-offset-1');
+                }
+            });
+
+            feedbackEl.classList.remove('hidden');
+            
+            if (selectedType === item.correct) {
+                // Correct styling
+                feedbackEl.classList.add('bg-feedback-correct', 'border-green-200', 'text-green-800');
+                feedbackEl.classList.remove('bg-feedback-incorrect', 'border-red-200', 'text-red-800');
+                feedbackEl.innerHTML = `<strong>✅ Correct!</strong> ${item.explanation}`;
+            } else {
+                // Incorrect styling
+                feedbackEl.classList.add('bg-feedback-incorrect', 'border-red-200', 'text-red-800');
+                feedbackEl.classList.remove('bg-feedback-correct', 'border-green-200', 'text-green-800');
+                const correctLabel = item.correct.charAt(0).toUpperCase() + item.correct.slice(1);
+                feedbackEl.innerHTML = `<strong>❌ Incorrect.</strong> The best test here is <strong>${correctLabel}</strong>.<br><br>${item.explanation}`;
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            // Render Stage 3 quiz (original)
+            renderMatchingActivity('matching-activity-3', matchingData, 1);
+            // Render NEW Stage 4 quiz
+            renderMatchingActivity('matching-activity-4', extensionData, 1);
+            updateSlideDisplay();
+        });
+
+    </script>
+</body>
+</html>

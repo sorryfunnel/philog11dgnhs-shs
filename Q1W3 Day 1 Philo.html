@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 1: The Branches of Philosophy</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Use Inter font -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #e0f2f1; /* Teal 100 */
+        }
+        .card {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        .slide-content {
+            display: none;
+        }
+        .slide-content.active {
+            display: block;
+            animation: fadeIn 0.8s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .quiz-item {
+            padding: 1rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: background-color 0.15s, transform 0.15s;
+            user-select: none;
+            min-height: 4rem; /* Ensure stability */
+            display: flex;
+            align-items: center;
+        }
+        .quiz-term {
+            background-color: #f3f4f6; /* Gray 100 */
+            border: 2px solid transparent;
+        }
+        .quiz-question {
+            background-color: #ffffff;
+            border: 2px solid #e5e7eb; /* Gray 200 */
+        }
+        .quiz-term.selected {
+            background-color: #c7d2fe; /* Indigo 200 */
+            border-color: #4f46e5; /* Indigo 600 */
+            transform: scale(1.02);
+        }
+        .quiz-question.matched {
+            background-color: #d1fae5; /* Green 100 */
+            border-color: #10b981; /* Green 500 */
+            pointer-events: none; /* Disable clicking matched items */
+        }
+        .quiz-term.matched {
+             background-color: #10b981; /* Green 500 */
+             color: white;
+             pointer-events: none;
+        }
+        .quiz-term.incorrect, .quiz-question.incorrect {
+            background-color: #fee2e2; /* Red 100 */
+            border-color: #ef4444; /* Red 500 */
+        }
+    </style>
+</head>
+<body class="min-h-screen p-4 sm:p-8">
+
+    <div class="max-w-4xl mx-auto">
+        <header class="text-center mb-10 p-6 bg-white rounded-xl shadow-lg">
+            <h1 class="text-4xl font-extrabold text-indigo-700">Introduction to Philosophy (Day 1)</h1>
+            <p class="text-xl text-gray-600 mt-2">Philosophy as a Discipline: Organizing Our Questions</p>
+        </header>
+
+        <div id="slides-container">
+            <!-- Slide 1: Recap & Purpose Setting (NEW CONTENT) -->
+            <section id="slide-1" class="slide-content active">
+                <div class="card bg-white p-8 rounded-xl mb-6">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b pb-2">Recap: The Value of Philosophical Inquiry</h2>
+                    
+                    <div class="bg-indigo-50 p-6 rounded-lg border-l-4 border-indigo-500 shadow-inner mb-6">
+                        <h3 class="text-2xl font-bold text-indigo-800 mb-3">Yesterday's Framework (Recap)</h3>
+                        <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
+                            <li><strong>Philosophy as "Love of Wisdom":</strong> A foundational curiosity about the world.</li>
+                            <li><strong>Hobbes & Rousseau:</strong> Understanding the basis of social contracts and human nature. (Share your essays!)</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-teal-50 p-6 rounded-lg border-l-4 border-teal-500 shadow-inner">
+                        <h3 class="text-2xl font-bold text-teal-800 mb-3">Learning Objective (The Purpose)</h3>
+                        <p class="text-gray-800 leading-relaxed text-lg">
+                            Today, we treat philosophy as a <strong>discipline</strong>. We will learn how philosophers organize their questions into distinct branches, like Logic, Metaphysics, and Aesthetics, and see how they apply to modern issues.
+                        </p>
+                    </div>
+
+                    <div class="mt-6 p-4 bg-yellow-100 rounded-lg border-l-4 border-yellow-500">
+                        <h3 class="text-xl font-bold text-yellow-800">Check for Understanding (Socratic Value)</h3>
+                        <p class="text-yellow-700">Socrates: "The unexamined life is not worth living." In one sentence, what does this mean in the context of your daily choices?</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 2: Existentialism - Bridging Meaning (NEW SLIDE) -->
+            <section id="slide-2" class="slide-content">
+                <div class="card bg-white p-8 rounded-xl mb-6">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b pb-2">From Wisdom to Existence: Why Are We Here?</h2>
+                    
+                    <div class="bg-purple-50 p-6 rounded-lg border-l-4 border-purple-500 shadow-inner mb-6">
+                        <h3 class="text-2xl font-bold text-purple-800 mb-3">The Existential Question</h3>
+                        <p class="text-gray-800 leading-relaxed text-lg italic">
+                            "Why are we existing in this world?"
+                        </p>
+                        <p class="mt-4 text-gray-700">
+                            (Teacher facilitates student answers and notes)
+                        </p>
+                    </div>
+
+                    <div class="p-6 bg-purple-100 rounded-lg shadow-md">
+                        <h3 class="text-xl font-bold text-purple-800">The Philosophical Response (Existentialism)</h3>
+                        <p class="text-gray-700 mt-2">
+                            This fundamental question bridges the gap between philosophy as a 'love of wisdom' and philosophy as a discipline. The philosophical answer is that existence precedes essence: we are born free, and therefore, our ultimate meaning must be <strong>created</strong> through our freedom and the <strong>responsibility</strong> we take for our actions. This is about 'putting meaning to what is out there.'
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 3: Analytical Branches Deep Dive (REPLACED OLD SLIDE 2) -->
+            <section id="slide-3" class="slide-content">
+                <div class="card bg-white p-8 rounded-xl mb-6">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4 border-b pb-2">The Analytical Branches: Logic, Knowledge, and Reality</h2>
+                    <p class="text-lg text-gray-700 mb-6">These core branches focus on the structure of thought and the nature of things.</p>
+
+                    <div class="space-y-6">
+                        <!-- Logic -->
+                        <div class="p-4 bg-yellow-100 rounded-lg border-l-4 border-yellow-500">
+                            <h4 class="font-bold text-xl text-yellow-800">Logic (The Science of Correct Thinking)</h4>
+                            <p class="text-gray-700 mt-1">Focuses on valid argument and objective, reliable information.</p>
+                            <ul class="mt-2 text-sm list-disc list-inside ml-4 space-y-1">
+                                <li><strong>Types:</strong> Deductive (General → Specific) and Inductive (Specific → General).</li>
+                                <li><strong>Flawed Reasoning (Fallacies):</strong> Discuss Hasty Generalization and Ad Hominem.</li>
+                            </ul>
+                        </div>
+                        <!-- Epistemology -->
+                        <div class="p-4 bg-blue-100 rounded-lg border-l-4 border-blue-500">
+                            <h4 class="font-bold text-xl text-blue-800">Epistemology (The Study of Knowledge)</h4>
+                            <p class="text-gray-700 mt-1">Focuses on the sources and criteria of what we call knowledge.</p>
+                            <ul class="mt-2 text-sm list-disc list-inside ml-4 space-y-1">
+                                <li><strong>Rationalism:</strong> Knowledge primarily comes from <strong>Reason</strong> (e.g., Mathematical proofs).</li>
+                                <li><strong>Empiricism:</strong> Knowledge primarily comes from <strong>Sense-Perception/Experience</strong> (e.g., Learning to ride a bike).</li>
+                            </ul>
+                        </div>
+                        <!-- Metaphysics -->
+                        <div class="p-4 bg-green-100 rounded-lg border-l-4 border-green-500">
+                            <h4 class="font-bold text-xl text-green-800">Metaphysics (The Nature of Ultimate Reality)</h4>
+                            <p class="text-gray-700 mt-1">Focuses on existence, reality, mind-body, and time.</p>
+                            <p class="mt-2 text-sm text-gray-700">
+                                <strong>Case Discussion:</strong> The Filipino concept of the <strong>Mañana Habit</strong>. Is this a reflection of an underlying cultural reality, a psychological response to time, or simply a form of social laziness?
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 4: Applied Branches & Practical Applications (REPLACED OLD SLIDE 3) -->
+            <section id="slide-4" class="slide-content">
+                <div class="card bg-white p-8 rounded-xl mb-6">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4 border-b pb-2">Applied Branches: Beauty and Society</h2>
+                    <p class="text-lg text-teal-600 mb-6">How do philosophy's branches shape our value judgments about art and community?</p>
+
+                    <div class="space-y-6">
+                        <!-- Aesthetics -->
+                        <div class="p-4 bg-purple-100 rounded-lg border-l-4 border-purple-500">
+                            <h4 class="font-bold text-xl text-purple-800">Aesthetics (The Study of Beauty)</h4>
+                            <p class="text-gray-700 mt-1">
+                                <strong>Case Discussion:</strong> The <strong>Korean Standard of Beauty</strong>. Is beauty universal (a Metaphysical property) or is it culturally constructed and relative (Aesthetics)? How do media and philosophical assumptions shape what we perceive as 'good looks'?
+                            </p>
+                        </div>
+
+                        <!-- Political Philosophy -->
+                        <div class="p-4 bg-red-100 rounded-lg border-l-4 border-red-500">
+                            <h4 class="font-bold text-xl text-red-800">Political Philosophy (The Study of Society)</h4>
+                            <p class="text-gray-700 mt-1">
+                                <strong>Case Discussion:</strong> The <strong>PUVMP (Public Utility Vehicle Modernization Program)</strong>. Analyze the argument: Is the government pushing it primarily for the safety of riders, or is the revitalization of the sluggish Philippine economy the ultimate political goal? Which objective reflects a better political philosophy?
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 p-4 bg-indigo-100 rounded-xl text-indigo-800 font-semibold text-center">
+                        <p class="text-2xl font-extrabold mb-2">Making the Abstraction</p>
+                        <p>
+                            Philosophy is a comprehensive discipline. When faced with a question, a philosopher knows where to categorize it: Is it about valid argument (<strong>Logic</strong>)? About what is true (<strong>Epistemology</strong>)? About ultimate reality (<strong>Metaphysics</strong>)? About society (<strong>Political Philosophy</strong>)? Or about what is beautiful (<strong>Aesthetics</strong>)?
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 5: Evaluation Quiz (UPDATED QUIZ) -->
+            <section id="slide-5" class="slide-content">
+                <div class="card bg-white p-8 rounded-xl mb-6">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4 border-b pb-2">Evaluation: Match the Branches</h2>
+                    <p class="text-lg text-gray-700 mb-8">Match the philosophical branch on the left with the real-life question it addresses on the right by clicking a branch, then clicking its corresponding question.</p>
+
+                    <div id="quiz-area" class="flex flex-col md:flex-row gap-6">
+                        <!-- Terms (Branches) -->
+                        <div id="terms-container" class="w-full md:w-1/2 space-y-3">
+                            <h3 class="font-bold text-xl text-indigo-700 mb-3">Branches (Word Bank)</h3>
+                            <!-- Terms will be rendered here -->
+                        </div>
+                        <!-- Definitions (Questions) -->
+                        <div id="definitions-container" class="w-full md:w-1/2 space-y-3">
+                            <h3 class="font-bold text-xl text-indigo-700 mb-3">Questions</h3>
+                            <!-- Questions will be rendered here -->
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 flex justify-center">
+                        <button id="check-quiz-btn" class="px-8 py-3 bg-teal-500 text-white font-bold rounded-full transition duration-300 hover:bg-teal-600 disabled:opacity-50" disabled>Check Answers</button>
+                    </div>
+                    <div id="quiz-feedback" class="mt-4 text-center font-bold text-lg hidden"></div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Navigation Controls -->
+        <div class="flex justify-between mt-8 p-4 bg-white rounded-xl shadow-lg">
+            <button id="prev-btn" class="px-6 py-3 bg-gray-400 text-white font-bold rounded-full transition duration-300 hover:bg-gray-500 disabled:opacity-50" disabled>&larr; Previous</button>
+            <div id="slide-indicator" class="text-lg font-semibold self-center text-gray-700">Slide 1 of 5</div>
+            <button id="next-btn" class="px-6 py-3 bg-indigo-600 text-white font-bold rounded-full transition duration-300 hover:bg-indigo-700">Next &rarr;</button>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Navigation Logic ---
+            const slides = document.querySelectorAll('.slide-content');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const slideIndicator = document.getElementById('slide-indicator');
+            const totalSlides = 5; // Updated from 4 to 5
+            let currentSlideIndex = 0;
+
+            function updateSlide() {
+                slides.forEach(slide => slide.classList.remove('active'));
+                slides[currentSlideIndex].classList.add('active');
+                prevBtn.disabled = currentSlideIndex === 0;
+                nextBtn.disabled = currentSlideIndex === totalSlides - 1;
+                slideIndicator.textContent = `Slide ${currentSlideIndex + 1} of ${totalSlides}`;
+            }
+
+            prevBtn.addEventListener('click', () => { if(currentSlideIndex > 0) { currentSlideIndex--; updateSlide(); } });
+            nextBtn.addEventListener('click', () => { if(currentSlideIndex < totalSlides - 1) { currentSlideIndex++; updateSlide(); } });
+
+            // --- Slide 5 Quiz Logic ---
+            // Based on the 'Evaluating Learning' section of the new plan
+            const quizData = [
+                { term: "Ethics / Political Philosophy", question: "Is it morally right for a company to use AI to write job applications, potentially replacing human workers?", id: "ethics" },
+                { term: "Epistemology", question: "How can we know for certain that the information we learn online is true and reliable?", id: "epistemology" },
+                { term: "Metaphysics", question: "Is the concept of time an illusion, or is it a fundamental feature of the universe?", id: "metaphysics" },
+                { term: "Logic", question: "If a political candidate uses flawed reasoning (like Ad Hominem), should we trust any of their proposed policies?", id: "logic" },
+                { term: "Aesthetics", question: "Why do different cultures have vastly different standards for what is considered beautiful or ugly?", id: "aesthetics" }
+            ];
+
+            const termsContainer = document.getElementById('terms-container');
+            const definitionsContainer = document.getElementById('definitions-container');
+            const checkQuizBtn = document.getElementById('check-quiz-btn');
+            const quizFeedback = document.getElementById('quiz-feedback');
+
+            let selectedTerm = null;
+            let matches = 0;
+            const userMatches = {}; // Store { termId: questionId }
+
+            function renderQuiz() {
+                // Clear containers
+                termsContainer.innerHTML = '<h3 class="font-bold text-xl text-indigo-700 mb-3">Branches (Word Bank)</h3>';
+                definitionsContainer.innerHTML = '<h3 class="font-bold text-xl text-indigo-700 mb-3">Questions</h3>';
+
+                // Helper to shuffle an array
+                const shuffleArray = array => {
+                    const newArray = [...array];
+                    for (let i = newArray.length - 1; i > 0; i--) {
+                        const j = Math.floor(Math.random() * (i + 1));
+                        [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+                    }
+                    return newArray;
+                };
+
+                // Shuffle both lists independently for randomization
+                const shuffledTerms = shuffleArray(quizData.map(item => ({...item, type: 'term'})));
+                const shuffledDefinitions = shuffleArray(quizData.map(item => ({...item, type: 'question'})));
+
+                // Render Terms (shuffled)
+                shuffledTerms.forEach(item => {
+                    const termDiv = document.createElement('div');
+                    termDiv.className = 'quiz-item quiz-term shadow-md hover:bg-gray-200';
+                    termDiv.textContent = item.term;
+                    termDiv.dataset.id = item.id;
+                    termDiv.addEventListener('click', handleTermClick);
+                    termsContainer.appendChild(termDiv);
+                });
+
+                // Render Definitions (independently shuffled)
+                shuffledDefinitions.forEach(item => {
+                    const questionDiv = document.createElement('div');
+                    questionDiv.className = 'quiz-item quiz-question shadow-md hover:border-indigo-400';
+                    questionDiv.textContent = item.question;
+                    questionDiv.dataset.id = item.id;
+                    questionDiv.addEventListener('click', handleQuestionClick);
+                    definitionsContainer.appendChild(questionDiv);
+                });
+            }
+
+            function handleTermClick(event) {
+                const termDiv = event.target;
+
+                // Ignore if already matched
+                if (termDiv.classList.contains('matched')) return;
+
+                // Clear previous selection visually
+                if (selectedTerm) {
+                    selectedTerm.classList.remove('selected');
+                }
+
+                // Set new selection
+                selectedTerm = termDiv;
+                selectedTerm.classList.add('selected');
+            }
+
+            function handleQuestionClick(event) {
+                const questionDiv = event.target;
+
+                if (!selectedTerm || questionDiv.classList.contains('matched')) {
+                    // No term selected or question already matched
+                    return;
+                }
+
+                const termId = selectedTerm.dataset.id;
+                const questionId = questionDiv.dataset.id;
+                
+                // Add match to the mapping
+                userMatches[termId] = questionId;
+
+                // Mark match immediately (assume match for visual pairing)
+                selectedTerm.classList.remove('selected');
+                selectedTerm.classList.add('matched');
+                questionDiv.classList.add('matched');
+
+                // Update text to show connection (optional, but helpful for user)
+                // We show the term next to the question to remind the student of their choice.
+                questionDiv.innerHTML = `<span class="font-bold text-sm bg-teal-300 px-2 py-0.5 rounded-full mr-2">${selectedTerm.textContent.split(' ')[0]}</span>${questionDiv.textContent}`;
+                
+                selectedTerm = null;
+                matches++;
+
+                // Check if all items are matched to enable the check button
+                if (matches === quizData.length) {
+                    checkQuizBtn.disabled = false;
+                }
+            }
+
+            function checkAnswers() {
+                let correctCount = 0;
+                
+                // Reset styling (only keep matched styling for now)
+                quizFeedback.classList.add('hidden');
+                quizFeedback.classList.remove('text-red-600', 'text-green-600');
+
+                quizData.forEach(item => {
+                    const termElement = document.querySelector(`.quiz-term[data-id="${item.id}"]`);
+                    const questionElement = document.querySelector(`.quiz-question[data-id="${item.id}"]`);
+                    
+                    // Determine which question the student matched to this term
+                    const matchedQuestionId = userMatches[item.id];
+                    const isCorrect = matchedQuestionId === item.id;
+
+                    // Find the actual elements involved in the user's incorrect match
+                    const actualQuestionElement = document.querySelector(`.quiz-question[data-id="${matchedQuestionId}"]`);
+
+
+                    if (isCorrect) {
+                        correctCount++;
+                        // Correctly matched items already have 'matched' class
+                        termElement.classList.remove('incorrect');
+                        actualQuestionElement.classList.remove('incorrect');
+                    } else {
+                        // Mark the term as incorrect
+                        if (termElement) {
+                            termElement.classList.add('incorrect');
+                            termElement.classList.remove('matched');
+                        }
+                        
+                        // Mark the question the student chose as incorrect
+                        if (actualQuestionElement) {
+                           actualQuestionElement.classList.add('incorrect');
+                           actualQuestionElement.classList.remove('matched');
+                        }
+                    }
+                });
+
+                // Display feedback
+                if (correctCount === quizData.length) {
+                    quizFeedback.textContent = "Excellent! You categorized all the philosophical questions correctly!";
+                    quizFeedback.classList.add('text-green-600');
+                    checkQuizBtn.disabled = true;
+                } else {
+                    quizFeedback.textContent = `You got ${correctCount} out of ${quizData.length} correct. Review the ones marked in red and click 'Try Again' to reset.`;
+                    quizFeedback.classList.add('text-red-600');
+                    checkQuizBtn.disabled = true;
+                }
+                quizFeedback.classList.remove('hidden');
+                
+                // Simple retry mechanism: if they get some wrong, make them reset.
+                if (correctCount < quizData.length) {
+                    checkQuizBtn.textContent = 'Try Again';
+                    checkQuizBtn.removeEventListener('click', checkAnswers);
+                    checkQuizBtn.addEventListener('click', resetQuiz);
+                }
+            }
+
+            function resetQuiz() {
+                selectedTerm = null;
+                matches = 0;
+                // Clear matches and feedback
+                for (const key in userMatches) { delete userMatches[key]; }
+                quizFeedback.classList.add('hidden');
+                checkQuizBtn.disabled = true;
+                checkQuizBtn.textContent = 'Check Answers';
+                checkQuizBtn.removeEventListener('click', resetQuiz);
+                checkQuizBtn.addEventListener('click', checkAnswers);
+                renderQuiz();
+            }
+
+
+            // Initialize the quiz when the page loads
+            renderQuiz();
+            checkQuizBtn.addEventListener('click', checkAnswers);
+            checkQuizBtn.disabled = true; // Disabled until all matches are made
+
+            updateSlide();
+        });
+    </script>
+</body>
+</html>

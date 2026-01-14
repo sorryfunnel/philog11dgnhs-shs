@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 4: Synthesis & Application</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Use Inter font -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f1f5f9; /* Slate 100 */
+        }
+        .card {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        .slide-content {
+            display: none;
+        }
+        .slide-content.active {
+            display: block;
+            animation: fadeIn 0.8s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Removed reveal-btn styles as they are no longer needed for Slide 3 (old Slide 4) */
+    </style>
+</head>
+<body class="min-h-screen p-4 sm:p-8">
+
+    <div class="max-w-4xl mx-auto">
+        <header class="text-center mb-10 p-6 bg-white rounded-xl shadow-lg">
+            <h1 class="text-4xl font-extrabold text-teal-700">Introduction to Philosophy (Day 4)</h1>
+            <p class="text-xl text-gray-600 mt-2">Final Synthesis: Philosophy as a Tool for Modern Life</p>
+        </header>
+
+        <div id="slides-container">
+            <!-- Slide 1: Review & Integration -->
+            <section id="slide-1" class="slide-content active">
+                <div class="card bg-white p-8 rounded-xl mb-6">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b pb-2">Review: The Tools in Your Philosophical Toolbox</h2>
+                    <p class="text-lg text-gray-700 mb-6">Before applying philosophy to a modern problem, let's quickly review the three types of tools we've collected:</p>
+                    
+                    <div class="space-y-4">
+                        <div class="p-4 bg-blue-100 rounded-lg border-l-4 border-blue-500">
+                            <h3 class="text-xl font-bold text-blue-800">1. Categorical Tools (The Branches)</h3>
+                            <p class="text-blue-700">How do we categorize the problem? (Metaphysics, Epistemology, Ethics, Aesthetics, Logic)</p>
+                        </div>
+                        <div class="p-4 bg-yellow-100 rounded-lg border-l-4 border-yellow-500">
+                            <h3 class="text-xl font-bold text-yellow-800">2. Rational Tools (The West)</h3>
+                            <p class="text-yellow-700">How do we analyze and critique the problem? (Socrates' Self-Examination, Plato's Forms, Aristotle's Mean)</p>
+                        </div>
+                        <div class="p-4 bg-green-100 rounded-lg border-l-4 border-green-500">
+                            <h3 class="text-xl font-bold text-green-800">3. Harmonious Tools (The East)</h3>
+                            <p class="text-green-700">How do we find a peaceful, responsible solution? (Wu Wei, Dharma, Filial Piety)</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 2: Example Scenario (Disinformation) -->
+            <section id="slide-2" class="slide-content">
+                <div class="card bg-white p-8 rounded-xl mb-6">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4 border-b pb-2">Scenario for Worked Example: Disinformation</h2>
+                    <p class="text-lg text-teal-600 mb-6">
+                        We will now work through this scenario together using our three philosophical tools.
+                    </p>
+
+                    <div class="bg-red-50 p-6 rounded-lg border-l-4 border-red-500 shadow-inner">
+                        <h3 class="text-2xl font-bold text-red-800 mb-3">Scenario: The Echo Chamber</h3>
+                        <p class="text-gray-800 leading-relaxed">
+                            Liam only gets news from a single online source that constantly posts sensational, but often inaccurate, stories tailored to his biases. He believes everything he reads and often gets into heated arguments with classmates, dismissing any information that contradicts his online feed as "fake." His behavior is damaging his relationships and his ability to see objective truth.
+                        </p>
+                    </div>
+
+                    <h3 class="text-xl font-semibold text-gray-700 mt-8">The Core Problem:</h3>
+                    <p class="text-gray-600 italic">How can Liam be guided toward responsible and truthful inquiry, and how should he act to mend his social relationships?</p>
+                </div>
+            </section>
+
+            <!-- Slide 3: Worked Example: The Integrated Solution -->
+            <section id="slide-3" class="slide-content">
+                <div class="card bg-white p-8 rounded-xl mb-6">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4 border-b pb-2">Worked Example: The Integrated Solution</h2>
+                    <p class="text-lg text-gray-700 mb-6">This sample paragraph uses one concept from each tool category to address the Disinformation Scenario. Pay attention to the highlighted concepts.</p>
+
+                    <div id="example-text" class="mt-6 p-6 bg-gray-50 rounded-lg border-l-4 border-indigo-400">
+                        <p class="text-gray-700 leading-relaxed text-lg">
+                            Liam’s inability to critically evaluate his news sources is fundamentally an issue of <strong class="text-blue-700">Epistemology</strong> [Branch], as it deals directly with the nature of knowledge, truth, and belief. To correct this cognitive failure, he must adopt the practice of <strong class="text-yellow-700">Socratic self-examination</strong> [West], questioning the reliability of his own beliefs and the integrity of his single source before adopting it as truth. Furthermore, his aggressive dismissal of classmates’ views is damaging his relationships, violating the Eastern principle of <strong class="text-green-700">Confucian Social Harmony</strong> [East]. Therefore, Liam's path forward requires a reflective pause (Socrates) and a commitment to respectful, harmonious interaction (Confucius), recognizing that seeking truth should enhance, not destroy, his community.
+                        </p>
+                    </div>
+
+                    <div class="mt-8 p-4 bg-yellow-100 rounded-lg border-l-4 border-yellow-500">
+                        <h3 class="font-bold text-yellow-800">Breakdown of the Answer:</h3>
+                        <ul class="list-disc ml-6 space-y-2 text-gray-700">
+                            <li><strong>Branch:</strong> <strong class="text-blue-700">Epistemology</strong> (The problem is about <em>knowing</em> what is true).</li>
+                            <li><strong>West:</strong> <strong class="text-yellow-700">Socratic Self-examination</strong> (The solution is critical <em>rational</em> inquiry).</li>
+                            <li><strong>East:</strong> <strong class="text-green-700">Confucian Social Harmony</strong> (The solution must address the <em>collective</em> social impact).</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Slide 4: Final Synthesis Task Instructions -->
+            <section id="slide-4" class="slide-content">
+                <div class="card bg-white p-8 rounded-xl mb-6">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4 border-b pb-2">Final Synthesis Task Instructions</h2>
+                    <p class="text-lg text-gray-700 mb-6">Now, apply this method to the next challenge. Write a single, well-developed paragraph (approx. 150 words) that addresses the issue using one concept from <em>each</em> of the three tool categories.</p>
+
+                    <div class="space-y-6">
+                        <div class="p-4 bg-blue-50 rounded-lg border border-blue-300">
+                            <h3 class="text-xl font-bold text-blue-700">Requirement 1: Categorize (Branch)</h3>
+                            <p class="text-gray-700">Identify the primary philosophical branch concerned with the core issue.</p>
+                        </div>
+                        <div class="p-4 bg-yellow-50 rounded-lg border border-yellow-300">
+                            <h3 class="text-xl font-bold text-yellow-700">Requirement 2: Analyze (West)</h3>
+                            <p class="text-gray-700">Apply one Western concept (Socrates, Plato, or Aristotle) to analyze the problem or define the ideal behavior.</p>
+                        </div>
+                        <div class="p-4 bg-green-50 rounded-lg border border-green-300">
+                            <h3 class="text-xl font-bold text-green-700">Requirement 3: Solve (East)</h3>
+                            <p class="text-gray-700">Apply one Eastern concept (Buddhism, Confucianism, or Taoism) to recommend a practical path forward for the individual or society.</p>
+                        </div>
+                    </div>
+                    <div class="mt-6 p-4 bg-teal-100 rounded-xl text-teal-800 font-semibold">
+                        <p>This is your final assessment (SLO 5). Ensure the paragraph is cohesive and flows logically.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 5: Student Challenge Scenario -->
+            <section id="slide-5" class="slide-content">
+                <div class="card bg-white p-8 rounded-xl mb-6">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4 border-b pb-2">Student Challenge: The Ethical Dilemma</h2>
+                    <p class="text-lg text-teal-600 mb-6">
+                        Apply the three-part synthesis method to this new scenario.
+                    </p>
+
+                    <div class="bg-red-50 p-6 rounded-lg border-l-4 border-red-500 shadow-inner">
+                        <h3 class="text-2xl font-bold text-red-800 mb-3">Scenario: Social Media Comparison</h3>
+                        <p class="text-gray-800 leading-relaxed">
+                            Anya spends three hours every day scrolling through social media, constantly comparing her simple life to the highly curated, luxurious "highlight reels" of online influencers. This comparison makes her feel inadequate, depressed, and unable to enjoy her genuine friendships or academic achievements. She knows the images are likely fake or exaggerated, but she can't stop comparing herself.
+                        </p>
+                    </div>
+
+                    <h3 class="text-xl font-semibold text-gray-700 mt-8">Your Task:</h3>
+                    <p class="text-gray-600 italic">Analyze Anya's behavior and propose a solution that uses one philosophical concept from <em>each</em> of the three tool categories.</p>
+                </div>
+            </section>
+
+            <!-- Slide 6: Rubric & Conclusion -->
+            <section id="slide-6" class="slide-content">
+                <div class="card bg-white p-8 rounded-xl mb-6">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4 border-b pb-2">Assessment Rubric & Conclusion</h2>
+                    
+                    <h3 class="text-xl font-semibold text-teal-600 mb-3">Final Synthesis Rubric (10 Points)</h3>
+                    
+                    <table class="min-w-full divide-y divide-gray-200 border rounded-lg">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Criteria</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description</th>
+                                <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Points</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Branch (1)</td>
+                                <td class="px-6 py-4 text-sm text-gray-500">Correctly identifies the primary philosophical branch.</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-center font-bold">3</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">West (2)</td>
+                                <td class="px-6 py-4 text-sm text-gray-500">Applies one Western concept (Socrates/Plato/Aristotle) accurately for analysis.</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-center font-bold">3</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">East (3)</td>
+                                <td class="px-6 py-4 text-sm text-gray-500">Applies one Eastern concept (Buddhism/Confucius/Taoism) for a solution.</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-center font-bold">3</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Cohesion</td>
+                                <td class="px-6 py-4 text-sm text-gray-500">The paragraph is clear, flows logically, and uses the three chosen terms correctly to support the main argument.</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-center font-bold">1</td>
+                            </tr>
+                            <tr class="bg-gray-100 font-bold">
+                                <td class="px-6 py-4 text-sm text-gray-900">Total Points</td>
+                                <td class="px-6 py-4 text-sm text-gray-900">Maximum possible points for the paragraph.</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-center text-teal-600">10</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-3">End of Unit Reflection</h3>
+                    <p class="text-gray-700 leading-relaxed italic">
+                        "The unexamined life is not worth living." Over the past four days, you have not just memorized names; you have learned how to examine your life and the world around you using the best tools humanity has created. Now, go forth and be a philosophical, responsible thinker.
+                    </p>
+                </div>
+            </section>
+        </div>
+
+        <!-- Navigation Controls -->
+        <div class="flex justify-between mt-8 p-4 bg-white rounded-xl shadow-lg">
+            <button id="prev-btn" class="px-6 py-3 bg-gray-400 text-white font-bold rounded-full transition duration-300 hover:bg-gray-500 disabled:opacity-50" disabled>&larr; Previous</button>
+            <div id="slide-indicator" class="text-lg font-semibold self-center text-gray-700">Slide 1 of 6</div>
+            <button id="next-btn" class="px-6 py-3 bg-blue-600 text-white font-bold rounded-full transition duration-300 hover:bg-blue-700">Next &rarr;</button>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Navigation Logic ---
+            const slides = document.querySelectorAll('.slide-content');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const slideIndicator = document.getElementById('slide-indicator');
+            // Total slides is now 6
+            const totalSlides = 6; 
+            let currentSlideIndex = 0;
+
+            function updateSlide() {
+                slides.forEach(slide => slide.classList.remove('active'));
+                slides[currentSlideIndex].classList.add('active');
+                prevBtn.disabled = currentSlideIndex === 0;
+                nextBtn.disabled = currentSlideIndex === totalSlides - 1;
+                slideIndicator.textContent = `Slide ${currentSlideIndex + 1} of ${totalSlides}`;
+            }
+
+            prevBtn.addEventListener('click', () => { if(currentSlideIndex > 0) { currentSlideIndex--; updateSlide(); } });
+            nextBtn.addEventListener('click', () => { if(currentSlideIndex < totalSlides - 1) { currentSlideIndex++; updateSlide(); } });
+
+            // The reveal button logic is now removed as the example is static.
+
+            updateSlide();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 1: Philosophical Analysis</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .slideshow-container {
+            width: 90%;
+            max-width: 1000px;
+            background-color: #fff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+        .slide {
+            padding: 40px 60px;
+            display: none; /* All slides hidden by default */
+            animation: fadeIn 0.8s ease-in-out;
+            min-height: 500px;
+        }
+        .slide.active {
+            display: block; /* Only active slide is visible */
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        h1 {
+            color: #007bff;
+            border-bottom: 3px solid #007bff;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 2.2em;
+        }
+        h2 {
+            color: #34495e;
+            font-size: 1.6em;
+            margin-top: 30px;
+        }
+        .definition {
+            background-color: #eaf6ff;
+            border-left: 5px solid #007bff;
+            padding: 15px;
+            margin: 20px 0;
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+        .example-box {
+            background-color: #fff3e0;
+            border: 1px dashed #ff9800;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 8px;
+        }
+        .quote {
+            font-style: italic;
+            color: #555;
+            margin-top: 10px;
+        }
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 60px;
+            background-color: #34495e;
+        }
+        .nav-buttons button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .nav-buttons button:hover {
+            background-color: #0056b3;
+        }
+        .vignette-text {
+            border: 1px solid #c0392b;
+            background-color: #f9ebea;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        /* Custom styling for emphasis */
+        .strong {
+            font-weight: bold;
+        }
+        .italic {
+            font-style: italic;
+        }
+        .justification-point {
+            margin-bottom: 25px;
+            border-left: 4px solid #1abc9c;
+            padding-left: 15px;
+        }
+        /* Style for hidden buttons */
+        .hidden {
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+
+<div class="slideshow-container">
+
+    <div class="slide active" data-slide="1">
+        <h1>Day 1: Philosophical Analysis</h1>
+        <h2>Opening (15 minutes)</h2>
+        <h3>Recap and Core Definition:</h3>
+        <p>Start by establishing the fundamental concept:</p>
+        <div class="definition">
+            Philosophy is the <span class="strong">use of wisdom</span> (formed through knowledge and experience) to <span class="strong">answer real life problems and questions.</span>
+        </div>
+        <p>We are starting with the first method: <span class="strong">Analysis</span>.</p>
+
+        <h3>Activity Focus: The Villain's Philosophy (Ultron)</h3>
+        <p>Give the context: <span class="strong">Avengers: Age of Ultron</span> Synopsis: The Avengers attempt to create a global peacekeeping AI, Ultron, which instead becomes sentient and concludes that the only path to peace is the destruction of humanity. Ultron then attempts to create an extinction event by turning the city of Sokovia into a giant meteor.</p>
+        <p>Pose the central question: Ultron operates on a profound, yet flawed, philosophical premise. He believes his destructive path is <span class="strong">"necessary."</span> How can we use analysis to challenge his claim?</p>
+    </div>
+
+    <div class="slide" data-slide="2">
+        <h1>Lesson Proper: Philosophical Analysis</h1>
+        <h2>Concept Presentation: Analysis</h2>
+        <div class="definition">
+            <span class="strong">Definition:</span> Philosophical Analysis is the method of <span class="strong">breaking down</span> complex concepts, arguments, or statements into their simpler, constituent parts to achieve clarity, identify necessary conditions, and remove ambiguity. 
+        </div>
+        <h2>Ultron's Claim:</h2>
+        <p>He argues: "I looked up at the sky and I saw nothing but <span class="italic">failure</span>... Humans are a doomed species. Every single thing they ever built is <span class="italic">corruptible</span>. <span class="strong">They must be eliminated.</span>"</p>
+    </div>
+
+    <div class="slide" data-slide="3">
+        <h1>Analysis: Breaking Down Ultron's Logic</h1>
+        <h2>Analysis Steps:</h2>
+        <ol>
+            <li>
+                <span class="strong">Analyze "Necessary":</span> Define it as "absolutely required, unavoidable, and the <span class="strong">only viable option</span> to achieve a goal."
+            </li>
+            <li>
+                <span class="strong">Analyze "Goal" ("Peace"):</span> Define it as "universal, permanent balance/survival."
+            </li>
+        </ol>
+        <h2>The Analytical Question:</h2>
+        <p>Does Ultron's evidence of human failure <span class="strong">logically force</span> the conclusion that extinction is the <span class="strong">only</span> solution? Analysis forces us to look for alternative solutions.</p>
+        <p style="color: #c0392b;">If we can find other viable options (e.g., resource creation, forced behavioral change), his destructive action fails the test of <span class="strong">necessity</span>.</p>
+    </div>
+
+    <div class="slide" data-slide="4">
+        <h1>Ultron's Proof: The 'Parasite' Failure</h1>
+        <div class="justification-point">
+            <h2>We Ruin Our Own Home (The 'Parasite' Proof)</h2>
+            <p><span class="strong">The Simple Failure:</span> We know pollution and climate change are destroying the planet, but we keep choosing cheap, fast solutions (like burning fossil fuels) over long-term survival.</p>
+            <p><span class="strong">Specific Instance (Transport Policy):</span> Instead of governments prioritizing efficient <span class="strong">mass rail transportation</span> (which is cleaner and moves thousands), many policies still support the sale of millions of <span class="strong">personal cars</span>. We prioritize the <span class="italic">convenience of the individual car</span> (a short-term desire) over the <span class="italic">long-term health of the city and the environment</span> (a collective need). </p>
+            <p><span class="strong">Ultron's Takeaway:</span> We act like a parasite, proving we prioritize our immediate wants over our own future.</p>
+        </div>
+    </div>
+
+    <div class="slide" data-slide="5">
+        <h1>Ultron's Proof: The Failure to Learn</h1>
+        <div class="justification-point">
+            <h2>We Keep Fighting the Same Big Wars</h2>
+            <p><span class="strong">The Simple Failure:</span> After the massive destruction of World War I, we had World War II just two decades later. This shows that even after the biggest lessons, we always return to conflict.</p>
+            <p><span class="strong">Specific Instance (Funding War):</span> Today, major powers spend trillions maintaining and upgrading vast armies and weapons. This huge investment in the <span class="strong">ability to destroy</span> is vastly greater than the money invested in solving global poverty or disease. </p>
+            <p><span class="strong">Ultron's Takeaway:</span> If humanity keeps funding conflict over peace, it confirms we have a <span class="strong">permanent flaw</span> that makes lasting harmony impossible.</p>
+        </div>
+    </div>
+
+    <div class="slide" data-slide="6">
+        <h1>Ultron's Proof: Choosing Self-Destruction</h1>
+        <div class="justification-point">
+            <h2>We Have the Power to End Ourselves—and We Keep It</h2>
+            <p><span class="strong">The Simple Failure:</span> We invented nuclear bombs—weapons that can wipe out all human life. Instead of destroying them all, we keep them ready to use, holding the entire world hostage (Mutually Assured Destruction or MAD).</p>
+            <p><span class="strong">Specific Instance (Disarmament):</span> Leaders throughout history always find <span class="strong">technical reasons</span> to keep nuclear stockpiles rather than finding the simple <span class="strong">moral agreement</span> to eliminate them. We consciously <span class="italic">choose not to solve</span> the most existential problem we face.</p>
+            <p><span class="strong">Ultron's Takeaway:</span> We are willing to live permanently on the edge of <span class="strong">total self-destruction</span>, proving our intelligence is too dangerous for us to handle.</p>
+        </div>
+    </div>
+    
+    <div class="slide" data-slide="7">
+        <h1>Ultron's Proof: Internal Conflict</h1>
+        <div class="justification-point">
+            <h2>We Hurt Our Own People for Petty Reasons</h2>
+            <p><span class="strong">The Simple Failure:</span> History is full of groups killing huge numbers of their own kind (genocides) or maintaining brutal systems of inequality.</p>
+            <p><span class="strong">Specific Instance (Systemic Inequality):</span> In every country, including our own, the wealthiest few control massive amounts of resources, while basic services for the majority remain severely lacking. This is due to <span class="strong">conscious policy choices</span> that protect the few at the expense of the many, showing a fundamental lack of universal compassion. </p>
+            <p><span class="strong">Ultron's Takeaway:</span> If internal conflict and injustice is a <span class="strong">built-in feature</span> of humanity, true global harmony is unreachable.</p>
+        </div>
+    </div>
+
+    <div class="slide" data-slide="8">
+        <h1>Group Activity: The Analytical Breakdown</h1>
+        <h2>Instructions</h2>
+        <p>In your groups, choose <span class="strong">ONE</span> concept below. Use <span class="strong">Philosophical Analysis</span> to break it down. Define 3-4 required components (necessary conditions) of the concept.</p>
+        <div class="example-box">
+            <p><span class="strong">Concepts to Analyze:</span></p>
+            <ol>
+                <li><span class="strong">"Justice"</span> (e.g., in <span class="italic">Squid Game</span> or <span class="italic">Death Note</span>)</li>
+                <li><span class="strong">"Freedom"</span> (e.g., in <span class="italic">The Matrix</span> or <span class="italic">The Hunger Games</span>)</li>
+                <li><span class="strong">"Real" / "Reality"</span> (e.g., in <span class="italic">Inception</span>)</li>
+                <li><span class="strong">"Hero"</span> (e.g., in <span class="italic">My Hero Academia</span> or <span class="italic">Spiderman</span>)</li>
+                <li><span class="strong">"Magic" / "Fantasy"</span> (e.g., in <span class="italic">Harry Potter</span>)</li>
+            </ol>
+        </div>
+        <p style="margin-top: 25px;"><span class="italic">Example for 'Hero': What is required? (1. Self-Sacrifice, 2. Moral Code, 3. Courage).</span></p>
+    </div>
+
+    <div class="slide" data-slide="9">
+        <h1>Evaluating Learning (20 minutes)</h1>
+        <h2>Vignette: The Unjust King and the Broken Hero</h2>
+        <div class="vignette-text">
+            A brutal King rules a starving kingdom. He plans a war that will kill thousands. General Elias, a hero, has one chance to stop it: detonate a bomb in the King's supply depot. This averts the war, but it kills the King's <span class="strong">innocent</span> wife and children who were also inside. Elias saves the kingdom but is condemned for killing the innocent.
+        </div>
+        <h2>Exit Ticket Prompt</h2>
+        <p>Using <span class="strong">Philosophical Analysis</span>, analyze the concept of <span class="strong">"Moral Justification"</span> in this story.</p>
+        <ul>
+            <li><span class="strong">Break "Moral Justification" into two parts:</span>
+                <ol>
+                    <li><span class="strong">Intention</span></li>
+                    <li><span class="strong">Consequence</span></li>
+                </ol>
+            </li>
+        </ul>
+        <p style="margin-top: 15px;"><span class="strong">Question:</span> Can an act be morally justified by its <span class="strong">Intention</span> even if it fails the standard of <span class="strong">Consequence</span>? Where does Elias's justification break down or hold up?</p>
+    </div>
+
+    <div class="nav-buttons">
+        <button id="prevBtn" onclick="changeSlide(-1)">Previous</button>
+        <button id="nextBtn" onclick="changeSlide(1)">Next</button>
+    </div>
+
+</div>
+
+<script>
+    let slideIndex = 1;
+    
+    // Function to run after the document is loaded
+    window.onload = function() {
+        showSlides(slideIndex);
+    };
+
+    function changeSlide(n) {
+        slideIndex += n;
+        showSlides(slideIndex);
+    }
+
+    function showSlides(n) {
+        const slides = document.getElementsByClassName("slide");
+        const prevBtn = document.getElementById("prevBtn");
+        const nextBtn = document.getElementById("nextBtn");
+        const totalSlides = slides.length;
+
+        // Ensure slideIndex stays within bounds
+        if (n > totalSlides) {
+            slideIndex = totalSlides;
+        }    
+        if (n < 1) {
+            slideIndex = 1;
+        }
+        
+        // Hide all slides
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].classList.remove('active');  
+        }
+        
+        // Show the current slide
+        slides[slideIndex - 1].classList.add('active');
+
+        // Logic for hiding buttons
+        if (slideIndex === 1) {
+            prevBtn.classList.add('hidden');
+        } else {
+            prevBtn.classList.remove('hidden');
+        }
+
+        if (slideIndex === totalSlides) {
+            nextBtn.classList.add('hidden');
+        } else {
+            nextBtn.classList.remove('hidden');
+        }
+    }
+</script>
+
+</body>
+</html>

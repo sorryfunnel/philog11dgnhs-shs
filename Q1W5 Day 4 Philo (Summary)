@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 4: Synthesis and Ethical Action</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0fdf4; /* Light Green Background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .slideshow-container {
+            width: 95%;
+            max-width: 1000px;
+            background-color: #ffffff;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+        }
+        .slide {
+            padding: 40px 60px;
+            display: none; /* All slides hidden by default */
+            animation: fadeIn 0.8s ease-in-out;
+            min-height: 550px;
+        }
+        .slide.active {
+            display: block; /* Only active slide is visible */
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .section-header {
+            border-bottom: 4px solid #10b981; /* Emerald Green */
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .framework-box {
+            border-left: 5px solid #059669;
+            background-color: #ecfdf5;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        .reveal-button {
+            background-color: #34d399; /* Light Green */
+            color: #1f2937;
+            border: none;
+            padding: 10px 20px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 8px;
+            margin-top: 15px;
+            transition: background-color 0.3s, transform 0.1s;
+        }
+        .reveal-button:hover {
+            background-color: #10b981; /* Darker Green on hover */
+            color: white;
+        }
+        .hidden-content {
+            display: none;
+        }
+        .action-plan-example {
+            border: 2px dashed #065f46;
+            background-color: #f0fdfa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .nav-buttons {
+            position: absolute;
+            bottom: 20px;
+            right: 40px;
+            display: flex;
+            gap: 10px;
+        }
+        .nav-buttons button {
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            color: white;
+            transition: background-color 0.3s;
+            background-color: #10b981;
+        }
+        .nav-buttons button:hover {
+            background-color: #059669;
+        }
+    </style>
+</head>
+<body>
+
+<div class="slideshow-container">
+
+    <!-- Slide 1: Title and Core Definition & Recap -->
+    <div class="slide active" data-slide="1">
+        <h1 class="text-4xl font-extrabold text-green-700 section-header">Day 4: Synthesis and Ethical Action</h1>
+        <p class="text-lg italic text-gray-600">Moving beyond justification to creating a new, integrated solution.</p>
+
+        <h2 class="text-2xl font-bold mt-8 text-green-800">I. The Fourth Stage: Synthesis</h2>
+        <p class="mt-4 text-xl font-semibold text-gray-700">Core Definition</p>
+        <div class="framework-box">
+            <p>Synthesis is the process of blending opposing ideas or ethical frameworks (Consequentialism and Deontology) to create a new, more robust solution or action plan. It is moving from <em>choosing</em> between right and wrong to <em>creating</em> a better path forward.</p>
+        </div>
+
+        <div class="mt-6">
+            <h3 class="text-xl font-semibold border-b pb-2 mb-3 text-green-600">Recap of the Four Pillars of Philosophical Inquiry:</h3>
+            <ol class="list-decimal ml-8 space-y-2">
+                <li><span class="font-bold text-blue-700">Analysis (Day 1):</span> Breaking down complex ideas into constituent parts.</li>
+                <li><span class="font-bold text-blue-700">Abstraction (Day 2):</span> Building universal rules from specific observations.</li>
+                <li><span class="font-bold text-blue-700">Justification (Day 3):</span> Defending a concept by applying an ethical framework.</li>
+                <li><span class="font-bold text-green-700">Synthesis (Day 4):</span> Reconciling conflicting justifications to formulate a practical, ethical action plan.</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- Slide 2: The Third Way / Principle of Reconciliation -->
+    <div class="slide" data-slide="2">
+        <h1 class="text-4xl font-extrabold text-green-700 section-header">II. The Third Way: Reconciliation</h1>
+        <h3 class="text-2xl font-semibold text-gray-700">The Principle of Reconciliation</h3>
+        
+        <div class="framework-box p-6 bg-yellow-50 border-yellow-600">
+            <p class="mt-2 text-xl font-medium text-gray-800">Ethical dilemmas are rarely binary. Synthesis requires finding the "Third Way"—an action that minimizes the moral breach (honors Deontology) while maximizing the positive outcome (honors Consequentialism).</p>
+        </div>
+        
+        <h3 class="text-xl font-semibold mt-8 text-green-800">Key Idea: Honoring Both Needs</h3>
+        <ul class="list-disc ml-6 mt-4 space-y-3 text-gray-700">
+            <li>Instead of choosing between Rule (Truth) and Outcome (Survival), we look for an action that partially satisfies both needs.</li>
+            <li>Synthesis often involves finding an innovative, non-obvious solution through advocacy or systemic change.</li>
+        </ul>
+    </div>
+
+    <!-- Slide 3: Activity - Reconciling the Vaccine Dilemma (With Multiple Examples) -->
+    <div class="slide" data-slide="3">
+        <h1 class="text-4xl font-extrabold text-green-700 section-header">Example 1: The Vaccine Dilemma</h1>
+        <p class="text-xl font-semibold mb-4 text-green-900">Applying Synthesis to the Day 3 Scenario</p>
+        
+        <!-- Scenario Synopsis Added Here -->
+        <div class="mb-4 p-4 bg-gray-50 border border-gray-200 rounded-lg">
+            <p class="text-gray-800"><span class="font-bold text-green-800">Scenario Recap:</span> A pharmaceutical company has developed a life-saving vaccine but discovered a permanent non-fatal side effect in a small number of children. The doctor must choose between immediate release (saving millions) or delay to fix the flaw (risking deaths).</p>
+        </div>
+
+        <div class="framework-box bg-red-50 border-red-500">
+            <p class="font-bold text-lg text-red-800">Conflict Recap:</p>
+            <ul class="list-disc ml-6 text-sm text-gray-800">
+                <li><strong>Consequentialism:</strong> Release the vaccine immediately (Save Millions).</li>
+                <li><strong>Deontology:</strong> Delay the vaccine to fix the flaw (Uphold Absolute Truth).</li>
+            </ul>
+        </div>
+        
+        <p class="mt-6 font-semibold text-lg text-green-800">Discussion Prompt: How can the doctor act immediately to save lives <em>without</em> fully abandoning the duty of truth?</p>
+        
+        <button class="reveal-button" onclick="revealContent('actionPlanExamples')">
+            Click to Reveal Example Synthesis Solutions
+        </button>
+
+        <!-- Hidden Synthesis Action Plan Examples -->
+        <div id="actionPlanExamples" class="hidden-content action-plan-example">
+            <p class="text-lg font-bold text-green-900 mb-4">Three Synthesis Solutions:</p>
+            <ol class="list-decimal ml-6 space-y-4 mt-3">
+                <li><strong>Solution 1 (Minimal Breach):</strong> Release the vaccine immediately but implement a temporary, highly transparent monitoring system for all recipients, publicly declaring that a minor side effect <em>may</em> exist, but the risk of delay is far greater. (Action with Managed Disclosure).</li>
+                <li><strong>Solution 2 (Procedural Justice):</strong> Delay the vaccine for a short, fixed period (e.g., 60 days) while simultaneously using that time for aggressive fundraising and campaigning to create a permanent medical compensation fund for the 10 children affected by the side effect. (Action with Compensation).</li>
+                <li><strong>Solution 3 (Shared Responsibility/Transparency):</strong> Release the vaccine immediately and fully disclose the non-fatal side effect to the public and regulatory bodies, forcing a societal discussion on whether to accept the minor risk for the massive benefit. This moves the ethical burden from the doctor's secret to public, informed consent. (Action with Full Transparency).</li>
+            </ol>
+        </div>
+    </div>
+    
+    <!-- New Slide 4: The Leaking Dam Dilemma -->
+    <div class="slide" data-slide="4">
+        <h1 class="text-4xl font-extrabold text-green-700 section-header">Example 2: The Leaking Dam</h1>
+        <p class="text-xl font-semibold mb-4 text-green-900">Scenario: Survival vs. Property Rights</p>
+        
+        <div class="framework-box bg-red-50 border-red-500">
+            <p class="text-base mb-4 text-gray-800">A major river dam is leaking, threatening to flood your town. The only available resources (sandbags and equipment) are legally reserved for an adjacent, less-threatened town that officially owns the materials. Taking them ensures your town's survival, but violates property rights.</p>
+            <p class="font-bold text-lg text-red-800">Conflict Recap:</p>
+            <ul class="list-disc ml-6 text-sm text-gray-800">
+                <li><strong>Consequentialism:</strong> Steal the materials immediately (Town Survival).</li>
+                <li><strong>Deontology:</strong> Uphold property and legal rights (Justice).</li>
+            </ul>
+        </div>
+        
+        <p class="mt-6 font-semibold text-lg text-green-800">Discussion Prompt: How can the mayor save their town <em>without</em> completely ignoring the other town's property rights?</p>
+        
+        <button class="reveal-button" onclick="revealContent('damSynthesis')">
+            Click to Reveal Example Synthesis Solution
+        </button>
+
+        <!-- Hidden Synthesis Action Plan Example -->
+        <div id="damSynthesis" class="hidden-content action-plan-example">
+            <p class="text-lg font-bold text-green-900">Synthesis Solution (Action with Reparation):</p>
+            <ol class="list-decimal ml-6 space-y-3 mt-3">
+                <li><strong>Immediately dispatch a team to retrieve the sandbags</strong>, securing the primary town (Honors Consequentialism).</li>
+                <li>Simultaneously document the exact inventory taken and the crisis conditions with video/photo evidence.</li>
+                <li>Contact the adjacent town's leadership immediately (or send an emergency runner) to inform them of the seizure and the extreme necessity.</li>
+                <li>Promise immediate, verifiable, full repayment of the cost of the materials plus a penalty or interest fee upon successful defense of the town (Minimizes Breach of Duty through Acknowledgement and Compensation).</li>
+            </ol>
+        </div>
+    </div>
+    
+    <!-- New Slide 5: The Unjust Law Dilemma -->
+    <div class="slide" data-slide="5">
+        <h1 class="text-4xl font-extrabold text-green-700 section-header">Example 3: The Unjust Law</h1>
+        <p class="text-xl font-semibold mb-4 text-green-900">Scenario: Duty to Law vs. Duty to Welfare</p>
+        
+        <div class="framework-box bg-red-50 border-red-500">
+            <p class="text-base mb-4 text-gray-800">You are a local government official. A new law, while passed legally, disproportionately harms the poorest community members by raising fees for a necessary service (e.g., water/utilities). Enforcing the law causes extreme suffering, but defying it breaks your professional oath to uphold the law.</p>
+            <p class="font-bold text-lg text-red-800">Conflict Recap:</p>
+            <ul class="list-disc ml-6 text-sm text-gray-800">
+                <li><strong>Deontology:</strong> Enforce the law exactly as written (Duty to Law).</li>
+                <li><strong>Consequentialism:</strong> Defy the law or delay enforcement to protect the poor (Welfare).</li>
+            </ul>
+        </div>
+        
+        <p class="mt-6 font-semibold text-lg text-green-800">Discussion Prompt: How can the official follow the law <em>while</em> actively mitigating the harm it causes the community?</p>
+        
+        <button class="reveal-button" onclick="revealContent('lawSynthesis')">
+            Click to Reveal Example Synthesis Solution
+        </button>
+
+        <!-- Hidden Synthesis Action Plan Example -->
+        <div id="lawSynthesis" class="hidden-content action-plan-example">
+            <p class="text-lg font-bold text-green-900">Synthesis Solution (Action with Advocacy and Mitigation):</p>
+            <ol class="list-decimal ml-6 space-y-3 mt-3">
+                <li><strong>Begin enforcing the law immediately</strong> to maintain the professional oath and legal duty (Honors Deontology).</li>
+                <li>Simultaneously, use the official position to immediately and publicly advocate for legislative change to repeal or amend the harmful law.</li>
+                <li>Create and announce a temporary, legal relief fund (using private donations or discretionary emergency budget) to offset the increased fees for the most vulnerable citizens.</li>
+                <li>This fund remains active only while the legal challenge/amendment process is underway, ensuring the action is transparent and temporary. (Mitigates Consequence through Legal/Financial Action).</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- Slide 6: Final Activity - The Scholarship Opportunity (Original Slide 4) -->
+    <div class="slide" data-slide="6">
+        <h1 class="text-4xl font-extrabold text-green-700 section-header">IV. Final Activity: Ethical Action Plan</h1>
+
+        <div class="framework-box bg-red-50 border-red-500">
+            <p class="text-xl font-bold mb-3 text-red-800">The Scholarship Opportunity Dilemma Recap (High-Stakes)</p>
+            <p class="text-base mb-4 text-gray-800">You need a top score on a <strong>college entrance exam</strong> for a full scholarship. <span class="font-bold text-red-700">The scholarship is a matter of family survival.</span> Your parents are unable to work, making you the functional breadwinner. You know you will fail for certain due to <strong>untaught curriculum.</strong> You discover a cheat sheet. </p>
+        </div>
+
+        <h3 class="text-xl font-semibold mt-6 text-green-800">Action Plan Task:</h3>
+        <p class="mt-2 text-lg text-gray-700">Draft a short action plan (4-6 steps) that addresses the dilemma, aiming for a synthesized solution that honors both the need for survival and the duty of honesty.</p>
+
+        <div class="mt-4 p-4 border rounded-lg">
+            <p class="font-bold text-md text-gray-800 mb-2">Task Requirements:</p>
+            <ol class="list-decimal ml-8 space-y-1 text-sm text-gray-600">
+                <li>Identify the Core Needs: Survival (Consequentialism) and Honesty (Deontology).</li>
+                <li>Step 1 (Immediate Action): What is the first thing you must do with the cheat sheet?</li>
+                <li>Step 2 (Mitigating the Loss): If you choose Deontology, how do you address the family's survival need?</li>
+                <li>Step 3 (Mitigating the Breach): If you choose Consequentialism, how do you mitigate the ethical breach of cheating?</li>
+                <li>Step 4 (Long-Term Solution): What must be done to address the structural problem (untaught material)?</li>
+            </ol>
+        </div>
+
+        <button class="reveal-button" onclick="revealContent('scholarshipPlanExample')">
+            Click to Reveal an Example Synthesis Action Plan
+        </button>
+
+        <!-- Hidden Scholarship Synthesis Action Plan Example -->
+        <div id="scholarshipPlanExample" class="hidden-content action-plan-example">
+            <p class="text-lg font-bold text-green-900">Example of a Synthesized Action Plan (Honesty and Advocacy):</p>
+            <ol class="list-decimal ml-6 space-y-3 mt-3">
+                <li><strong>Immediately secure the cheat sheet and report the existence of the document to the proctor in private</strong>, emphasizing the potential integrity risk to the college (Honors Deontology).</li>
+                <li>Also report that the exam covers material not taught in the curriculum, citing this as the reason the exam is structurally unfair and places undue burden on low-income students (Addresses Structural Issue).</li>
+                <li>Request that, due to the discovered cheat sheet and the curriculum mismatch, the entire exam be nullified or reassessed, or that an alternative evaluation be offered.</li>
+                <li>If the request for reassessment is denied, immediately petition the scholarship board with a letter detailing the structural unfairness of the exam and providing proof of the untaught material, advocating for an appeal based on systemic inequity (Mitigates Consequential Loss through Advocacy).</li>
+            </ol>
+        </div>
+    </div>
+
+
+    <!-- Navigation Buttons -->
+    <div class="nav-buttons">
+        <button id="prevBtn" onclick="changeSlide(-1)">Previous</button>
+        <button id="nextBtn" onclick="changeSlide(1)">Next</button>
+    </div>
+
+</div>
+
+<script>
+    let slideIndex = 1;
+    
+    window.onload = function() {
+        showSlides(slideIndex);
+    };
+
+    function changeSlide(n) {
+        slideIndex += n;
+        showSlides(slideIndex);
+    }
+
+    function showSlides(n) {
+        const slides = document.getElementsByClassName("slide");
+        const prevBtn = document.getElementById("prevBtn");
+        const nextBtn = document.getElementById("nextBtn");
+        const totalSlides = slides.length; // Total is 6
+
+        if (n > totalSlides) {
+            slideIndex = totalSlides;
+        }    
+        if (n < 1) {
+            slideIndex = 1;
+        }
+        
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].classList.remove('active');  
+        }
+        
+        slides[slideIndex - 1].classList.add('active');
+
+        // Toggle navigation button visibility based on slide index
+        if (slideIndex === 1) {
+            prevBtn.style.visibility = 'hidden';
+        } else {
+            prevBtn.style.visibility = 'visible';
+        }
+
+        if (slideIndex === totalSlides) {
+            nextBtn.style.visibility = 'hidden';
+        } else {
+            nextBtn.style.visibility = 'visible';
+        }
+    }
+
+    function revealContent(id) {
+        const element = document.getElementById(id);
+        
+        // Map button IDs to their respective display text
+        const buttonTexts = {
+            'actionPlanExamples': 'Click to Reveal Example Synthesis Solutions',
+            'damSynthesis': 'Click to Reveal Example Synthesis Solution',
+            'lawSynthesis': 'Click to Reveal Example Synthesis Solution',
+            'scholarshipPlanExample': 'Click to Reveal an Example Synthesis Action Plan'
+        };
+        const hideTexts = {
+            'actionPlanExamples': 'Hide Synthesis Solutions',
+            'damSynthesis': 'Hide Synthesis Solution',
+            'lawSynthesis': 'Hide Synthesis Solution',
+            'scholarshipPlanExample': 'Hide Synthesis Action Plan'
+        };
+
+        // Find the button immediately preceding the hidden element
+        const button = element.previousElementSibling;
+        
+        if (element.classList.contains('hidden-content')) {
+            element.classList.remove('hidden-content');
+            button.textContent = hideTexts[id];
+        } else {
+            element.classList.add('hidden-content');
+            button.textContent = buttonTexts[id];
+        }
+    }
+</script>
+
+</body>
+</html>

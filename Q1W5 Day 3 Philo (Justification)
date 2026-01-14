@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 3: Philosophical Justification</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .slideshow-container {
+            width: 95%;
+            max-width: 1000px;
+            background-color: #fff;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+        .slide {
+            padding: 40px 60px;
+            display: none; /* All slides hidden by default */
+            animation: fadeIn 0.8s ease-in-out;
+            min-height: 550px;
+        }
+        .slide.active {
+            display: block; /* Only active slide is visible */
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Custom styling based on Tailwind for finer control */
+        .definition {
+            background-color: #ffe6e6; /* Light Red */
+            border-left: 5px solid #e74c3c; /* Dark Red */
+            padding: 15px;
+            margin: 20px 0;
+            font-size: 1.1em;
+            line-height: 1.6;
+            border-radius: 8px;
+        }
+        .concept-box {
+            background-color: #ecf0f1;
+            border-left: 4px solid #34495e;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 6px;
+        }
+        /* Style for hidden elements */
+        .hidden {
+            display: none;
+            visibility: hidden;
+        }
+        .reveal-button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            transition: background-color 0.3s;
+        }
+        .reveal-button:hover {
+            background-color: #2980b9;
+        }
+        .answer-box {
+            background-color: #d8eaf7; /* Light Blue */
+            border: 1px solid #3498db;
+            padding: 15px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .fill-in {
+            font-size: 1.1em;
+            color: #8e44ad; /* Purple for emphasis */
+            font-style: italic;
+            font-weight: bold;
+        }
+        .nav-buttons {
+            position: absolute;
+            bottom: 20px;
+            right: 40px;
+            display: flex;
+            gap: 10px;
+        }
+        .nav-buttons button {
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            color: white;
+            transition: background-color 0.3s;
+            background-color: #16a085;
+        }
+        .nav-buttons button:hover {
+            background-color: #1abc9c;
+        }
+    </style>
+</head>
+<body>
+
+<div class="slideshow-container">
+
+    <!-- Slide 1: Title and Core Definition -->
+    <div class="slide active" data-slide="1">
+        <h1 class="text-3xl font-bold text-red-600 border-b-2 border-red-600 pb-3 mb-6">Day 3: Philosophical Justification</h1>
+        <h2 class="text-2xl text-gray-700 mb-4">Opening (15 minutes)</h2>
+        <h3 class="text-xl font-semibold mt-4">Recap: The Three-Day Process</h3>
+        <ul class="list-disc ml-8 space-y-2">
+            <li><span class="font-bold">Day 1 (Analysis):</span> Breaking down concepts (Deduction).</li>
+            <li><span class="font-bold">Day 2 (Abstraction):</span> Building universal concepts from specific observations (Induction).</li>
+        </ul>
+
+        <h3 class="text-xl font-semibold mt-6">Definition: Justification is Testing</h3>
+        <div class="definition">
+            <span class="font-bold">Justification</span> is the final step where you take the abstract concepts you built on Day 2 and test them against a complex dilemma. The goal is to <span class="font-bold">defend your chosen concept</span> by showing why it is the most logical or ethical choice in a moment of conflict.
+        </div>
+        <p class="text-sm text-gray-500 mt-4">In other words: Justification is using Analysis (Day 1) to defend your Abstraction (Day 2).</p>
+    </div>
+
+    <!-- Slide 2: The Core Conflict: Consequence vs. Duty -->
+    <div class="slide" data-slide="2">
+        <h1 class="text-3xl font-bold text-red-600 border-b-2 border-red-600 pb-3 mb-6">Lesson Proper: Two Ways to Justify</h1>
+        <h2 class="text-2xl text-gray-700 mb-4">When Concepts Clash, We Choose a Framework</h2>
+        <p>In ethics, there are two primary ways to justify a decision, especially when concepts conflict:</p>
+
+        <div class="concept-box bg-green-50 mt-5">
+            <h3 class="text-xl font-bold text-green-700">1. Consequentialism (The Outcome)</h3>
+            <p>The morality of an action is judged entirely by its result. The ends justify the means.</p>
+            <ul class="list-disc ml-6 space-y-1 mt-2">
+                <li><span class="font-bold">Example:</span> Utilitarianism (The "Greater Good" concept from Day 2).</li>
+                <li><span class="italic text-sm">Justification is based on calculating the most positive outcome for the largest number of people.</span></li>
+            </ul>
+        </div>
+
+        <div class="concept-box bg-yellow-50 mt-5">
+            <h3 class="text-xl font-bold text-yellow-700">2. Deontology (The Rule/Duty)</h3>
+            <p>The morality of an action is judged by whether the action itself is right or wrong, regardless of the outcome.</p>
+            <ul class="list-disc ml-6 space-y-1 mt-2">
+                <li><span class="font-bold">Example:</span> "Fairness" (similar to the concept from Day 2).</li>
+                <li><span class="italic text-sm">Justification is based on adhering to absolute rules or duties (e.g., "Do not lie," "Do not murder").</span></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Slide 3: Worked Example - The Trolley Problem -->
+    <div class="slide" data-slide="3">
+        <h1 class="text-3xl font-bold text-red-600 border-b-2 border-red-600 pb-3 mb-6">Worked Example: The Trolley Dilemma</h1>
+        <h2 class="text-2xl text-gray-700 mb-4">Scenario: The Clashing Concepts</h2>
+        <p class="font-semibold">A runaway trolley is heading toward five track workers. You are standing next to a lever. If you pull the lever, the trolley will switch tracks, killing one person instead of five.</p>
+        <p class="mt-4">In this situation, you are forced to justify which abstract concept is superior.</p>
+
+        <p class="mt-8"><span class="font-bold">Question 1:</span> What abstract concept is used to justify pulling the lever (killing one to save five)?</p>
+        <p class="fill-in text-lg mt-2">G _ _ _ _ _ _ G _ _ D</p>
+        <button class="reveal-button" onclick="revealAnswer('answer3-q1')">Reveal Utilitarian Concept</button>
+        <div id="answer3-q1" class="answer-box hidden">
+            <span class="font-bold">Concept:</span> GREATER GOOD (Utilitarianism)
+        </div>
+        
+        <p class="mt-5"><span class="font-bold">Question 2:</span> What concept justifies *not* pulling the lever (allowing the five to die) because your direct action of murder is always wrong?</p>
+        <p class="fill-in text-lg mt-2">M _ R _ L D _ T _</p>
+        <button class="reveal-button" onclick="revealAnswer('answer3-q2')">Reveal Deontological Concept</button>
+        <div id="answer3-q2" class="answer-box hidden">
+            <span class="font-bold">Concept:</span> MORAL DUTY (Deontology)
+        </div>
+    </div>
+
+    <!-- Slide 4: Group Work - The Vaccine Dilemma -->
+    <div class="slide" data-slide="4">
+        <h1 class="text-3xl font-bold text-red-600 border-b-2 border-red-600 pb-3 mb-6">Group Work: Scenario - The Secret</h1>
+        <h2 class="text-2xl text-gray-700 mb-4">Dilemma: Saving Millions vs. Absolute Honesty</h2>
+        <p class="font-semibold">A pharmaceutical company has developed a vaccine that will save hundreds of millions of lives worldwide. However, the lead doctor discovers the vaccine causes a small, permanent, non-fatal side effect in exactly 10 children.</p>
+        
+        <p class="mt-4">The doctor must choose: Announce the vaccine immediately (saving millions) while covering up the side effect, or delay the vaccine release by years to fix the flaw (risking millions of deaths in the meantime).</p>
+        
+        <p class="mt-8 font-semibold">Option A (Cover-up): Justified by Consequentialism.</p>
+        <p class="mt-2"><span class="font-bold">Q1 (Concept):</span> Justifying the cover-up requires accepting a: <span class="fill-in">S _ C _ _ _ C E</span></p>
+        <button class="reveal-button" onclick="revealAnswer('answer4-q1')">Reveal Concept for Option A</button>
+        <div id="answer4-q1" class="answer-box hidden">
+            <span class="font-bold">Concept:</span> SACRIFICE
+        </div>
+
+        <p class="mt-5 font-semibold">Option B (Reveal Flaw): Justified by Deontology.</p>
+        <p class="mt-2"><span class="font-bold">Q2 (Concept):</span> Justifying the delay requires upholding the absolute rule of: <span class="fill-in">T _ _ T H</span></p>
+        <button class="reveal-button" onclick="revealAnswer('answer4-q2')">Reveal Concept for Option B</button>
+        <div id="answer4-q2" class="answer-box hidden">
+            <span class="font-bold">Concept:</span> TRUTH
+        </div>
+    </div>
+
+    <!-- Slide 5: Exit Ticket - REVISED -->
+    <div class="slide" data-slide="5">
+        <h1 class="text-3xl font-bold text-red-600 border-b-2 border-red-600 pb-3 mb-6">Evaluating Learning (20 minutes)</h1>
+        <h2 class="text-2xl text-gray-700 mb-4">Exit Ticket: Justification in Conflict</h2>
+        <p class="text-lg mb-6">You have now completed the three core skills of philosophical thinking:</p>
+        
+        <ul class="list-disc ml-8 space-y-2 font-semibold text-gray-800">
+            <li>Day 1: Analysis (Deduction - Breaking down rules)</li>
+            <li>Day 2: Abstraction (Induction - Building new rules)</li>
+            <li>Day 3: Justification (Testing and defending rules in conflict)</li>
+        </ul>
+
+        <p class="mt-10 font-bold text-xl text-red-700">Exit Ticket: Justifying the Action</p>
+        <div class="concept-box bg-red-100 border-red-400 p-5 mt-4">
+            <p class="text-lg font-bold mb-3">Dilemma: The Scholarship Opportunity</p>
+            <p class="text-base mb-4">You desperately need a top score on an upcoming <span class="font-bold">college entrance exam</span> to secure a scholarship that will cover your entire tuition, which your family cannot afford. <span class="font-bold text-red-700">The scholarship is a matter of family survival.</span> Your father is disabled from a car accident and your mother works a limited salary due to a chronic illness, making you the functional breadwinner. You know you will fail for certain because key subjects were <span class="font-bold">not covered in your 11th-grade curriculum.</span> You discover a cheat sheet accidentally left by the proctor. You know using it guarantees the scholarship, but it violates the rule of academic honesty (Moral Duty).</p>
+            <p class="text-lg">Write a 3-5 sentence reflection justifying your decision to either use the cheat sheet (Consequentialism) or report it (Deontology), using the frameworks discussed today.</p>
+        </div>
+    </div>
+
+    <!-- Navigation Buttons -->
+    <div class="nav-buttons">
+        <button id="prevBtn" onclick="changeSlide(-1)" class="bg-blue-600 hover:bg-blue-700">Previous</button>
+        <button id="nextBtn" onclick="changeSlide(1)" class="bg-blue-600 hover:bg-blue-700">Next</button>
+    </div>
+
+</div>
+
+<script>
+    let slideIndex = 1;
+    
+    window.onload = function() {
+        showSlides(slideIndex);
+    };
+
+    function changeSlide(n) {
+        slideIndex += n;
+        showSlides(slideIndex);
+    }
+
+    function showSlides(n) {
+        const slides = document.getElementsByClassName("slide");
+        const prevBtn = document.getElementById("prevBtn");
+        const nextBtn = document.getElementById("nextBtn");
+        const totalSlides = slides.length;
+
+        if (n > totalSlides) {
+            slideIndex = totalSlides;
+        }    
+        if (n < 1) {
+            slideIndex = 1;
+        }
+        
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].classList.remove('active');  
+        }
+        
+        slides[slideIndex - 1].classList.add('active');
+
+        if (slideIndex === 1) {
+            prevBtn.classList.add('hidden');
+        } else {
+            prevBtn.classList.remove('hidden');
+        }
+
+        if (slideIndex === totalSlides) {
+            nextBtn.classList.add('hidden');
+        } else {
+            nextBtn.classList.remove('hidden');
+        }
+    }
+
+    function revealAnswer(id) {
+        const element = document.getElementById(id);
+        if (element.classList.contains('hidden')) {
+            element.classList.remove('hidden');
+            element.style.display = 'block';
+            element.style.visibility = 'visible';
+        } else {
+            element.classList.add('hidden');
+            element.style.display = 'none';
+            element.style.visibility = 'hidden';
+        }
+    }
+</script>
+
+</body>
+</html>

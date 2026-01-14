@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 2: From Mythos to Logos and the Big Three</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Use Inter font -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f9ff; /* Sky 50 */
+        }
+        .card {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        .slide-content {
+            display: none;
+        }
+        .slide-content.active {
+            display: block;
+            animation: fadeIn 0.8s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .concept-item {
+            cursor: pointer;
+            transition: background-color 0.2s, border-color 0.2s;
+        }
+        .concept-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .concept-item.active {
+            border-left: 5px solid #06b6d4; /* Cyan 500 */
+            background-color: #ecfeff; /* Cyan 50 */
+        }
+        .concept-item-socrates { border-color: #8b5cf6; } /* Violet */
+        .concept-item-plato { border-color: #3b82f6; } /* Blue */
+        .concept-item-aristotle { border-color: #10b981; } /* Green */
+    </style>
+</head>
+<body class="min-h-screen p-4 sm:p-8">
+
+    <div class="max-w-4xl mx-auto">
+        <header class="text-center mb-10 p-6 bg-white rounded-xl shadow-lg">
+            <h1 class="text-4xl font-extrabold text-cyan-700">Day 2: The Birth of Western Rationality</h1>
+            <p class="text-xl text-gray-600 mt-2">From Mythos to Logos &amp; The Athenian Giants</p>
+        </header>
+
+        <div id="slides-container">
+            <!-- Slide 1: Review & Connection (Recap of Day 1) -->
+            <section id="slide-1" class="slide-content active">
+                <div class="card bg-white p-8 rounded-xl mb-6">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b pb-2">Review &amp; Connection: The Branches</h2>
+                    
+                    <div class="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-500 shadow-inner mb-6">
+                        <h3 class="text-2xl font-bold text-blue-800 mb-3">Knowledge Check</h3>
+                        <p class="text-gray-700 leading-relaxed text-lg">
+                            "Yesterday, we learned that philosophy organizes its questions into branches. Which branch deals with <strong>how we know</strong> that the sun will rise tomorrow?"
+                        </p>
+                        <div id="answer-feedback" class="mt-4 p-3 bg-white rounded-lg border border-gray-300 text-center font-semibold text-xl">
+                            <span class="text-gray-500">Hint: Focus on the "how we know" part.</span>
+                        </div>
+                        <button onclick="revealAnswer()" class="mt-4 px-6 py-2 bg-blue-600 text-white font-bold rounded-full transition duration-300 hover:bg-blue-700">Reveal Answer</button>
+                    </div>
+
+                    <div class="mt-6 p-4 bg-yellow-100 rounded-lg border-l-4 border-yellow-500">
+                        <h3 class="text-xl font-bold text-yellow-800">Transition to Day 2</h3>
+                        <p class="text-yellow-700">The earliest Western philosophers began by trying to answer <strong>Metaphysical</strong> questions about the fundamental structure of the world. But how did they move from religious belief to rational inquiry?</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 2: The Greek Intellectual Shift (Mythos to Logos) -->
+            <section id="slide-2" class="slide-content">
+                <div class="card bg-white p-8 rounded-xl mb-6">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b pb-2">The Greek Intellectual Shift: From Mythos to Logos</h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <!-- Mythos -->
+                        <div class="p-5 bg-red-50 rounded-lg border-2 border-red-300">
+                            <h3 class="text-2xl font-bold text-red-700 mb-2">Mythos (Myth)</h3>
+                            <p class="text-gray-700">
+                                <strong>Definition:</strong> Explanations based on tradition, gods, and religious or cultural stories.
+                            </p>
+                            <p class="mt-2 italic text-sm text-red-600">
+                                <strong>Example:</strong> "The sun is pulled across the sky every morning by the god Helios's chariot." (Explanation by <strong>Divine Will</strong>)
+                            </p>
+                        </div>
+                        <!-- Logos -->
+                        <div class="p-5 bg-green-50 rounded-lg border-2 border-green-300">
+                            <h3 class="text-2xl font-bold text-green-700 mb-2">Logos (Reason)</h3>
+                            <p class="text-gray-700">
+                                <strong>Definition:</strong> Explanations based on rational inquiry, evidence, logic, and natural causes.
+                            </p>
+                            <p class="mt-2 italic text-sm text-green-600">
+                                <strong>Example:</strong> "The sun appears to rise because the Earth is revolving on its axis and orbiting the sun." (Explanation by <strong>Rational Observation</strong>)
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-indigo-100 p-6 rounded-lg border-l-4 border-indigo-500">
+                        <h3 class="text-2xl font-bold text-indigo-800 mb-3">Thales and the Arche</h3>
+                        <p class="text-gray-800 leading-relaxed">
+                            Thales of Miletus was one of the first to propose a <strong>Logos</strong>-based answer to the great metaphysical question: What is the <strong>Arche</strong> (fundamental substance) of all things?
+                            <br><br>
+                            His answer was <strong>Water</strong>, not because a god commanded it, but because he <strong>observed</strong> that water is essential to life, can change forms (solid, liquid, gas), and seems to be everywhere. This shift from divine decree to rational argument marks the birth of Western philosophy.
+                        </p>
+                        <!-- Image of the Socratic Method -->
+                        
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 3: The Big Three - Introduction -->
+            <section id="slide-3" class="slide-content">
+                <div class="card bg-white p-8 rounded-xl mb-6">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b pb-2">The Athenian Golden Age: Socrates, Plato, Aristotle</h2>
+                    <p class="text-lg text-gray-700 mb-8">These three philosophers laid the foundation for virtually all subsequent Western thought.</p>
+
+                    <div class="grid grid-cols-3 gap-4 text-center">
+                        <div class="p-4 rounded-lg bg-violet-100 concept-item-socrates concept-item">
+                            <p class="font-extrabold text-2xl text-violet-700">Socrates</p>
+                            <p class="text-sm text-violet-600">The Questioner</p>
+                        </div>
+                        <div class="p-4 rounded-lg bg-blue-100 concept-item-plato concept-item">
+                            <p class="font-extrabold text-2xl text-blue-700">Plato</p>
+                            <p class="text-sm text-blue-600">The Idealist</p>
+                        </div>
+                        <div class="p-4 rounded-lg bg-green-100 concept-item-aristotle concept-item">
+                            <p class="font-extrabold text-2xl text-green-700">Aristotle</p>
+                            <p class="text-sm text-green-600">The Naturalist</p>
+                        </div>
+                    </div>
+                    
+                    <div id="big-three-details" class="mt-8 p-6 bg-gray-50 rounded-xl border border-gray-200">
+                        <h3 class="text-2xl font-bold text-gray-700 mb-4">Click a philosopher above to see their core idea.</h3>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 4: Interactive Socratic Method -->
+            <section id="slide-4" class="slide-content">
+                <div class="card bg-white p-8 rounded-xl mb-6">
+                    <h2 class="text-3xl font-bold text-violet-700 mb-6 border-b pb-2">Socrates: The Socratic Method (Interactive)</h2>
+                    
+                    <div class="bg-violet-50 p-6 rounded-lg border-l-4 border-violet-500 shadow-inner mb-6">
+                        <h3 class="text-2xl font-bold text-violet-800 mb-3">The Challenge</h3>
+                        <p class="text-gray-800 leading-relaxed text-lg">
+                            The Socratic Method is a cooperative argumentative dialogue between individuals, based on asking and answering questions to stimulate critical thinking and to illuminate ideas.
+                            <br><br>
+                            <strong>Socrates Asks:</strong> "Can you define the concept of <strong>Justice</strong> without using any specific examples (like 'courts' or 'laws')?"
+                        </p>
+                    </div>
+
+                    <div class="mt-6">
+                        <h3 class="font-bold text-xl text-gray-800 mb-3">Your Definition (Try it!)</h3>
+                        <input type="text" id="justice-input" class="w-full p-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-violet-500" placeholder="Enter your definition of Justice...">
+                        <button id="socrates-btn" class="mt-3 w-full px-6 py-3 bg-violet-600 text-white font-bold rounded-lg transition duration-300 hover:bg-violet-700">Ask Socrates</button>
+
+                        <div id="socratic-response" class="mt-6 p-4 bg-gray-100 rounded-lg text-gray-700 italic border-l-4 border-violet-300 min-h-[50px]">
+                            <!-- Response will appear here -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 5: Wrap-up & Assignment -->
+            <section id="slide-5" class="slide-content">
+                <div class="card bg-white p-8 rounded-xl mb-6">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b pb-2">Wrap-up: The Value of Logos</h2>
+                    
+                    <div class="bg-cyan-50 p-6 rounded-lg border-l-4 border-cyan-500 shadow-inner mb-6">
+                        <h3 class="text-2xl font-bold text-cyan-800 mb-3">Exit Ticket (Formative Check)</h3>
+                        <p class="text-gray-800 leading-relaxed text-lg">
+                            Your two-sentence response: "How did the shift from <strong>Mythos</strong> to <strong>Logos</strong> demonstrate the value of philosophical inquiry (SLO 1)?"
+                        </p>
+                        
+                        <textarea id="exit-ticket-response" rows="4" class="w-full p-3 mt-4 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-cyan-500" placeholder="Type your two-sentence answer here..."></textarea>
+                        <button onclick="submitExitTicket()" class="mt-3 px-6 py-3 bg-cyan-600 text-white font-bold rounded-lg transition duration-300 hover:bg-cyan-700">Submit Response</button>
+                    </div>
+
+                    <div id="ticket-feedback" class="mt-4 p-3 bg-gray-100 rounded-lg font-semibold text-center hidden"></div>
+
+                    <div class="mt-6 p-4 bg-gray-100 rounded-xl text-gray-700 font-semibold text-center">
+                        <p class="text-xl font-extrabold mb-2">Tomorrow's Topic</p>
+                        <p>We will compare and contrast the core ideas of <strong>Western Philosophy (Logos)</strong> with <strong>Eastern Philosophy (Harmony/Cultivation)</strong>.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Navigation Controls -->
+        <div class="flex justify-between mt-8 p-4 bg-white rounded-xl shadow-lg">
+            <button id="prev-btn" class="px-6 py-3 bg-gray-400 text-white font-bold rounded-full transition duration-300 hover:bg-gray-500 disabled:opacity-50" disabled>&larr; Previous</button>
+            <div id="slide-indicator" class="text-lg font-semibold self-center text-gray-700">Slide 1 of 5</div>
+            <button id="next-btn" class="px-6 py-3 bg-indigo-600 text-white font-bold rounded-full transition duration-300 hover:bg-indigo-700">Next &rarr;</button>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Navigation Logic ---
+            const slides = document.querySelectorAll('.slide-content');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const slideIndicator = document.getElementById('slide-indicator');
+            const totalSlides = 5;
+            let currentSlideIndex = 0;
+
+            function updateSlide() {
+                slides.forEach(slide => slide.classList.remove('active'));
+                slides[currentSlideIndex].classList.add('active');
+                prevBtn.disabled = currentSlideIndex === 0;
+                nextBtn.disabled = currentSlideIndex === totalSlides - 1;
+                slideIndicator.textContent = `Slide ${currentSlideIndex + 1} of ${totalSlides}`;
+            }
+
+            prevBtn.addEventListener('click', () => { if(currentSlideIndex > 0) { currentSlideIndex--; updateSlide(); } });
+            nextBtn.addEventListener('click', () => { if(currentSlideIndex < totalSlides - 1) { currentSlideIndex++; updateSlide(); } });
+
+            // Initialize slide view
+            updateSlide();
+
+
+            // --- Slide 1 Logic ---
+            window.revealAnswer = function() {
+                const feedback = document.getElementById('answer-feedback');
+                feedback.innerHTML = '<span class="text-green-600">The correct branch is <strong>Epistemology</strong> (The Study of Knowledge)!</span>';
+            }
+
+
+            // --- Slide 3 Logic (Big Three Details) ---
+            const conceptItems = document.querySelectorAll('.concept-item');
+            const detailArea = document.getElementById('big-three-details');
+
+            const philosopherDetails = {
+                'Socrates': {
+                    title: 'Socrates: "The Unexamined Life"',
+                    color: 'violet',
+                    content: '<strong>Core Idea:</strong> Knowledge of self is the ultimate good. The <strong>Socratic Method</strong> (a process of critical questioning) is the path to truth and understanding. Focus was on ethics and human character.',
+                    example: '<strong>Example:</strong> Asking a student "Why do you think cheating is wrong?" and then challenging every assumption in their answer.'
+                },
+                'Plato': {
+                    title: 'Plato: The World of Forms',
+                    color: 'blue',
+                    content: '<strong>Core Idea:</strong> The physical world is just a shadow of a higher, non-physical reality called the <strong>World of Forms</strong>. Ideas like Justice, Beauty, and the perfect Triangle exist eternally and perfectly there, making them truer than anything we perceive with our senses.',
+                    example: '<strong>Example:</strong> A perfect Circle exists only as an eternal Form, even if every physical circle you draw is slightly imperfect.'
+                },
+                'Aristotle': {
+                    title: 'Aristotle: Naturalism and Observation',
+                    color: 'green',
+                    content: '<strong>Core Idea:</strong> Truth is found by observing and categorizing the physical world (Empiricism). He rejected Plato\'s Forms, arguing that the essence of a thing is found within the thing itself. He sought the <strong>Golden Mean</strong> in ethics.',
+                    example: '<strong>Example:</strong> Courage is the ideal balance (Mean) between the excess of <strong>Recklessness</strong> and the deficiency of <strong>Cowardice</strong>.'
+                }
+            };
+
+            conceptItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const name = item.textContent.trim().split('\n')[0];
+                    const details = philosopherDetails[name];
+                    
+                    // Update Active State
+                    conceptItems.forEach(i => i.classList.remove('active'));
+                    item.classList.add('active');
+
+                    // Update Details
+                    detailArea.innerHTML = `
+                        <h3 class="text-2xl font-bold text-${details.color}-700 mb-3">${details.title}</h3>
+                        <p class="text-gray-700 leading-relaxed mb-4">${details.content}</p>
+                        <div class="p-3 bg-${details.color}-50 rounded-lg border-l-4 border-${details.color}-400">
+                            <p class="text-sm text-gray-700">${details.example}</p>
+                        </div>
+                    `;
+                });
+            });
+
+
+            // --- Slide 4 Logic (Socratic Method) ---
+            const socratesBtn = document.getElementById('socrates-btn');
+            const justiceInput = document.getElementById('justice-input');
+            const socraticResponse = document.getElementById('socratic-response');
+            let critiqueCount = 0;
+
+            socratesBtn.addEventListener('click', () => {
+                const input = justiceInput.value.trim();
+                if (input.length < 10) {
+                    socraticResponse.innerHTML = '<span class="text-red-500">Socrates:</span> "Your definition is too brief! Give me a substantial attempt, friend, so we may begin the examination."';
+                    return;
+                }
+
+                const responses = [
+                    `<span class="text-violet-600">Socrates:</span> "That is an interesting definition. But tell me: If Justice is <strong>${input}</strong>, does that mean a person who accidentally harms another is unjust, even if their intent was good?"`,
+                    `<span class="text-violet-600">Socrates:</span> "You speak of a noble concept. Yet, if Justice is truly <strong>${input}</strong>, why do we need courts or laws? Could we not simply rely on everyone agreeing to this one definition?"`,
+                    `<span class="text-violet-600">Socrates:</span> "Thank you for that attempt. But look closely: If Justice is <strong>${input}</strong>, how is that different from mere 'fairness' or 'balance'? Does your definition truly capture the unique essence of Justice itself?"`,
+                ];
+
+                socraticResponse.innerHTML = responses[critiqueCount % responses.length];
+                critiqueCount++;
+            });
+            
+            // --- Slide 5 Logic (Exit Ticket) ---
+            window.submitExitTicket = function() {
+                const response = document.getElementById('exit-ticket-response').value.trim();
+                const feedbackDiv = document.getElementById('ticket-feedback');
+                
+                if (response.split('.').length < 2) {
+                    feedbackDiv.textContent = "Please ensure your response contains at least two complete sentences for the formative check.";
+                    feedbackDiv.classList.remove('hidden');
+                    feedbackDiv.classList.add('text-red-600', 'bg-red-50');
+                    return;
+                }
+
+                feedbackDiv.textContent = "Response submitted! The value of philosophy is indeed found in the shift to Logos, which prioritizes reason and evidence over myth.";
+                feedbackDiv.classList.remove('hidden', 'text-red-600', 'bg-red-50');
+                feedbackDiv.classList.add('text-green-600', 'bg-green-50');
+            }
+        });
+    </script>
+</body>
+</html>

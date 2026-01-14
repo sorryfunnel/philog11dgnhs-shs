@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 3: Scientific vs. Philosophical Truth</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configure Tailwind for Inter font and custom colors -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Merriweather', 'serif'],
+                    },
+                    colors: {
+                        'primary': '#1A202C', // Dark Slate
+                        'science-teal': '#319795', // Teal for Science
+                        'philo-indigo': '#5A67D8', // Indigo for Philosophy
+                        'science-light': '#E6FFFA',
+                        'philo-light': '#EBF4FF',
+                        'accent': '#DD6B20', // Orange for key points
+                        'feedback-correct': '#C6F6D5',
+                        'feedback-incorrect': '#FED7D7',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap');
+        
+        body {
+            background-color: #F7FAFC;
+        }
+
+        .slide {
+            display: none;
+            flex-direction: column;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        .slide.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .comparison-card {
+            transition: all 0.3s ease;
+        }
+        .comparison-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .choice-btn {
+            transition: all 0.2s ease;
+        }
+
+        /* Custom Scrollbar */
+        main::-webkit-scrollbar {
+            width: 8px;
+        }
+        main::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        main::-webkit-scrollbar-thumb {
+            background: #cbd5e0; 
+            border-radius: 4px;
+        }
+        main::-webkit-scrollbar-thumb:hover {
+            background: #a0aec0; 
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans text-gray-800 h-screen flex flex-col overflow-hidden">
+
+    <!-- Navigation Header -->
+    <nav class="sticky top-0 z-20 bg-primary text-white p-4 shadow-lg flex justify-between items-center shrink-0">
+        <div>
+            <h1 class="text-xl font-bold tracking-tight">Day 3: Scientific vs. Philosophical Truth</h1>
+            <p class="text-xs text-gray-400 uppercase tracking-wider">Doing Philosophy - Grade 11</p>
+        </div>
+        <div class="flex items-center space-x-4">
+            <span id="slide-indicator" class="text-sm font-medium bg-gray-700 px-3 py-1 rounded-full">Stage 1 / 4</span>
+            <button onclick="prevSlide()" class="px-4 py-2 bg-gray-600 rounded-lg hover:bg-gray-500 transition disabled:opacity-50 disabled:cursor-not-allowed shadow-sm font-semibold text-sm" id="prev-btn" disabled>
+                &larr; Prev
+            </button>
+            <button onclick="nextSlide()" class="px-4 py-2 bg-science-teal rounded-lg hover:bg-teal-500 transition shadow-sm font-semibold text-sm" id="next-btn">
+                Next &rarr;
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow overflow-y-auto p-4 md:p-8 relative">
+        <div class="max-w-5xl mx-auto pb-12">
+
+            <!-- STAGE 1: Introduction & Warm-up Quiz (10 mins) -->
+            <section class="slide active space-y-8" data-slide="1">
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+                    <h2 class="text-3xl font-extrabold text-primary mb-2">Stage 1: Warm-up Distinction Quiz</h2>
+                    <p class="text-gray-500 font-medium mb-6 uppercase text-sm tracking-wide">Time Allocation: 10 Minutes</p>
+                    
+                    <div class="p-6 bg-gradient-to-r from-science-teal/20 to-philo-indigo/20 rounded-lg shadow-inner mb-8 border border-gray-200">
+                        <p class="text-lg font-serif italic text-center text-gray-700">
+                            "Before we begin, test your intuition! Decide if the question can be answered by **data** or by **deep thought**."
+                        </p>
+                    </div>
+
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Quiz: Data or Deep Thought?</h3>
+                    <p class="text-gray-600 mb-6">Choose the domain that the following question belongs to.</p>
+
+                    <!-- Interactive Warm-up Quiz Container -->
+                    <div id="warmup-quiz-container" class="space-y-4">
+                        <!-- Questions rendered via JS -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- STAGE 2: Development (30 mins) -->
+            <section class="slide space-y-6" data-slide="2">
+                <div class="text-center mb-6">
+                    <h2 class="text-3xl font-extrabold text-primary">Comparison: The Tale of Two Truths</h2>
+                    <p class="text-gray-600 mt-2">How do these two types of truth differ? Let's break it down by <strong>Source</strong>, <strong>Methodology</strong>, and <strong>Certainty</strong>.</p>
+                </div>
+
+                <!-- Comparison Cards -->
+                <div class="space-y-6">
+                    
+                    <!-- Row 1: Source -->
+                    <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 comparison-card">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                            <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded text-sm mr-3">CRITERIA 1</span> 
+                            SOURCE (Where does it come from?)
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="p-4 bg-science-light border-l-4 border-science-teal rounded-r-lg">
+                                <h4 class="font-bold text-science-teal">Scientific Truth</h4>
+                                <p class="text-gray-700 mt-1">Comes from <strong>Empirical Observation</strong> (The Senses). We see, touch, hear, or measure it.</p>
+                            </div>
+                            <div class="p-4 bg-philo-light border-l-4 border-philo-indigo rounded-r-lg">
+                                <h4 class="font-bold text-philo-indigo">Philosophical Truth</h4>
+                                <p class="text-gray-700 mt-1">Comes from <strong>Reason & Logic</strong> (The Mind). We analyze concepts and arguments.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Row 2: Methodology -->
+                    <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 comparison-card">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                            <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded text-sm mr-3">CRITERIA 2</span> 
+                            METHODOLOGY (How do we find it?)
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="p-4 bg-science-light border-l-4 border-science-teal rounded-r-lg">
+                                <h4 class="font-bold text-science-teal">Scientific Method</h4>
+                                <p class="text-gray-700 mt-1">Experimentation, gathering quantitative data, testing hypotheses, and repetition.</p>
+                            </div>
+                            <div class="p-4 bg-philo-light border-l-4 border-philo-indigo rounded-r-lg">
+                                <h4 class="font-bold text-philo-indigo">Dialectics & Logic</h4>
+                                <p class="text-gray-700 mt-1">Socratic questioning, thought experiments (e.g., The Trolley Problem), and deductive reasoning.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Row 3: Certainty -->
+                    <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 comparison-card">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                            <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded text-sm mr-3">CRITERIA 3</span> 
+                            CERTAINTY (Is it final?)
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="p-4 bg-science-light border-l-4 border-science-teal rounded-r-lg">
+                                <h4 class="font-bold text-science-teal">Provisional</h4>
+                                <p class="text-gray-700 mt-1">High certainty, but open to change if new data arrives (e.g., Newtonian Physics vs. Einstein). A fact, until proven otherwise.</p>
+                            </div>
+                            <div class="p-4 bg-philo-light border-l-4 border-philo-indigo rounded-r-lg">
+                                <h4 class="font-bold text-philo-indigo">Contextual / Logical</h4>
+                                <p class="text-gray-700 mt-1">Depends on the strength of the premises. Logical truths are absolute; Ethical/Metaphysical truths are often debated.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- STAGE 3: Application Activity (15 mins) -->
+            <section class="slide space-y-8" data-slide="3">
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+                    <h2 class="text-3xl font-extrabold text-primary mb-2">Stage 3: Who Answers Best?</h2>
+                    <p class="text-gray-500 font-medium mb-8">SLO: Identify the domain of different questions (Scientific vs. Philosophical).</p>
+                    
+                    <div class="bg-orange-50 p-4 rounded-lg border-l-4 border-accent mb-6">
+                        <p class="text-gray-800 text-sm"><strong>Instructions:</strong> Read the question below. Decide who is best equipped to answer it: The <strong>Scientist</strong> (using data/observation) or the <strong>Philosopher</strong> (using reason/concepts)?</p>
+                    </div>
+
+                    <!-- Interactive Activity Container -->
+                    <div id="main-quiz-container" class="space-y-4">
+                        <!-- Questions rendered via JS -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- STAGE 4: Conclusion (5 mins) -->
+            <section class="slide space-y-8" data-slide="4">
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 text-center">
+                    <h2 class="text-3xl font-extrabold text-primary mb-6">Stage 4: Synthesis</h2>
+                    
+                    <div class="bg-gray-50 p-8 rounded-xl border border-gray-200 mb-8 max-w-3xl mx-auto">
+                        <h3 class="text-2xl font-bold text-primary mb-4">Reflection</h3>
+                        <p class="text-xl text-gray-700 font-serif italic leading-relaxed">
+                            "Explain how Scientific Truth and Philosophical Truth can exist simultaneously without contradicting each other."
+                        </p>
+                        <p class="text-sm text-gray-500 mt-4">(Consider: One tells us <strong>how</strong> the world works, the other asks <strong>why</strong> it matters.)</p>
+                    </div>
+
+                    <div class="text-left max-w-2xl mx-auto space-y-4">
+                        <h4 class="font-bold text-gray-800 uppercase text-sm tracking-wide border-b pb-2">Day 3 Takeaway</h4>
+                        <div class="flex flex-col md:flex-row gap-4">
+                            <div class="flex-1 bg-science-light p-4 rounded-lg border border-science-teal">
+                                <p class="font-bold text-science-teal mb-2">Science</p>
+                                <p class="text-sm text-gray-700">Gives us facts, mechanics, and data about the physical universe.</p>
+                            </div>
+                            <div class="flex-1 bg-philo-light p-4 rounded-lg border border-philo-indigo">
+                                <p class="font-bold text-philo-indigo mb-2">Philosophy</p>
+                                <p class="text-sm text-gray-700">Gives us meaning, ethics, and understanding of concepts beyond the physical.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-12">
+                        <p class="text-science-teal font-bold text-lg">End of Day 3 Session</p>
+                        <p class="text-sm text-gray-400 mt-2">Next up Day 4: Application & Final Synthesis</p>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- JavaScript for Interactivity -->
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 4;
+        
+        // --- Navigation Logic ---
+        function updateSlideDisplay() {
+            document.querySelectorAll('.slide').forEach(slide => {
+                const slideNum = parseInt(slide.getAttribute('data-slide'));
+                slide.classList.remove('active');
+                if (slideNum === currentSlide) slide.classList.add('active');
+            });
+
+            // Update Header Text based on Stage
+            const indicator = document.getElementById('slide-indicator');
+            const times = ["10 min", "30 min", "15 min", "5 min"];
+            indicator.textContent = `Stage ${currentSlide} / 4 (${times[currentSlide-1]})`;
+
+            // Button States
+            document.getElementById('prev-btn').disabled = currentSlide === 1;
+            document.getElementById('next-btn').disabled = currentSlide === totalSlides;
+            
+            // Scroll to top
+            document.querySelector('main').scrollTo(0, 0);
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides) {
+                currentSlide++;
+                updateSlideDisplay();
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 1) {
+                currentSlide--;
+                updateSlideDisplay();
+            }
+        }
+
+        // --- Stage 1 Warm-up Quiz Data & Logic ---
+        const warmupData = [
+            {
+                id: 1,
+                question: "What is the capital city of France?",
+                correct: 'scientific',
+                explanation: "This is a verifiable, factual piece of geographical data. (Scientific/Factual)"
+            },
+            {
+                id: 2,
+                question: "What makes an action morally good?",
+                correct: 'philosopher',
+                explanation: "This requires defining 'good' and developing ethical principles. (Philosophical)"
+            },
+            {
+                id: 3,
+                question: "How many bones are in the adult human body?",
+                correct: 'scientific',
+                explanation: "This is a fixed, measurable quantity based on empirical observation. (Scientific/Factual)"
+            },
+            {
+                id: 4,
+                question: "Is reality subjective or objective?",
+                correct: 'philosopher',
+                explanation: "This explores the nature of existence and perception (Metaphysics). (Philosophical)"
+            },
+            {
+                id: 5,
+                question: "What percentage of the Earth's surface is covered by water?",
+                correct: 'scientific',
+                explanation: "This requires collecting and analyzing global data. (Scientific/Factual)"
+            }
+        ];
+
+        function renderWarmupQuiz() {
+            const container = document.getElementById('warmup-quiz-container');
+            container.innerHTML = warmupData.map((item, index) => `
+                <div class="bg-gray-50 rounded-xl border border-gray-200 overflow-hidden quiz-item" id="warmup-item-${index}">
+                    <div class="p-4 border-b border-gray-200 bg-white flex items-start">
+                        <span class="text-primary text-md font-bold mr-3 mt-1">Q${index+1}:</span>
+                        <p class="font-bold text-lg text-gray-800">"${item.question}"</p>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <button onclick="handleWarmupAnswer(${index}, 'scientific')" class="choice-btn flex-1 py-3 px-4 rounded-lg shadow-sm bg-white border-2 border-transparent hover:border-science-teal hover:bg-science-light text-science-teal font-bold transition flex items-center justify-center gap-2 text-sm" data-type="scientific">
+                                <span>🔬</span> Scientific / Factual
+                            </button>
+                            <button onclick="handleWarmupAnswer(${index}, 'philosopher')" class="choice-btn flex-1 py-3 px-4 rounded-lg shadow-sm bg-white border-2 border-transparent hover:border-philo-indigo hover:bg-philo-light text-philo-indigo font-bold transition flex items-center justify-center gap-2 text-sm" data-type="philosopher">
+                                <span>💭</span> Philosophical / Conceptual
+                            </button>
+                        </div>
+                        <div id="warmup-feedback-${index}" class="hidden mt-4 text-sm p-4 rounded-lg border"></div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function handleWarmupAnswer(index, selectedType) {
+            const item = warmupData[index];
+            const feedbackEl = document.getElementById(`warmup-feedback-${index}`);
+            const parent = document.getElementById(`warmup-item-${index}`);
+            const buttons = parent.querySelectorAll('.choice-btn');
+            
+            // Disable buttons
+            buttons.forEach(btn => {
+                btn.disabled = true;
+                btn.classList.add('opacity-50', 'cursor-not-allowed');
+                // Visual selection state
+                if (btn.getAttribute('data-type') === selectedType) {
+                     btn.classList.remove('opacity-50');
+                     btn.classList.add('ring-2', 'ring-offset-1');
+                }
+            });
+
+            feedbackEl.classList.remove('hidden');
+            
+            if (selectedType === item.correct) {
+                // Correct
+                feedbackEl.classList.add('bg-feedback-correct', 'border-green-300', 'text-green-900');
+                feedbackEl.innerHTML = `<strong>✅ Correct!</strong> ${item.explanation}`;
+            } else {
+                // Incorrect
+                feedbackEl.classList.add('bg-feedback-incorrect', 'border-red-300', 'text-red-900');
+                const correctLabel = item.correct === 'scientific' ? 'Scientific/Factual' : 'Philosophical/Conceptual';
+                feedbackEl.innerHTML = `<strong>❌ Incorrect.</strong> This is a job for <strong>${correctLabel}</strong>.<br><br>${item.explanation}`;
+            }
+        }
+
+
+        // --- Stage 3: Scientist vs Philosopher Activity Data & Logic ---
+        const mainQuizData = [
+            {
+                id: 1,
+                question: "How old is the universe?",
+                correct: 'scientist',
+                explanation: "This asks for a specific, measurable age based on cosmological data (Big Bang theory, redshift). It is an <strong>empirical question</strong>."
+            },
+            {
+                id: 2,
+                question: "What is the meaning of time?",
+                correct: 'philosopher',
+                explanation: "This asks about the <strong>nature and concept</strong> of time, not just how to measure it. It deals with metaphysics."
+            },
+            {
+                id: 3,
+                question: "Is cloning ethically permissible?",
+                correct: 'philosopher',
+                explanation: "Science can tell us <em>how</em> to clone, but only Philosophy can determine if we <em>should</em>. This is an <strong>Ethical</strong> question."
+            },
+            {
+                id: 4,
+                question: "What is the chemical composition of gold?",
+                correct: 'scientist',
+                explanation: "This requires analysis of atomic structure. It is a material fact verifiable through <strong>observation and testing</strong>."
+            },
+            {
+                id: 5,
+                question: "Do human beings have a soul?",
+                correct: 'philosopher',
+                explanation: "The 'soul' is a non-material concept. It cannot be observed under a microscope, so it falls under <strong>Metaphysics</strong>."
+            },
+            {
+                id: 6,
+                question: "How does the brain process fear?",
+                correct: 'scientist',
+                explanation: "This asks about the biological and neurological mechanism (amygdala response). It is a <strong>physiological fact</strong>."
+            },
+            {
+                id: 7,
+                question: "Is democracy the most just form of government?",
+                correct: 'philosopher',
+                explanation: "Justice is a concept. Evaluating forms of government requires <strong>Political Philosophy</strong> and reasoning, not just raw data."
+            },
+            {
+                id: 8,
+                question: "What is the gravitational pull on Mars?",
+                correct: 'scientist',
+                explanation: "This is a measurable physical force. It is a <strong>Scientific Fact</strong>."
+            },
+            {
+                id: 9,
+                question: "What is the nature of beauty?",
+                correct: 'philosopher',
+                explanation: "Beauty is subjective and conceptual. This is a question of <strong>Aesthetics</strong> (a branch of philosophy)."
+            },
+            {
+                id: 10,
+                question: "Can a computer ever be truly conscious?",
+                correct: 'philosopher',
+                explanation: "While computer science builds the machine, defining what 'consciousness' actually <em>is</em> remains a deep <strong>Philosophical</strong> debate."
+            }
+        ];
+
+        function renderMainQuiz() {
+            const container = document.getElementById('main-quiz-container');
+            container.innerHTML = mainQuizData.map((item, index) => `
+                <div class="bg-gray-50 rounded-xl border border-gray-200 overflow-hidden quiz-item" id="main-item-${index}">
+                    <div class="p-5 border-b border-gray-200 bg-white flex items-start">
+                        <span class="bg-primary text-white text-xs font-bold px-2 py-1 rounded mr-3 mt-1">Q${index+1}</span>
+                        <p class="font-bold text-lg text-gray-800">"${item.question}"</p>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <button onclick="handleMainQuizAnswer(${index}, 'scientist')" class="choice-btn flex-1 py-3 px-4 rounded-lg shadow-sm bg-white border-2 border-transparent hover:border-science-teal hover:bg-science-light text-science-teal font-bold transition flex items-center justify-center gap-2 group" data-type="scientist">
+                                <span>🧪</span> The Scientist
+                            </button>
+                            <button onclick="handleMainQuizAnswer(${index}, 'philosopher')" class="choice-btn flex-1 py-3 px-4 rounded-lg shadow-sm bg-white border-2 border-transparent hover:border-philo-indigo hover:bg-philo-light text-philo-indigo font-bold transition flex items-center justify-center gap-2 group" data-type="philosopher">
+                                <span>🤔</span> The Philosopher
+                            </button>
+                        </div>
+                        <div id="quiz-feedback-${index}" class="hidden mt-4 text-sm p-4 rounded-lg border"></div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function handleMainQuizAnswer(index, selectedType) {
+            const item = mainQuizData[index];
+            const feedbackEl = document.getElementById(`quiz-feedback-${index}`);
+            const parent = document.getElementById(`main-item-${index}`);
+            const buttons = parent.querySelectorAll('.choice-btn');
+            
+            // Disable buttons
+            buttons.forEach(btn => {
+                btn.disabled = true;
+                btn.classList.add('opacity-50', 'cursor-not-allowed');
+                // Visual selection state
+                if (btn.getAttribute('data-type') === selectedType) {
+                     btn.classList.remove('opacity-50');
+                     btn.classList.add('ring-2', 'ring-offset-1');
+                }
+            });
+
+            feedbackEl.classList.remove('hidden');
+            
+            if (selectedType === item.correct) {
+                // Correct
+                feedbackEl.classList.add('bg-feedback-correct', 'border-green-300', 'text-green-900');
+                feedbackEl.innerHTML = `<strong>✅ Correct!</strong> ${item.explanation}`;
+            } else {
+                // Incorrect
+                feedbackEl.classList.add('bg-feedback-incorrect', 'border-red-300', 'text-red-900');
+                const correctLabel = item.correct.charAt(0).toUpperCase() + item.correct.slice(1);
+                feedbackEl.innerHTML = `<strong>❌ Incorrect.</strong> This is a job for the <strong>${correctLabel}</strong>.<br><br>${item.explanation}`;
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            renderWarmupQuiz();
+            renderMainQuiz();
+            updateSlideDisplay();
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 2: Philosophical Abstraction</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .slideshow-container {
+            width: 95%;
+            max-width: 1000px;
+            background-color: #fff;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+        .slide {
+            padding: 40px 60px;
+            display: none; /* All slides hidden by default */
+            animation: fadeIn 0.8s ease-in-out;
+            min-height: 550px;
+        }
+        .slide.active {
+            display: block; /* Only active slide is visible */
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Custom styling based on Tailwind for finer control */
+        .definition {
+            background-color: #eaf6ff;
+            border-left: 5px solid #007bff;
+            padding: 15px;
+            margin: 20px 0;
+            font-size: 1.1em;
+            line-height: 1.6;
+            border-radius: 8px;
+        }
+        .vignette-text {
+            border: 1px solid #2980b9;
+            background-color: #ecf0f1;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        /* Style for hidden elements */
+        .hidden {
+            display: none;
+            visibility: hidden;
+        }
+        .reveal-button {
+            background-color: #1abc9c;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-top: 10px;
+            margin-bottom: 20px; /* Added margin for separation */
+            transition: background-color 0.3s;
+        }
+        .reveal-button:hover {
+            background-color: #16a085;
+        }
+        .answer-box {
+            background-color: #d1f3e7;
+            border: 1px solid #1abc9c;
+            padding: 15px;
+            margin-top: 10px;
+            margin-bottom: 10px; /* Added margin for separation */
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .fill-in {
+            font-size: 1.1em;
+            color: #c0392b;
+            font-style: italic;
+            font-weight: bold;
+        }
+        .nav-buttons {
+            position: absolute;
+            bottom: 20px;
+            right: 40px;
+            display: flex;
+            gap: 10px;
+        }
+        .nav-buttons button {
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            color: white;
+            transition: background-color 0.3s;
+        }
+    </style>
+</head>
+<body>
+
+<div class="slideshow-container">
+
+    <!-- Slide 1: Title and Core Definition & Transition -->
+    <div class="slide active" data-slide="1">
+        <h1 class="text-3xl font-bold text-blue-600 border-b-2 border-blue-600 pb-3 mb-6">Day 2: Philosophical Abstraction</h1>
+        <h2 class="text-2xl text-gray-700 mb-4">Opening (15 minutes)</h2>
+        <h3 class="text-xl font-semibold mt-4">Recap and Transition: Analysis vs. Abstraction</h3>
+        <ul class="list-disc ml-8 space-y-2">
+            <li><span class="font-bold">Day 1 Recap (Analysis):</span> We broke down complex ideas (like "Necessity") into their smallest parts to test them. This is <span class="font-bold">Deductive</span> logic.</li>
+            <li><span class="font-bold">Day 2 Introduction:</span> How do we <em>form</em> the big ideas in the first place? We use <span class="font-bold">Abstraction</span>—the opposite process.</li>
+        </ul>
+
+        <h3 class="text-xl font-semibold mt-6">Definition: Abstraction is Filtering</h3>
+        <div class="definition">
+            <span class="font-bold">Abstraction</span> is the process of looking at many different, specific events or objects, and then <span class="font-bold">filtering out all the specific details</span> to focus only on the <span class="font-bold">one, universal idea</span> that connects them all.
+        </div>
+        <p class="text-sm text-gray-500 mt-4">Visual aid: Diagram illustrating Inductive Reasoning, moving from Specific Observations to General Principle.</p>
+    </div>
+
+    <!-- Slide 2: Worked Example 1 (Concrete Abstraction) - CORRECTED "REST" CLUE -->
+    <div class="slide" data-slide="2">
+        <h1 class="text-3xl font-bold text-blue-600 border-b-2 border-blue-600 pb-3 mb-6">Lesson Proper: The Filtering Process</h1>
+        <h2 class="text-2xl text-gray-700 mb-4">Worked Example 1: Concrete Abstraction</h2>
+        <p class="text-sm text-gray-500">Visual aid: Image of a bedroom.</p>
+        <div class="justification-point mt-5">
+            <p><span class="font-bold">Specific Instances:</span> You walk into a room and see many different items: a wooden bed, foam pillows, a digital alarm clock, and a nightstand.</p>
+            <p><span class="font-bold">The Abstraction Step:</span> Your mind filters out the specific materials, colors, and shapes.</p>
+            
+            <p class="mt-5"><span class="font-bold">Question 1:</span> What is the picture above illustrating? Answer: <span class="fill-in">B _ _ _ _ _ _ M</span></p>
+            <button class="reveal-button" onclick="revealAnswer('answer1-q1')">Reveal Answer 1</button>
+            <div id="answer1-q1" class="answer-box hidden">
+                <span class="font-bold">Question 1 Answer:</span> BEDROOM
+            </div>
+            
+            <p class="mt-5"><span class="font-bold">Question 2:</span> What universal function does this space give to us? Answer: <span class="fill-in">_ _ S _</span></p>
+            <button class="reveal-button" onclick="revealAnswer('answer1-q2')">Reveal Answer 2</button>
+            <div id="answer1-q2" class="answer-box hidden">
+                <span class="font-bold">Question 2 Answer:</span> REST
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 3: Worked Example 2 (Moral Abstraction) -->
+    <div class="slide" data-slide="3">
+        <h1 class="text-3xl font-bold text-blue-600 border-b-2 border-blue-600 pb-3 mb-6">Abstraction: Creating a Moral Concept</h1>
+        <h2 class="text-2xl text-gray-700 mb-4">Worked Example 2: Moral Abstraction</h2>
+        <div class="justification-point">
+            <p><span class="font-bold">Specific Instance 1:</span> Your friend promised to study with you, but instead went to the mall and lied about it.</p>
+            <p><span class="font-bold">Specific Instance 2:</span> A politician promised to build a new hospital but took the construction money for a personal project.</p>
+            <p><span class="font-bold">Specific Instance 3:</span> A movie character kills a mentor who trusted them to protect a secret.</p>
+            
+            <p class="mt-5"><span class="font-bold">Question 1 (Concept):</span> The universal concept that connects these three events is: <span class="fill-in">B _ _ _ _ _ L</span></p>
+            <button class="reveal-button" onclick="revealAnswer('answer2-q1')">Reveal Concept</button>
+            <div id="answer2-q1" class="answer-box hidden">
+                <span class="font-bold">Concept:</span> BETRAYAL
+            </div>
+
+            <p class="mt-5"><span class="font-bold">Question 2 (Definition):</span> This principle is defined as: <span class="fill-in">The violation of T _ _ _ _ necessary to maintain a relationship or a system.</span></p>
+            <button class="reveal-button" onclick="revealAnswer('answer2-q2')">Reveal Definition</button>
+            <div id="answer2-q2" class="answer-box hidden">
+                <span class="font-bold">Definition:</span> The violation of <span class="font-bold">TRUST</span> necessary to maintain a relationship or a system.
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4: Distinction: Deduction vs. Induction -->
+    <div class="slide" data-slide="4">
+        <h1 class="text-3xl font-bold text-blue-600 border-b-2 border-blue-600 pb-3 mb-6">The Core Difference: Analysis vs. Abstraction</h1>
+        <p class="text-lg">This is the most important distinction between Day 1 (Analysis) and Day 2 (Abstraction):</p>
+        <div class="example-box bg-red-50 border-red-400 p-5 rounded-lg shadow-md mt-6">
+            <h2 class="text-xl font-bold text-red-700">1. Analysis is Deductive (Top-Down)</h2>
+            <ul class="list-disc ml-6 space-y-1">
+                <li>Starts with a <span class="font-bold">Universal Concept</span> (e.g., Justice).</li>
+                <li>Breaks it down to test its <span class="font-bold">Specific Parts</span>.</li>
+                <li>Logic moves from the General Rule to a Specific Case.</li>
+            </ul>
+        </div>
+        <div class="example-box bg-green-50 border-green-400 p-5 rounded-lg shadow-md mt-6">
+            <h2 class="text-xl font-bold text-green-700">2. Abstraction is Inductive (Bottom-Up)</h2>
+            <ul class="list-disc ml-6 space-y-1">
+                <li>Starts with many <span class="font-bold">Specific Observations</span> (facts/events).</li>
+                <li>Builds them up to create a <span class="font-bold">Universal Concept</span>.</li>
+                <li>Logic moves from Specific Cases to a General Rule.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Slide 5: Group Work Scenario A (Greater Good) -->
+    <div class="slide" data-slide="5">
+        <h1 class="text-3xl font-bold text-blue-600 border-b-2 border-blue-600 pb-3 mb-6">Group Work: Scenario A</h1>
+        <h2 class="text-2xl text-gray-700 mb-4">Scenario: The Price of Safety (Thanos/Ultron)</h2>
+        <div class="justification-point">
+            <p><span class="font-bold">Specific Instances:</span></p>
+            <ul class="list-disc ml-6 space-y-1">
+                <li>Thanos kills half of all life to ensure resources for the rest.</li>
+                <li>Ultron tries to destroy humanity to ensure 'peace' for Earth.</li>
+            </ul>
+            <p class="mt-5"><span class="font-bold">Task:</span> Use Abstraction to synthesize these actions into a <span class="font-bold">universal principle</span> about <span class="font-bold">Security</span> and <span class="font-bold">Sacrifice</span>.</p>
+            
+            <p class="mt-5"><span class="font-bold">Question 1 (Concept):</span> <span class="fill-in">G _ _ _ _ _ _ G _ _ D</span></p>
+            <button class="reveal-button" onclick="revealAnswer('answerA-q1')">Reveal Concept</button>
+            <div id="answerA-q1" class="answer-box hidden">
+                <span class="font-bold">Concept:</span> GREATER GOOD
+            </div>
+
+            <p class="mt-2"><span class="font-bold">Question 2 (Principle Definition):</span> <span class="fill-in">The collective good is prioritized, often justifying the S _ _ _ _ _ E of the individual.</span></p>
+            <button class="reveal-button" onclick="revealAnswer('answerA-q2')">Reveal Definition</button>
+            <div id="answerA-q2" class="answer-box hidden">
+                <span class="font-bold">Principle Definition:</span> The collective good is prioritized, often justifying the <span class="font-bold">SACRIFICE</span> of the individual.
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 6: Group Work Scenario B (FAIRNESS) -->
+    <div class="slide" data-slide="6">
+        <h1 class="text-3xl font-bold text-blue-600 border-b-2 border-blue-600 pb-3 mb-6">Group Work: Scenario B</h1>
+        <h2 class="text-2xl text-gray-700 mb-4">Scenario: The Moral Line (Batman and Two-Face)</h2>
+        <div class="justification-point">
+            <p><span class="font-bold">Specific Instances (from The Dark Knight):</span></p>
+            <ul class="list-disc ml-6 space-y-1">
+                <li>Batman refuses to kill anyone (maintaining an absolute moral line).</li>
+                <li>Harvey Dent (Two-Face) abandons all moral rules, using a random coin flip to make decisions.</li>
+            </ul>
+            <p class="mt-5"><span class="font-bold">Task:</span> Use Abstraction to synthesize these two positions into a <span class="font-bold">universal principle</span> about <span class="font-bold">Order</span> and <span class="font-bold">Chaos</span>.</p>
+            
+            <p class="mt-5"><span class="font-bold">Question 1 (Concept):</span> <span class="fill-in">F _ _ R _ _ S</span></p>
+            <button class="reveal-button" onclick="revealAnswer('answerB-q1')">Reveal Concept</button>
+            <div id="answerB-q1" class="answer-box hidden">
+                <span class="font-bold">Concept:</span> FAIRNESS
+            </div>
+
+            <p class="mt-2"><span class="font-bold">Question 2 (Principle Definition):</span> <span class="fill-in">The ethical expectation that all people should be treated E _ _ _ _ _ _ Y and without R _ _ D O _ judgment.</span></p>
+            <button class="reveal-button" onclick="revealAnswer('answerB-q2')">Reveal Definition</button>
+            <div id="answerB-q2" class="answer-box hidden">
+                <span class="font-bold">Principle Definition:</span> The ethical expectation that all people should be treated <span class="font-bold">EQUALLY</span> and without <span class="font-bold">RANDOM</span> judgment.
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 7: Group Work Scenario C (Validation) -->
+    <div class="slide" data-slide="7">
+        <h1 class="text-3xl font-bold text-blue-600 border-b-2 border-blue-600 pb-3 mb-6">Group Work: Scenario C</h1>
+        <h2 class="text-2xl text-gray-700 mb-4">Scenario: Online Identity (The Social Media Filter)</h2>
+        <div class="justification-point">
+            <p><span class="font-bold">Specific Instances:</span></p>
+            <ul class="list-disc ml-6 space-y-1">
+                <li>A student curates a "perfect" photo, deleting it if it doesn't get enough likes.</li>
+                <li>People use filters that alter their physical appearance to conform to online ideals.</li>
+            </ul>
+            <p class="mt-5"><span class="font-bold">Task:</span> Use Abstraction to synthesize these behaviors into a <span class="font-bold">universal principle</span> about <span class="font-bold">Authenticity</span> and <span class="font-bold">External Validation</span>.</p>
+            
+            <p class="mt-5"><span class="font-bold">Question 1 (Concept):</span> <span class="fill-in">V _ L _ _ _ _ _ N</span></p>
+            <button class="reveal-button" onclick="revealAnswer('answerC-q1')">Reveal Concept</button>
+            <div id="answerC-q1" class="answer-box hidden">
+                <span class="font-bold">Concept:</span> VALIDATION
+            </div>
+
+            <p class="mt-2"><span class="font-bold">Question 2 (Principle Definition):</span> <span class="fill-in">The feeling of worth is based entirely on public A _ _ R _ _ _ L (likes and views).</span></p>
+            <button class="reveal-button" onclick="revealAnswer('answerC-q2')">Reveal Definition</button>
+            <div id="answerC-q2" class="answer-box hidden">
+                <span class="font-bold">Principle Definition:</span> The feeling of worth is based entirely on public <span class="font-bold">APPROVAL</span> (likes and views).
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 8: Evaluation (Exit Ticket) - UPDATED -->
+    <div class="slide" data-slide="8">
+        <h1 class="text-3xl font-bold text-blue-600 border-b-2 border-blue-600 pb-3 mb-6">Evaluating Learning (20 minutes)</h1>
+        <h2 class="text-2xl text-gray-700 mb-4">Exit Ticket: The Universal Principle</h2>
+        <div class="vignette-text">
+            <p class="font-semibold">Consider three completely different acts of charity:</p>
+            <ol class="list-decimal ml-6 mt-2 space-y-1">
+                <li>A child shares half of their own lunch with a hungry classmate, even though they are still hungry.</li>
+                <li>An anonymous billionaire donates a massive sum of money to provide clean water to remote villages they will never visit.</li>
+                <li>A soldier steps in front of a falling tree branch to save a civilian, suffering an injury but saving the civilian's life.</li>
+            </ol>
+        </div>
+        <p class="mt-5"><span class="font-bold">Prompt:</span> Use <span class="font-bold">Philosophical Abstraction</span> to synthesize these three specific actions into a <span class="font-bold">universal principle</span> that defines the abstract concept.</p>
+        
+        <p class="mt-8 font-semibold">Question 1: What is the universal principle being referred?</p>
+        <button class="reveal-button" onclick="revealAnswer('answerD-q1')">Reveal Answer</button>
+        <div id="answerD-q1" class="answer-box hidden">
+            <span class="font-bold">Answer:</span> SELFLESSNESS
+        </div>
+
+        <p class="mt-5 font-semibold">Question 2: How would you define the universal principle being referred?</p>
+        <button class="reveal-button" onclick="revealAnswer('answerD-q2')">Reveal Answer</button>
+        <div id="answerD-q2" class="answer-box hidden">
+            <span class="font-bold">Answer:</span> The universal act of goodness is defined as prioritizing the needs or safety of others above the comfort, security, or self-interest of the self.
+        </div>
+    </div>
+
+    <!-- Navigation Buttons -->
+    <div class="nav-buttons">
+        <button id="prevBtn" onclick="changeSlide(-1)" class="bg-blue-600 hover:bg-blue-700">Previous</button>
+        <button id="nextBtn" onclick="changeSlide(1)" class="bg-blue-600 hover:bg-blue-700">Next</button>
+    </div>
+
+</div>
+
+<script>
+    let slideIndex = 1;
+    
+    // Function to run after the document is loaded
+    window.onload = function() {
+        showSlides(slideIndex);
+    };
+
+    function changeSlide(n) {
+        slideIndex += n;
+        showSlides(slideIndex);
+    }
+
+    function showSlides(n) {
+        const slides = document.getElementsByClassName("slide");
+        const prevBtn = document.getElementById("prevBtn");
+        const nextBtn = document.getElementById("nextBtn");
+        const totalSlides = slides.length;
+
+        // Ensure slideIndex stays within bounds
+        if (n > totalSlides) {
+            slideIndex = totalSlides;
+        }    
+        if (n < 1) {
+            slideIndex = 1;
+        }
+        
+        // Hide all slides
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].classList.remove('active');  
+        }
+        
+        // Show the current slide
+        slides[slideIndex - 1].classList.add('active');
+
+        // Logic for hiding buttons
+        if (slideIndex === 1) {
+            prevBtn.classList.add('hidden');
+        } else {
+            prevBtn.classList.remove('hidden');
+        }
+
+        if (slideIndex === totalSlides) {
+            nextBtn.classList.add('hidden');
+        } else {
+            nextBtn.classList.remove('hidden');
+        }
+    }
+
+    // Function to toggle the reveal of answers
+    function revealAnswer(id) {
+        const element = document.getElementById(id);
+        if (element.classList.contains('hidden')) {
+            element.classList.remove('hidden');
+            element.style.display = 'block';
+            element.style.visibility = 'visible';
+        } else {
+            element.classList.add('hidden');
+            element.style.display = 'none';
+            element.style.visibility = 'hidden';
+        }
+    }
+</script>
+
+</body>
+</html>

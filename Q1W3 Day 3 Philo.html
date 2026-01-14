@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 3: Eastern vs. Western Philosophy</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Use Inter font -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f1f5f9; /* Slate 100 */
+        }
+        .card {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        .reveal-button:hover {
+            transform: scale(1.02);
+        }
+        .slide-content {
+            display: none;
+        }
+        .slide-content.active {
+            display: block;
+            animation: fadeIn 0.8s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .list-item {
+            padding: 8px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .list-item:last-child {
+            border-bottom: none;
+        }
+        .answer-btn {
+            transition: background-color 0.2s, transform 0.1s;
+        }
+        .answer-btn:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="min-h-screen p-4 sm:p-8">
+
+    <div class="max-w-4xl mx-auto">
+        <header class="text-center mb-10 p-6 bg-white rounded-xl shadow-lg">
+            <h1 class="text-4xl font-extrabold text-blue-700">Introduction to Philosophy (Day 3)</h1>
+            <p class="text-xl text-gray-600 mt-2">Eastern vs. Western Philosophy: Finding Harmony and Truth</p>
+        </header>
+
+        <div id="slides-container">
+            <!-- Slide 1: INTERACTIVE REVIEW QUIZ (10 min) -->
+            <section id="slide-1" class="slide-content active">
+                <div class="card bg-white p-8 rounded-xl mb-6">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4 border-b pb-2">Warm-up Quiz: Western Foundations Review</h2>
+                    <p class="text-lg text-gray-600 mb-6">Read the situation and choose the Greek philosopher whose belief is being illustrated.</p>
+                    
+                    <div id="quiz-container-1">
+                        <div class="mb-6">
+                            <div class="text-2xl font-semibold text-blue-600 mb-3" id="q1-number">Question 1 of 3</div>
+                            <p class="text-xl text-gray-800 p-4 bg-gray-50 rounded-lg border-l-4 border-blue-300" id="q1-text">Loading...</p>
+                        </div>
+                        <div class="flex flex-col space-y-4 mb-6" id="q1-options"></div>
+                        <div id="q1-feedback" class="h-auto min-h-[3rem] p-2 text-center font-bold text-lg rounded-lg transition duration-300 flex items-center justify-center"></div>
+                        <button id="q1-next-btn" class="hidden w-full mt-6 px-6 py-3 bg-green-500 text-white font-bold rounded-full transition duration-300 hover:bg-green-600">Next Question &rarr;</button>
+                    </div>
+
+                    <div id="q1-result" class="hidden text-center mt-6 p-4 bg-yellow-100 rounded-lg border-l-4 border-yellow-500">
+                        <p class="text-2xl font-bold text-yellow-800 mb-2">Quiz Complete!</p>
+                        <p class="text-lg text-gray-700">You scored <span id="q1-score" class="font-extrabold">0</span> out of 3.</p>
+                        <p class="mt-4 text-gray-600 italic">Excellent review! Now we transition to the Eastern traditions. Click the NEXT SLIDE button below.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 2: Key Eastern Traditions: India -->
+            <section id="slide-2" class="slide-content">
+                <div class="card bg-white p-8 rounded-xl mb-6">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4 border-b pb-2">Key Eastern Traditions: India</h2>
+                    <h3 class="text-2xl font-semibold text-red-600 mb-4">Indian Philosophy: Breaking the Cycle</h3>
+                    
+                    <p class="text-gray-700 leading-relaxed mb-4">
+                        The central goal of many Indian traditions (like Hinduism and Buddhism) is <strong>liberation</strong> from the cycle of suffering and rebirth (<strong>Samsara</strong>).
+                    </p>
+
+                    <ul class="list-disc ml-6 space-y-3 text-gray-700 mb-6">
+                        <li class="font-bold list-item">Karma & Dharma:</li>
+                        <p class="ml-4 font-normal">Your <strong>Karma</strong> (actions) determine your destiny. Your <strong>Dharma</strong> is your ethical duty.</p>
+                        <li class="font-bold list-item">Buddhism: The Four Noble Truths</li>
+                        <p class="ml-4 font-normal">Suffering comes from attachment; letting go leads to peace.</p>
+                    </ul>
+
+                    <!-- Vignette Integration -->
+                    <div class="bg-red-50 p-5 rounded-lg border-l-4 border-red-500">
+                        <h4 class="font-bold text-red-800 mb-2"><i class="fas fa-book-open mr-2"></i>Vignette: The Frustrated Musician</h4>
+                        <p class="text-gray-700 italic text-sm leading-relaxed">
+                            "Kenji practices guitar for hours but gets angry when he makes mistakes. He realizes his suffering comes from his <strong>attachment</strong> to being perfect. When he lets go of the need for perfection and just focuses on playing, his anger vanishes."
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 3: Key Eastern Traditions: Confucianism -->
+            <section id="slide-3" class="slide-content">
+                <div class="card bg-white p-8 rounded-xl mb-6">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4 border-b pb-2">Key Eastern Traditions: China - Confucianism</h2>
+                    <h3 class="text-2xl font-semibold text-green-600 mb-4">Confucianism: Social Harmony</h3>
+                    
+                    <p class="text-gray-700 leading-relaxed mb-4">
+                        Confucianism emphasizes <strong>collective harmony</strong> through proper relationships and <strong>Filial Piety</strong> (Xiao).
+                    </p>
+
+                    <ul class="list-disc ml-6 space-y-3 text-gray-700 mb-6">
+                        <li class="font-bold list-item">The Five Relationships:</li>
+                        <p class="ml-4 font-normal">Ruler-Subject, Father-Son, Husband-Wife, Elder-Younger Sibling, Friend-Friend.</p>
+                    </ul>
+
+                    <!-- Vignette Integration -->
+                    <div class="bg-green-50 p-5 rounded-lg border-l-4 border-green-500">
+                        <h4 class="font-bold text-green-800 mb-2"><i class="fas fa-users mr-2"></i>Vignette: The Family Decision</h4>
+                        <p class="text-gray-700 italic text-sm leading-relaxed">
+                            "Mei is a successful CEO, but when her family meets to discuss their small ancestral farm, she defers to her older brother's final decision. Even though she is wealthier, she respects the <strong>Elder Brother-Younger Sister</strong> relationship to maintain family harmony."
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 4: Key Eastern Traditions: Taoism -->
+            <section id="slide-4" class="slide-content">
+                <div class="card bg-white p-8 rounded-xl mb-6">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4 border-b pb-2">Key Eastern Traditions: China - Taoism</h2>
+                    <h3 class="text-2xl font-semibold text-indigo-600 mb-4">Taoism: The Way of Nature</h3>
+                    
+                    <p class="text-gray-700 leading-relaxed mb-4">
+                        Taoism focuses on living in alignment with the <strong>Tao</strong> (The Way). The core concept is <strong>Wu Wei</strong> (Non-Action/Effortless Action).
+                    </p>
+
+                    <!-- Vignette Integration -->
+                    <div class="bg-indigo-50 p-5 rounded-lg border-l-4 border-indigo-500 mt-6">
+                        <h4 class="font-bold text-indigo-800 mb-2"><i class="fas fa-water mr-2"></i>Vignette: The Traffic Jam</h4>
+                        <p class="text-gray-700 italic text-sm leading-relaxed">
+                            "Driver A honks and yells, trying to force his way through traffic. Driver B relaxes, observes the flow, and gently moves only when a natural gap opens. Driver B practices <strong>Wu Wei</strong>—adapting to the situation rather than forcing it."
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 5: East vs. West Comparison (Interactive T-Chart - DETAILED) -->
+            <section id="slide-5" class="slide-content">
+                <div class="card bg-white p-8 rounded-xl mb-6">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4 border-b pb-2">East vs. West Comparison</h2>
+                    <p class="text-lg text-gray-600 mb-6">Click the buttons below to reveal the core differences in focus, goal, and method.</p>
+
+                    <div class="grid grid-cols-2 gap-4 text-center font-bold text-white mb-6">
+                        <div class="bg-blue-800 p-4 rounded-tl-lg">WESTERN PHILOSOPHY</div>
+                        <div class="bg-red-800 p-4 rounded-tr-lg">EASTERN PHILOSOPHY</div>
+                    </div>
+
+                    <div id="comparison-table">
+                        
+                        <!-- Row 1: Primary Focus -->
+                        <div class="grid grid-cols-2 gap-4 items-center border-b border-gray-200">
+                            <div class="p-3 bg-blue-50 text-left font-semibold">1. Primary Focus</div>
+                            <div class="p-3 bg-red-50 text-left font-semibold">1. Primary Focus</div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 items-center">
+                            <div class="p-3 text-left">
+                                <button class="reveal-button bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full w-full" data-topic="focus" data-side="west">Reveal Western Focus</button>
+                                <p id="focus-west" class="hidden mt-2 text-sm text-gray-700 font-medium bg-blue-50 p-2 rounded">The Individual, Objective Truth, and the nature of knowledge (Epistemology/Logic).</p>
+                            </div>
+                            <div class="p-3 text-left">
+                                <button class="reveal-button bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full w-full" data-topic="focus" data-side="east">Reveal Eastern Focus</button>
+                                <p id="focus-east" class="hidden mt-2 text-sm text-gray-700 font-medium bg-red-50 p-2 rounded">The Collective/Society, Self-Cultivation, and practical conduct (Ethics/Harmony).</p>
+                            </div>
+                        </div>
+
+                        <!-- Row 2: Goal of Inquiry -->
+                        <div class="grid grid-cols-2 gap-4 items-center border-t border-gray-200 mt-4">
+                            <div class="p-3 bg-blue-50 text-left font-semibold">2. Goal of Inquiry</div>
+                            <div class="p-3 bg-red-50 text-left font-semibold">2. Goal of Inquiry</div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 items-center">
+                            <div class="p-3 text-left">
+                                <button class="reveal-button bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full w-full" data-topic="goal" data-side="west">Reveal Western Goal</button>
+                                <p id="goal-west" class="hidden mt-2 text-sm text-gray-700 font-medium bg-blue-50 p-2 rounded">To define, logically prove, and argue for a single, universal, and rational truth.</p>
+                            </div>
+                            <div class="p-3 text-left">
+                                <button class="reveal-button bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full w-full" data-topic="goal" data-side="east">Reveal Eastern Goal</button>
+                                <p id="goal-east" class="hidden mt-2 text-sm text-gray-700 font-medium bg-red-50 p-2 rounded">To achieve inner balance, spiritual liberation (Nirvana/Tao), and harmonious living.</p>
+                            </div>
+                        </div>
+
+                        <!-- Row 3: Philosophical Method -->
+                        <div class="grid grid-cols-2 gap-4 items-center border-t border-gray-200 mt-4">
+                            <div class="p-3 bg-blue-50 text-left font-semibold">3. Philosophical Method</div>
+                            <div class="p-3 bg-red-50 text-left font-semibold">3. Philosophical Method</div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 items-center">
+                            <div class="p-3 text-left">
+                                <button class="reveal-button bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full w-full" data-topic="method" data-side="west">Reveal Western Method</button>
+                                <p id="method-west" class="hidden mt-2 text-sm text-gray-700 font-medium bg-blue-50 p-2 rounded">Clear, rational, deductive and inductive argumentation (Dialectic/Socratic Method).</p>
+                            </div>
+                            <div class="p-3 text-left">
+                                <button class="reveal-button bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full w-full" data-topic="method" data-side="east">Reveal Eastern Method</button>
+                                <p id="method-east" class="hidden mt-2 text-sm text-gray-700 font-medium bg-red-50 p-2 rounded">Intuitive understanding, personal reflection, meditation, and practical ethical conduct.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+                    <div class="mt-8 text-center p-4 bg-gray-100 rounded-lg">
+                        <p class="font-semibold text-gray-700">Assignment Check (Formative):</p>
+                        <p class="text-sm text-gray-600">Students create a T-chart listing three key differences in focus between the Western and Eastern traditions. (SLO 2 Assessment)</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 6: NEW INTERACTIVE QUIZ (Eastern Philosophy) -->
+            <section id="slide-6" class="slide-content">
+                <div class="card bg-white p-8 rounded-xl mb-6">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4 border-b pb-2">Activity: Identifying Eastern Philosophies</h2>
+                    <p class="text-lg text-gray-600 mb-6">Read the scenario and identify which philosophy is being practiced: <strong>Buddhism</strong>, <strong>Confucianism</strong>, or <strong>Taoism</strong>.</p>
+                    
+                    <div id="quiz-container-2">
+                        <div class="mb-6">
+                            <div class="text-2xl font-semibold text-purple-600 mb-3" id="q2-number">Question 1 of 5</div>
+                            <p class="text-xl text-gray-800 p-4 bg-purple-50 rounded-lg border-l-4 border-purple-300" id="q2-text">Loading...</p>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6" id="q2-options"></div>
+                        <div id="q2-feedback" class="h-auto min-h-[3rem] p-2 text-center font-bold text-lg rounded-lg transition duration-300 flex items-center justify-center"></div>
+                        <button id="q2-next-btn" class="hidden w-full mt-6 px-6 py-3 bg-green-500 text-white font-bold rounded-full transition duration-300 hover:bg-green-600">Next Question &rarr;</button>
+                    </div>
+
+                    <div id="q2-result" class="hidden text-center mt-6 p-4 bg-purple-100 rounded-lg border-l-4 border-purple-500">
+                        <p class="text-2xl font-bold text-purple-800 mb-2">Activity Complete!</p>
+                        <p class="text-lg text-gray-700">You scored <span id="q2-score" class="font-extrabold">0</span> out of 5.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 7: Wrap-up -->
+            <section id="slide-7" class="slide-content">
+                <div class="card bg-white p-8 rounded-xl mb-6">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4 border-b pb-2">Wrap-up & Day 4 Preparation</h2>
+                    
+                    <h3 class="text-xl font-semibold text-gray-800 mb-3">Connection Question</h3>
+                    <p class="text-gray-700 leading-relaxed mb-4">
+                        Which philosophical branch (from Day 1) would be most concerned with a principle like <strong>Wu Wei</strong>?
+                    </p>
+
+                    <!-- NEW BRANCHES REFERENCE -->
+                    <div class="bg-gray-100 p-4 rounded-lg mb-6 border border-gray-300">
+                        <p class="font-bold text-gray-800 mb-2">The 5 Major Branches of Philosophy (Reference):</p>
+                        <ul class="list-disc ml-6 text-sm text-gray-700 space-y-1">
+                            <li><strong>Metaphysics:</strong> Deals with the nature of reality and existence.</li>
+                            <li><strong>Epistemology:</strong> Deals with the nature of knowledge, belief, and truth.</li>
+                            <li><strong>Ethics:</strong> Deals with moral values, right and wrong conduct.</li>
+                            <li><strong>Aesthetics:</strong> Deals with the nature of art, beauty, and taste.</li>
+                            <li><strong>Logic:</strong> Deals with the principles of correct reasoning.</li>
+                        </ul>
+                    </div>
+                    <!-- END NEW BRANCHES REFERENCE -->
+                    
+                    <!-- REVEAL BUTTON FOR WRAP-UP ANSWER -->
+                    <button id="reveal-wrapup-answer" class="px-4 py-2 bg-yellow-600 text-white font-bold rounded-full transition duration-300 hover:bg-yellow-700">Reveal Answer</button>
+
+                    <div id="wrapup-answer" class="hidden mt-4 p-4 bg-yellow-50 rounded-lg border-l-4 border-yellow-400 font-semibold text-gray-800">
+                        Answer: <span class="text-yellow-700">Metaphysics</span> (Reality, because the Tao is the fundamental reality) or <span class="text-yellow-700">Ethics</span> (Conduct, because Wu Wei dictates proper action).
+                    </div>
+                    <!-- END REVEAL BLOCK -->
+
+                    <h3 class="text-xl font-semibold text-blue-600 mt-6 mb-3">Next Session: Final Synthesis</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        Prepare to integrate all concepts learned: The Branches of Philosophy, Western rational inquiry, and Eastern collective harmony.
+                    </p>
+                </div>
+            </section>
+        </div>
+
+        <!-- Navigation Controls -->
+        <div class="flex justify-between mt-8 p-4 bg-white rounded-xl shadow-lg">
+            <button id="prev-btn" class="px-6 py-3 bg-gray-400 text-white font-bold rounded-full transition duration-300 hover:bg-gray-500 disabled:opacity-50" disabled>&larr; Previous</button>
+            <div id="slide-indicator" class="text-lg font-semibold self-center text-gray-700">Slide 1 of 7</div>
+            <button id="next-btn" class="px-6 py-3 bg-blue-600 text-white font-bold rounded-full transition duration-300 hover:bg-blue-700">Next &rarr;</button>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Navigation Logic ---
+            const slides = document.querySelectorAll('.slide-content');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const slideIndicator = document.getElementById('slide-indicator');
+            let currentSlideIndex = 0;
+
+            function updateSlide() {
+                slides.forEach(slide => slide.classList.remove('active'));
+                slides[currentSlideIndex].classList.add('active');
+                prevBtn.disabled = currentSlideIndex === 0;
+                nextBtn.disabled = currentSlideIndex === slides.length - 1;
+                slideIndicator.textContent = `Slide ${currentSlideIndex + 1} of ${slides.length}`;
+            }
+
+            prevBtn.addEventListener('click', () => { if(currentSlideIndex > 0) { currentSlideIndex--; updateSlide(); } });
+            nextBtn.addEventListener('click', () => { if(currentSlideIndex < slides.length - 1) { currentSlideIndex++; updateSlide(); } });
+
+            // --- T-Chart Reveal Logic (Slide 5) ---
+            const originalButtonText = {
+                'focus-west': 'Reveal Western Focus',
+                'focus-east': 'Reveal Eastern Focus',
+                'goal-west': 'Reveal Western Goal',
+                'goal-east': 'Reveal Eastern Goal',
+                'method-west': 'Reveal Western Method',
+                'method-east': 'Reveal Eastern Method'
+            };
+
+            const revealButtons = document.querySelectorAll('.reveal-button');
+            revealButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const topic = e.target.getAttribute('data-topic');
+                    const side = e.target.getAttribute('data-side');
+                    const textId = `${topic}-${side}`;
+                    const textElement = document.getElementById(textId);
+                    
+                    if (textElement) {
+                        // Toggle logic
+                        if (textElement.classList.contains('hidden')) {
+                            // Show content
+                            textElement.classList.remove('hidden');
+                            e.target.textContent = 'Hide Detail';
+                            e.target.classList.remove('bg-blue-500', 'bg-red-500', 'hover:bg-blue-600', 'hover:bg-red-600');
+                            e.target.classList.add('bg-gray-600', 'hover:bg-gray-700');
+                        } else {
+                            // Hide content
+                            textElement.classList.add('hidden');
+                            e.target.textContent = originalButtonText[textId];
+                            e.target.classList.remove('bg-gray-600', 'hover:bg-gray-700');
+                            if (side === 'west') {
+                                e.target.classList.add('bg-blue-500', 'hover:bg-blue-600');
+                            } else {
+                                e.target.classList.add('bg-red-500', 'hover:bg-red-600');
+                            }
+                        }
+                    }
+                });
+            });
+
+
+            // --- QUIZ 1: Western Review (Slide 1) ---
+            const quiz1Data = [
+                { q: "Situation: 'The unexamined life is not worth living.' - Questioning oneself.", opts: ["Socrates", "Plato", "Aristotle"], a: "Socrates", exp: "Correct! Socrates emphasized self-examination." },
+                { q: "Situation: The true 'Idea' of a chair is more real than a physical chair.", opts: ["Socrates", "Plato", "Aristotle"], a: "Plato", exp: "Correct! Plato proposed the Theory of Forms." },
+                { q: "Situation: Finding the 'Golden Mean' between cowardice and recklessness.", opts: ["Socrates", "Plato", "Aristotle"], a: "Aristotle", exp: "Correct! Aristotle taught Virtue Ethics (The Mean)." }
+            ];
+            setupQuiz(quiz1Data, 'q1');
+
+            // --- QUIZ 2: Eastern Traditions (Slide 6) ---
+            const quiz2Data = [
+                { q: "Situation: A student fails a test but accepts it calmly, realizing that dwelling on anger is 'suffering' caused by attachment to the past.", opts: ["Buddhism", "Confucianism", "Taoism"], a: "Buddhism", exp: "Correct! This reflects the ending of suffering by letting go of attachment." },
+                { q: "Situation: A young man turns down a high-paying job abroad to stay home and care for his elderly parents.", opts: ["Buddhism", "Confucianism", "Taoism"], a: "Confucianism", exp: "Correct! This is Filial Piety (Xiao) - respect for elders." },
+                { q: "Situation: A leader realizes strict rules are failing, so they step back and let the team self-organize naturally.", opts: ["Buddhism", "Confucianism", "Taoism"], a: "Taoism", exp: "Correct! This is Wu Wei (Non-action/Effortless action)." },
+                { q: "Situation: During a formal dinner, the youngest child waits for the grandfather to eat first before picking up their spoon.", opts: ["Buddhism", "Confucianism", "Taoism"], a: "Confucianism", exp: "Correct! This honors the Order/Hierarchy in relationships." },
+                { q: "Situation: A gardener stops fighting the weeds aggressively and instead works with the soil's natural cycle to maintain the garden.", opts: ["Buddhism", "Confucianism", "Taoism"], a: "Taoism", exp: "Correct! Working with nature's flow is the essence of the Tao." }
+            ];
+            setupQuiz(quiz2Data, 'q2');
+
+            // --- Generic Quiz Setup Function ---
+            function setupQuiz(questions, prefix) {
+                let currentIdx = 0;
+                let score = 0;
+                
+                const numberEl = document.getElementById(`${prefix}-number`);
+                const textEl = document.getElementById(`${prefix}-text`);
+                const optionsEl = document.getElementById(`${prefix}-options`);
+                const feedbackEl = document.getElementById(`${prefix}-feedback`);
+                const nextBtnEl = document.getElementById(`${prefix}-next-btn`);
+                const containerEl = document.getElementById(`${prefix === 'q1' ? 'quiz-container-1' : 'quiz-container-2'}`);
+                const resultEl = document.getElementById(`${prefix}-result`);
+                const scoreEl = document.getElementById(`${prefix}-score`);
+
+                function loadQ() {
+                    const data = questions[currentIdx];
+                    numberEl.textContent = `Question ${currentIdx + 1} of ${questions.length}`;
+                    textEl.textContent = data.q;
+                    optionsEl.innerHTML = '';
+                    feedbackEl.textContent = '';
+                    feedbackEl.className = 'h-auto min-h-[3rem] p-2 text-center font-bold text-lg rounded-lg transition duration-300 flex items-center justify-center'; // Reset classes
+                    nextBtnEl.classList.add('hidden');
+
+                    data.opts.forEach(opt => {
+                        const btn = document.createElement('button');
+                        btn.textContent = opt;
+                        // Conditional styling for grid vs list layout
+                        const baseClasses = prefix === 'q2' 
+                            ? 'answer-btn px-4 py-3 bg-purple-100 text-purple-900 font-semibold rounded-lg hover:bg-purple-200 transition' 
+                            : 'answer-btn px-4 py-3 bg-gray-200 text-gray-800 font-semibold rounded-lg text-left hover:bg-blue-100 transition';
+                        btn.className = baseClasses;
+                        
+                        btn.onclick = () => check(opt, data.a, data.exp);
+                        optionsEl.appendChild(btn);
+                    });
+                }
+
+                function check(selected, correct, explanation) {
+                    const btns = optionsEl.querySelectorAll('button');
+                    btns.forEach(b => {
+                        b.disabled = true;
+                        b.classList.add('opacity-50');
+                    });
+
+                    if (selected === correct) {
+                        score++;
+                        feedbackEl.textContent = explanation;
+                        feedbackEl.classList.add('bg-green-100', 'text-green-800');
+                    } else {
+                        feedbackEl.textContent = `Incorrect. ${explanation}`;
+                        feedbackEl.classList.add('bg-red-100', 'text-red-800');
+                    }
+                    nextBtnEl.classList.remove('hidden');
+                }
+
+                nextBtnEl.onclick = () => {
+                    currentIdx++;
+                    if (currentIdx < questions.length) {
+                        loadQ();
+                    } else {
+                        containerEl.classList.add('hidden');
+                        resultEl.classList.remove('hidden');
+                        scoreEl.textContent = score;
+                    }
+                };
+
+                loadQ();
+            }
+
+            // --- Wrap-up Answer Reveal Logic (Slide 7) ---
+            const revealWrapupBtn = document.getElementById('reveal-wrapup-answer');
+            const wrapupAnswerEl = document.getElementById('wrapup-answer');
+
+            if (revealWrapupBtn && wrapupAnswerEl) {
+                revealWrapupBtn.addEventListener('click', () => {
+                    if (wrapupAnswerEl.classList.contains('hidden')) {
+                        wrapupAnswerEl.classList.remove('hidden');
+                        revealWrapupBtn.textContent = 'Hide Answer';
+                        revealWrapupBtn.classList.remove('bg-yellow-600', 'hover:bg-yellow-700');
+                        revealWrapupBtn.classList.add('bg-gray-600', 'hover:bg-gray-700');
+                    } else {
+                        wrapupAnswerEl.classList.add('hidden');
+                        revealWrapupBtn.textContent = 'Reveal Answer';
+                        revealWrapupBtn.classList.remove('bg-gray-600', 'hover:bg-gray-700');
+                        revealWrapupBtn.classList.add('bg-yellow-600', 'hover:bg-yellow-700');
+                    }
+                });
+            }
+
+            updateSlide();
+        });
+    </script>
+</body>
+</html>

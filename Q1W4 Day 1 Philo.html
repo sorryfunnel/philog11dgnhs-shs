@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 1: Differentiating Truth and Opinion</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configure Tailwind for Inter font and custom colors -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'philosophy-primary': '#2A4365', // Dark Blue
+                        'philosophy-secondary': '#63B3ED', // Light Blue
+                        'truth-green': '#38A169',
+                        'opinion-red': '#E53E3E',
+                        'feedback-correct': '#D1FAE5', // Light Green for feedback
+                        'feedback-incorrect': '#FEE2E2', // Light Red for feedback
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        .slide {
+            transition: opacity 0.5s ease-in-out;
+            display: none;
+            flex-direction: column;
+        }
+        .slide.active {
+            display: flex;
+        }
+        .card {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 4px 6px, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .truth-btn, .opinion-btn {
+            transition: all 0.2s;
+        }
+        .selected-truth {
+            background-color: #38A169;
+            color: white;
+            border-color: #276749;
+        }
+        .selected-opinion {
+            background-color: #E53E3E;
+            color: white;
+            border-color: #9B2C2C;
+        }
+        .feedback-panel {
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-top: 1rem;
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+            overflow: hidden;
+            max-height: 500px; /* Max height for transition effect */
+            opacity: 1;
+        }
+        .feedback-correct {
+            background-color: #D1FAE5; /* Light Green */
+            border-left: 5px solid #38A169;
+        }
+        .feedback-incorrect {
+            background-color: #FEE2E2; /* Light Red */
+            border-left: 5px solid #E53E3E;
+        }
+        main {
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+
+    <!-- Navigation Header (Fixed) -->
+    <nav class="sticky top-0 z-10 bg-philosophy-primary text-white p-4 shadow-lg flex justify-between items-center">
+        <h1 class="text-xl font-bold">Day 1: Truth vs. Opinion (60-Minute Session)</h1>
+        <div class="flex items-center space-x-4">
+            <span id="slide-indicator" class="text-sm font-medium">Stage 1 / 4</span>
+            <button onclick="prevSlide()" class="px-3 py-1 bg-philosophy-secondary rounded-lg hover:bg-blue-300 transition duration-150 shadow-md disabled:opacity-50" id="prev-btn" disabled>&lt; Prev</button>
+            <button onclick="nextSlide()" class="px-3 py-1 bg-philosophy-secondary rounded-lg hover:bg-blue-300 transition duration-150 shadow-md" id="next-btn">Next &gt;</button>
+        </div>
+    </nav>
+
+    <!-- Main Slide Container (now allows scrolling within the slide content) -->
+    <main class="p-8">
+        <div id="slides-container" class="slide-container flex flex-col justify-start items-center mx-auto max-w-4xl">
+
+            <!-- SLIDE 1: Introduction & Warm-up (10 mins) -->
+            <section class="slide active p-8 bg-white rounded-xl shadow-2xl w-full" data-slide="1">
+                <h2 class="text-3xl font-extrabold text-philosophy-primary mb-6 border-b-2 pb-2">Stage 1 (10 min): Introduction & Warm-up</h2>
+                <div class="space-y-4">
+                    <p class="text-lg text-gray-700"><strong>SLO:</strong> Distinguish between a statement of fact (truth) and a statement of personal preference (opinion) based on initial response.</p>
+                    <p class="text-2xl font-semibold italic text-center p-4 rounded-xl bg-yellow-50 text-yellow-800 border-l-4 border-yellow-500">
+                        "The challenge of subjective reality and 'fake news' makes clear thinking essential. Today, we define our terms."
+                    </p>
+                    <h3 class="text-2xl font-bold mt-8 mb-4 text-philosophy-secondary">Activity: Agree or Disagree (Warm-up)</h3>
+                    <p class="text-gray-600 mb-6">Read the statement below. Move to the side of the room that represents your agreement/disagreement, and be prepared to justify your position!</p>
+
+                    <div id="warmup-statement-container" class="text-center p-6 bg-gray-50 rounded-lg border-2 border-dashed border-gray-300">
+                        <p class="text-3xl font-extrabold text-gray-800" id="warmup-statement">"School uniforms stifle personal expression."</p>
+                    </div>
+
+                    <button onclick="nextStatement()" class="w-full mt-4 py-2 bg-gray-200 text-gray-700 font-semibold rounded-lg hover:bg-gray-300 transition duration-150">Next Warm-up Statement</button>
+                </div>
+            </section>
+
+            <!-- SLIDE 2: Development & Claim Classifier (30 mins) -->
+            <section class="slide p-8 bg-white rounded-xl shadow-2xl w-full" data-slide="2">
+                <h2 class="text-3xl font-extrabold text-philosophy-primary mb-6 border-b-2 pb-2">Stage 2 (30 min): Defining the Terms & Claim Classifier</h2>
+                
+                <h3 class="text-2xl font-bold mt-4 mb-4 text-philosophy-secondary">Key Distinctions: Fact vs. Opinion</h3>
+                
+                <div class="flex flex-col space-y-6 mb-8">
+                    <!-- Truth/Fact Definition -->
+                    <div class="card p-6 bg-truth-green/10 rounded-lg w-full">
+                        <h3 class="text-2xl font-bold text-truth-green mb-2 border-b border-truth-green/50 pb-1">FACT / TRUTH</h3>
+                        <ul class="list-disc list-inside text-gray-700 space-y-1 mt-3">
+                            <li><strong>Objective:</strong> Independent of individual feelings.</li>
+                            <li><strong>Verifiable:</strong> Can be proven/disproven using evidence (empirical or logical).</li>
+                            <li><strong>Universal:</strong> Generally accepted as true for everyone.</li>
+                            <li><em>The Test:</em> <strong>Verifiability</strong>.</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Opinion Definition -->
+                    <div class="card p-6 bg-opinion-red/10 rounded-lg w-full">
+                        <h3 class="text-2xl font-bold text-opinion-red mb-2 border-b border-opinion-red/50 pb-1">OPINION</h3>
+                        <ul class="list-disc list-inside text-gray-700 space-y-1 mt-3">
+                            <li><strong>Subjective:</strong> Based on personal feelings, beliefs, or perspective.</li>
+                            <li><strong>Open to Debate:</strong> Cannot be conclusively proven or disproven.</li>
+                            <li><strong>Non-Universal:</strong> True only for the individual holding the belief.</li>
+                            <li><em>Clue:</em> Often uses phrases like "I feel," "I think," "should."</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="mt-4 mb-6 p-4 bg-gray-100 rounded-lg border">
+                    <p class="text-lg text-gray-700 italic">Discussion Point: Visualize the overlap and differences using a Venn Diagram.</p>
+                    
+                </div>
+
+
+                <h3 class="text-2xl font-bold mt-6 mb-4 text-philosophy-primary border-t pt-4">Activity: Claim Classifier (Immediate Feedback)</h3>
+                <p class="text-gray-600 mb-4">Classify each statement as a Truth (T) or an Opinion (O). You will receive immediate feedback after each selection.</p>
+
+                <div id="claim-classifier-list" class="space-y-4">
+                    <!-- Claims will be rendered here by JS -->
+                </div>
+                
+                <!-- NEW SECTION: Discussion for Opinion Formation and Verification Path -->
+                <div class="mt-12 p-6 bg-philosophy-primary/10 rounded-xl border border-philosophy-primary/50">
+                    <h3 class="text-2xl font-extrabold text-philosophy-primary mb-4">The Path from Opinion to Truth</h3>
+
+                    <div class="mb-6">
+                        <h4 class="text-xl font-semibold text-opinion-red mb-2">1. How Opinions are Formed</h4>
+                        <p class="text-gray-700 mb-2">Opinions are fundamentally subjective claims influenced by internal and external factors:</p>
+                        <ul class="list-disc list-inside ml-4 text-gray-700 space-y-1">
+                            <li><b>Personal Experience:</b> What you have seen, felt, or done (e.g., "The food at this restaurant is the best").</li>
+                            <li><b>Cultural or Religious Beliefs:</b> Core values learned from family or society (e.g., beliefs on morality or aesthetics).</li>
+                            <li><b>Personal Preference/Emotion:</b> Subjective feelings (e.g., "Blue is the prettiest color").</li>
+                            <li><b>Insufficient Evidence:</b> Drawing a conclusion before all facts are gathered (e.g., initial hypotheses).</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="text-xl font-semibold text-truth-green mb-2">2. The Transition to Fact (Verification)</h4>
+                        <p class="text-gray-700 mb-2">An opinion can only become a universally accepted fact by passing the rigorous test of <b>Verifiability</b>, backed by sufficient evidence:</p>
+                        <ul class="list-disc list-inside ml-4 text-gray-700 space-y-1">
+                            <li><b>Empirical Evidence (Scientific):</b> Gathered through observation, measurement, and experimentation (e.g., clinical trial results, astronomical measurements).</li>
+                            <li><b>Logical/Mathematical Proof:</b> Verified through formal systems where conclusions necessarily follow from premises (e.g., $1+1=2$, geometric proofs).</li>
+                            <li><b>Testimonial Evidence (Historical):</b> Verified through reliable primary and secondary sources and corroborated accounts (e.g., historical documents).</li>
+                            <li><b>Statistical Evidence:</b> Verified through objective data and quantitative analysis (e.g., census data, unemployment rates).</li>
+                        </ul>
+                        <p class="text-sm italic text-gray-500 mt-3">The rigor of verification is what separates personal belief from objective knowledge.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 3: Practice Activity (15 mins) -->
+            <section class="slide p-8 bg-white rounded-xl shadow-2xl w-full" data-slide="3">
+                <h2 class="text-3xl font-extrabold text-philosophy-primary mb-6 border-b-2 pb-2">Stage 3 (15 min): Practice - Opinion-to-Truth Challenge</h2>
+                <p class="text-lg text-gray-700 mb-6"><strong>SLO:</strong> Identify what kind of verifiable evidence is necessary to elevate a subjective opinion into a factual claim.</p>
+
+                <div class="card p-6 bg-gray-50 rounded-lg border-l-4 border-philosophy-secondary">
+                    <h3 class="text-2xl font-bold text-philosophy-secondary mb-3">Group Challenge: Verifying Claims</h3>
+                    <p class="text-xl font-semibold text-gray-800 mb-4">Take this common opinion:</p>
+                    <div class="p-4 bg-white rounded-lg border text-center mb-6 shadow-inner">
+                        <p class="text-2xl italic font-serif text-opinion-red">"Smartphones are making the current generation less focused."</p>
+                    </div>
+                    
+                    <p class="text-lg text-gray-700"><strong>Task (Pairs):</strong> Brainstorm one specific, verifiable, and objective piece of evidence that would be required to transform this statement from a mere opinion into a widely accepted <em>factual truth</em>.</p>
+                    
+                    <ul class="mt-4 list-disc list-inside ml-4 text-gray-600 space-y-1">
+                        <li><em>Focus:</em> What <b>methodology</b> (e.g., peer-reviewed study, standardized test data, brain scans) is required?</li>
+                        <li><em>Requirement:</em> Must be something <b>measurable</b>, not a feeling or anecdotal evidence.</li>
+                    </ul>
+                </div>
+                <div class="mt-8 p-4 bg-gray-100 rounded-lg">
+                     <h4 class="text-xl font-semibold text-gray-700">Teacher Notes/Prompt:</h4>
+                     <p class="text-gray-600 italic">Facilitate group discussion. Guide students towards empirical evidence, for example: "A controlled neuroscientific study comparing average attention spans (measured in seconds) of 100 students before smartphone ownership was common vs. 100 students today, using identical focus tasks."</p>
+                </div>
+            </section>
+
+            <!-- SLIDE 4: Conclusion & Exit Slip (5 mins) -->
+            <section class="slide p-8 bg-white rounded-xl shadow-2xl w-full" data-slide="4">
+                <h2 class="text-3xl font-extrabold text-philosophy-primary mb-6 border-b-2 pb-2">Stage 4 (5 min): Conclusion & Exit Slip</h2>
+                <p class="text-lg text-gray-700 mb-6">Recap of the core concept: <strong>Verifiability</strong> is the key distinction between subjective claims and objective reality. It is the filter we use when <em>doing</em> philosophy.</p>
+
+                <div class="card p-8 bg-philosophy-secondary/10 rounded-xl border-l-8 border-philosophy-secondary">
+                    <h3 class="text-2xl font-bold text-philosophy-primary mb-4">Exit Slip Question</h3>
+                    <p class="text-xl italic font-serif text-gray-800">
+                        "What is the single most important test for moving a statement from the realm of Opinion to the realm of Truth? Explain your choice in one sentence."
+                    </p>
+                    <p class="mt-6 text-sm text-gray-600">*(Students write their response and submit before leaving.)*</p>
+                </div>
+
+                <div class="mt-8 text-center">
+                    <p class="text-2xl font-bold text-truth-green">Lesson Completed! (Time for Day 2: Philosophical Tests for Truth)</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 4;
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const slideIndicator = document.getElementById('slide-indicator');
+        
+        // --- Data for Claim Classifier Activity (Slide 2) ---
+        // T = Truth, O = Opinion
+        const claims = [
+            {
+                statement: "The sum of the angles in a triangle is 180 degrees.",
+                correctType: "T",
+                userAnswer: null,
+                isAnswered: false,
+                explanation: "This is a <b>Truth</b> because it is a verifiable fact based on established <b>Euclidean geometric proofs</b>. This type of truth is verified through logic, not observation.",
+            },
+            {
+                statement: "Social media makes teenagers unhappy.",
+                correctType: "O",
+                userAnswer: null,
+                isAnswered: false,
+                explanation: "This is an <b>Opinion</b>. 'Unhappy' is subjective and the causal link is debatable. While research can show correlations, the claim relies on a personal interpretation of happiness and cannot be universally proven as a simple fact. Verification is inherently subjective.",
+            },
+            {
+                statement: "Reading physical books is better than reading e-books.",
+                correctType: "O",
+                userAnswer: null,
+                isAnswered: false,
+                explanation: "This is an <b>Opinion</b>. 'Better' is a subjective qualitative judgment based on preference, comfort, or experience. It is not an objective fact and cannot be proven universally. Verification requires personal anecdotal evidence.",
+            },
+            {
+                statement: "Water boils at 100 degrees Celsius at standard atmospheric pressure.",
+                correctType: "T",
+                userAnswer: null,
+                isAnswered: false,
+                explanation: "This is a <b>Truth</b>. It is an objective and empirically verifiable scientific fact. You can prove or disprove it using a thermometer and controlled pressure. Verified by <b>Empirical Science</b>.",
+            },
+            {
+                statement: "All crimes should carry the death penalty.",
+                correctType: "O",
+                userAnswer: null,
+                isAnswered: false,
+                explanation: "This is an <b>Opinion</b>. It involves a moral and legal value judgment ('should carry'). It is a belief about a system of justice, not a statement verifiable by empirical evidence or objective logic. Verified by <b>Ethical/Moral Consensus</b> (which is subjective).",
+            },
+            {
+                statement: "The Earth revolves around the Sun.",
+                correctType: "T",
+                userAnswer: null,
+                isAnswered: false,
+                explanation: "This is a <b>Truth</b>. This astronomical observation is verifiable through empirical evidence, physics, and years of observation (Heliocentrism). Verified by <b>Empirical Astronomy</b>.",
+            },
+            {
+                statement: "The country's highest priority should be reducing taxes.",
+                correctType: "O",
+                userAnswer: null,
+                isAnswered: false,
+                explanation: "This is an <b>Opinion</b>. It is a political priority or belief ('should be'). Different people and economists hold different views on the best fiscal priority, and it cannot be proven universally correct. Verification is based on <b>Political/Economic Ideology</b>.",
+            },
+            {
+                statement: "Humans need oxygen to survive.",
+                correctType: "T",
+                userAnswer: null,
+                isAnswered: false,
+                explanation: "This is a <b>Truth</b>. It is a biological necessity proven by empirical evidence (the absence of oxygen leads to death) and is an objective fact about human physiology. Verified by <b>Empirical Biology</b>.",
+            },
+        ];
+
+        // --- Data for Warm-up Activity (Slide 1) ---
+        const warmupStatements = [
+            "School uniforms stifle personal expression.",
+            "The best way to learn is by listening to lectures.",
+            "A curfew of 10 PM is necessary for teenagers.",
+            "It is wrong to eat meat.",
+        ];
+        let currentWarmupIndex = 0;
+
+        // ------------------ Core Slide Navigation ------------------
+
+        function updateSlideDisplay() {
+            document.querySelectorAll('.slide').forEach(slide => {
+                const slideNumber = parseInt(slide.getAttribute('data-slide'));
+                slide.classList.toggle('active', slideNumber === currentSlide);
+            });
+
+            // Update navigation buttons and indicator
+            prevBtn.disabled = currentSlide === 1;
+            nextBtn.disabled = currentSlide === totalSlides;
+            
+            // Update indicator based on lesson plan timing
+            let stageTime = "";
+            if (currentSlide === 1) stageTime = "(10 min)";
+            else if (currentSlide === 2) stageTime = "(30 min)";
+            else if (currentSlide === 3) stageTime = "(15 min)";
+            else if (currentSlide === 4) stageTime = "(5 min)";
+
+            slideIndicator.textContent = `Stage ${currentSlide} / ${totalSlides} ${stageTime}`;
+
+            // Re-render claims when returning to slide 2
+            if (currentSlide === 2) {
+                renderClaimClassifier();
+            }
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides) {
+                currentSlide++;
+                updateSlideDisplay();
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 1) {
+                currentSlide--;
+                updateSlideDisplay();
+            }
+        }
+        
+        // ------------------ Slide 1: Warm-up Logic ------------------
+
+        function nextStatement() {
+            currentWarmupIndex = (currentWarmupIndex + 1) % warmupStatements.length;
+            const statementElement = document.getElementById('warmup-statement');
+            statementElement.textContent = warmupStatements[currentWarmupIndex];
+        }
+
+        // ------------------ Slide 2: Claim Classifier Logic ------------------
+        
+        function handleClaimClick(index, type) {
+            const item = claims[index];
+            
+            // If already answered, do nothing
+            if (item.isAnswered) return;
+
+            // Set answer and state
+            item.userAnswer = type;
+            item.isAnswered = true;
+            
+            // Re-render the list to show immediate feedback and disable buttons
+            renderClaimClassifier();
+        }
+
+        function renderClaimClassifier() {
+            const container = document.getElementById('claim-classifier-list');
+            container.innerHTML = claims.map((claim, index) => {
+                const buttonDisabled = claim.isAnswered ? 'disabled' : '';
+                const isTruthSelected = claim.userAnswer === 'T';
+                const isOpinionSelected = claim.userAnswer === 'O';
+                const isCorrect = claim.userAnswer === claim.correctType;
+                const correctLabel = claim.correctType === 'T' ? 'TRUTH' : 'OPINION';
+                
+                let feedbackPanel = '';
+
+                if (claim.isAnswered) {
+                    // Explanation string now contains <b> tags, so no regex needed.
+                    const verificationText = claim.explanation;
+                    
+                    if (isCorrect) {
+                        // User selected correct answer
+                        feedbackPanel = `
+                            <div class="feedback-panel feedback-correct">
+                                <p class="font-bold text-truth-green mb-1">🎉 You classified this correctly as a ${correctLabel}!</p>
+                                <p class="text-gray-700">${verificationText}</p>
+                            </div>
+                        `;
+                    } else {
+                        // User selected incorrect answer
+                        const userLabel = claim.userAnswer === 'T' ? 'TRUTH' : 'OPINION';
+                        feedbackPanel = `
+                            <div class="feedback-panel feedback-incorrect">
+                                <p class="font-bold text-opinion-red mb-1">❌ Your choice (${userLabel}) was incorrect.</p>
+                                <p class="text-gray-700 mb-2">The claim is a <b>${correctLabel}</b> because:</p>
+                                <p class="text-gray-700">${verificationText}</p>
+                            </div>
+                        `;
+                    }
+                }
+
+                return `
+                    <div id="claim-${index}" class="p-4 rounded-lg bg-gray-50 border flex flex-col justify-start transition duration-150 ease-in-out space-y-3">
+                        <p class="font-medium text-gray-800 text-lg">
+                            <span class="font-bold text-philosophy-primary mr-2">${index + 1}.</span> ${claim.statement}
+                        </p>
+                        <div class="flex space-x-4 justify-end">
+                            <button 
+                                id="btn-T-${index}"
+                                onclick="handleClaimClick(${index}, 'T')"
+                                class="truth-btn px-6 py-2 text-sm font-bold rounded-lg w-28 ${isTruthSelected ? 'selected-truth' : 'bg-truth-green/20 text-truth-green hover:bg-truth-green hover:text-white'} ${buttonDisabled}"
+                                ${buttonDisabled}
+                            >
+                                TRUTH
+                            </button>
+                            <button 
+                                id="btn-O-${index}"
+                                onclick="handleClaimClick(${index}, 'O')"
+                                class="opinion-btn px-6 py-2 text-sm font-bold rounded-lg w-28 ${isOpinionSelected ? 'selected-opinion' : 'bg-opinion-red/20 text-opinion-red hover:bg-opinion-red hover:text-white'} ${buttonDisabled}"
+                                ${buttonDisabled}
+                            >
+                                OPINION
+                            </button>
+                        </div>
+                        ${feedbackPanel}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // ------------------ Initialization ------------------
+
+        // Initial setup
+        document.addEventListener('DOMContentLoaded', () => {
+            updateSlideDisplay();
+            renderClaimClassifier();
+        });
+    </script>
+</body>
+</html>

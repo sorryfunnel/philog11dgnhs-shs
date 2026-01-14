@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 4: Application & Synthesis</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configure Tailwind for Inter font and custom colors -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Merriweather', 'serif'],
+                    },
+                    colors: {
+                        'primary': '#1A202C', // Dark Slate
+                        'science-teal': '#319795', // Teal for Science
+                        'philo-indigo': '#5A67D8', // Indigo for Philosophy
+                        'holistic-yellow': '#F6AD55', // Yellow for Synthesis
+                        'science-light': '#E6FFFA',
+                        'philo-light': '#EBF4FF',
+                        'accent': '#DD6B20', // Orange for key points
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap');
+        
+        body {
+            background-color: #F7FAFC;
+        }
+
+        .slide {
+            display: none;
+            flex-direction: column;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        .slide.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .case-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .case-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .reveal-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.6s ease-in-out;
+        }
+        .reveal-content.active {
+            max-height: 800px; /* Increased for taller content */
+        }
+
+        /* Custom Scrollbar */
+        main::-webkit-scrollbar {
+            width: 8px;
+        }
+        main::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        main::-webkit-scrollbar-thumb {
+            background: #cbd5e0; 
+            border-radius: 4px;
+        }
+        main::-webkit-scrollbar-thumb:hover {
+            background: #a0aec0; 
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans text-gray-800 h-screen flex flex-col overflow-hidden">
+
+    <!-- Navigation Header -->
+    <nav class="sticky top-0 z-20 bg-primary text-white p-4 shadow-lg flex justify-between items-center shrink-0">
+        <div>
+            <h1 class="text-xl font-bold tracking-tight">Day 4: Application & Synthesis</h1>
+            <p class="text-xs text-gray-400 uppercase tracking-wider">Doing Philosophy - Grade 11</p>
+        </div>
+        <div class="flex items-center space-x-4">
+            <span id="slide-indicator" class="text-sm font-medium bg-gray-700 px-3 py-1 rounded-full">Stage 1 / 4</span>
+            <button onclick="prevSlide()" class="px-4 py-2 bg-gray-600 rounded-lg hover:bg-gray-500 transition disabled:opacity-50 disabled:cursor-not-allowed shadow-sm font-semibold text-sm" id="prev-btn" disabled>
+                &larr; Prev
+            </button>
+            <button onclick="nextSlide()" class="px-4 py-2 bg-holistic-yellow text-primary rounded-lg hover:bg-yellow-400 transition shadow-sm font-semibold text-sm" id="next-btn">
+                Next &rarr;
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow overflow-y-auto p-4 md:p-8 relative">
+        <div class="max-w-5xl mx-auto pb-12">
+
+            <!-- STAGE 1: Introduction & Review (10 mins) -->
+            <section class="slide active space-y-8" data-slide="1">
+                <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
+                    <h2 class="text-3xl font-extrabold text-primary mb-2">Stage 1: Review & Concept Mapping</h2>
+                    <p class="text-gray-500 font-medium mb-6 uppercase text-sm tracking-wide">Bringing it all together: Opinion, Fact, and Truth</p>
+                    
+                    <div class="p-6 bg-philo-light border-l-4 border-philo-indigo rounded-lg shadow-inner mb-8">
+                        <h3 class="text-xl font-bold text-philo-indigo mb-2 flex items-center">
+                            <span class="text-3xl mr-3">🗺️</span> Concept Mapping Review
+                        </h3>
+                        <p class="text-gray-700">
+                            Let us quickly review all the concepts from Days 1-3. We must connect:
+                            <ol class="list-decimal list-inside ml-4 mt-2 text-sm space-y-1">
+                                <li><strong class="text-accent">Opinion</strong> (Subjective, feelings-based)</li>
+                                <li><strong class="text-science-teal">Scientific/Factual Truth</strong> (Empirical, verifiable, provisional)</li>
+                                <li><strong class="text-philo-indigo">Philosophical Truth</strong> (Conceptual, reason-based, ethical)</li>
+                                <li>The three <strong class="text-gray-700">Theories of Truth</strong> (Correspondence, Coherence, Pragmatic)</li>
+                            </ol>
+                        </p>
+                    </div>
+
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">The Synthesis Challenge</h3>
+                    <p class="text-gray-600 mb-6 text-lg font-serif italic">
+                        "The goal of doing philosophy is not just to separate truths, but to combine them to solve the world's most complex problems."
+                    </p>
+
+                    <div class="p-4 bg-holistic-yellow/30 rounded-xl border border-holistic-yellow text-center">
+                        <p class="font-bold text-holistic-yellow text-xl">FOCUS: HOLISTIC TRUTH</p>
+                        <p class="text-sm text-gray-700">The interdependence of the "how" (Science) and the "why" (Philosophy).</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- STAGE 2: Activity 1 - Tri-Layered Case Study Analysis (30 mins) -->
+            <section class="slide space-y-6" data-slide="2">
+                <div class="text-center mb-6">
+                    <h2 class="text-3xl font-extrabold text-primary">Activity: Tri-Layered Analysis</h2>
+                    <p class="text-gray-600 mt-2">Group work: Identify the three types of claims (Fact, Opinion, Philosophy) within two major dilemmas.</p>
+                </div>
+
+                <div class="space-y-6">
+
+                    <!-- Case Study 1: Climate Change -->
+                    <div class="case-card bg-white p-6 rounded-xl shadow-md border border-gray-100">
+                        <h3 class="text-2xl font-extrabold text-accent mb-4">Case Study 1: Climate Change</h3>
+                        <p class="text-gray-600 mb-4">The problem of global warming demands action, but the path is tangled with scientific evidence, political views, and moral responsibility.</p>
+                        
+                        <button onclick="toggleReveal(1)" class="w-full bg-science-teal text-white py-3 rounded-lg font-bold hover:bg-teal-600 transition flex justify-center items-center text-lg">
+                            Break Down Claims (Scientific, Opinion, Philosophical) &darr;
+                        </button>
+                        
+                        <div id="case-reveal-1" class="reveal-content">
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+                                <div class="p-4 bg-science-light border-l-4 border-science-teal rounded-r-lg">
+                                    <h4 class="font-bold text-science-teal mb-1">1. Factual/Scientific Truth</h4>
+                                    <ul class="list-disc list-inside space-y-1 text-sm text-gray-700">
+                                        <li>Atmospheric CO2 levels are 420 ppm.</li>
+                                        <li>Global average temperature has risen by 1.1°C since pre-industrial times.</li>
+                                        <li>Melting glaciers contribute X volume to sea-level rise.</li>
+                                    </ul>
+                                </div>
+                                <div class="p-4 bg-philo-light border-l-4 border-philo-indigo rounded-r-lg">
+                                    <h4 class="font-bold text-philo-indigo mb-1">2. Philosophical Truth</h4>
+                                    <ul class="list-disc list-inside space-y-1 text-sm text-gray-700">
+                                        <li>Humanity has a moral duty to preserve the environment for future generations.</li>
+                                        <li>Wealthier nations bear a greater ethical responsibility for pollution.</li>
+                                        <li>The intrinsic value of a non-human life form.</li>
+                                    </ul>
+                                </div>
+                                <div class="p-4 bg-gray-200 border-l-4 border-gray-500 rounded-r-lg">
+                                    <h4 class="font-bold text-gray-700 mb-1">3. Opinion/Belief</h4>
+                                    <ul class="list-disc list-inside space-y-1 text-sm text-gray-700">
+                                        <li>Carbon taxes are the most effective policy for solving the crisis.</li>
+                                        <li>Climate change is the fault of the previous generation.</li>
+                                        <li>It is too late to make a difference now.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Case Study 2: Social Media and Free Speech -->
+                    <div class="case-card bg-white p-6 rounded-xl shadow-md border border-gray-100">
+                        <h3 class="text-2xl font-extrabold text-accent mb-4">Case Study 2: Social Media and Free Speech</h3>
+                        <p class="text-gray-600 mb-4">When a platform bans a user or removes content, is it protecting the community or infringing on rights? The dilemma involves technology, law, and fundamental values.</p>
+                        
+                        <button onclick="toggleReveal(2)" class="w-full bg-philo-indigo text-white py-3 rounded-lg font-bold hover:bg-indigo-600 transition flex justify-center items-center text-lg">
+                            Break Down Claims (Scientific, Opinion, Philosophical) &darr;
+                        </button>
+                        
+                        <div id="case-reveal-2" class="reveal-content">
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+                                <div class="p-4 bg-science-light border-l-4 border-science-teal rounded-r-lg">
+                                    <h4 class="font-bold text-science-teal mb-1">1. Factual/Scientific Truth</h4>
+                                    <ul class="list-disc list-inside space-y-1 text-sm text-gray-700">
+                                        <li>The platform's algorithm promotes content based on engagement metrics.</li>
+                                        <li>The number of users banned for hate speech last quarter was X.</li>
+                                        <li>Studies show a correlation between platform use and depression levels.</li>
+                                    </ul>
+                                </div>
+                                <div class="p-4 bg-philo-light border-l-4 border-philo-indigo rounded-r-lg">
+                                    <h4 class="font-bold text-philo-indigo mb-1">2. Philosophical Truth</h4>
+                                    <ul class="list-disc list-inside space-y-1 text-sm text-gray-700">
+                                        <li>Defining the moral limits of "harm" in online speech.</li>
+                                        <li>The concept of a public square versus a private company's property rights.</li>
+                                        <li>The relationship between truth and liberty (is free speech absolute?).</li>
+                                    </ul>
+                                </div>
+                                <div class="p-4 bg-gray-200 border-l-4 border-gray-500 rounded-r-lg">
+                                    <h4 class="font-bold text-gray-700 mb-1">3. Opinion/Belief</h4>
+                                    <ul class="list-disc list-inside space-y-1 text-sm text-gray-700">
+                                        <li>The platform's CEO is personally biased against one political side.</li>
+                                        <li>More regulation is always bad for innovation.</li>
+                                        <li>The user who was banned definitely deserved it.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- STAGE 3: Individual Writing - Practice (15 mins) -->
+            <section class="slide space-y-8" data-slide="3">
+                <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
+                    <h2 class="text-3xl font-extrabold text-primary mb-6">Stage 3: Individual Synthesis Writing</h2>
+                    <p class="text-gray-500 font-medium mb-8">SLO: Formulate a coherent conclusion based on the analysis.</p>
+
+                    <div class="bg-holistic-yellow/20 p-6 rounded-xl border-l-4 border-holistic-yellow shadow-lg">
+                        <h3 class="text-2xl font-extrabold text-primary mb-3">Writing Prompt</h3>
+                        <p class="text-gray-700 leading-relaxed">
+                            Based on your group's analysis of <strong class="text-accent">Case Study 1 (Climate Change)</strong> or <strong class="text-accent">Case Study 2 (Social Media)</strong>, write a short conclusion.
+                        </p>
+                        
+                        <p class="mt-4 font-bold text-lg text-gray-800">Your Task: 3-5 Sentence Conclusion</p>
+                        <ul class="list-disc list-inside ml-4 mt-2 text-sm text-gray-600">
+                            <li>State which of the three types of claims (<strong class="text-science-teal">Fact</strong>, <strong class="text-gray-700">Opinion</strong>, or <strong class="text-philo-indigo">Philosophy</strong>) was <strong class="font-bold">most critical</strong> in framing the dilemma.</li>
+                            <li>Justify your choice by explaining how the other two categories are influenced by the one you selected.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Placeholder for Student Writing/Reflection - In a real setting, this would be a physical write-up. -->
+                    <div class="mt-8">
+                        <label for="writing-area" class="block text-lg font-medium text-gray-700 mb-2">My Conclusion (Drafting Area)</label>
+                        <textarea id="writing-area" rows="6" class="w-full p-4 border-2 border-gray-300 rounded-lg focus:ring-philo-indigo focus:border-philo-indigo transition shadow-inner" placeholder="Start your 3-5 sentence conclusion here..."></textarea>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- STAGE 4: Conclusion & Assessment (5 mins) -->
+            <section class="slide space-y-8" data-slide="4">
+                <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
+                    <h2 class="text-3xl font-extrabold text-primary mb-2">Stage 4: Final Synthesis & Takeaway</h2>
+                    <p class="text-gray-500 font-medium mb-8">Closing Discussion and Final Reflection</p>
+
+                    <div class="bg-indigo-50 p-6 rounded-xl border-l-4 border-philo-indigo mb-8">
+                        <h3 class="text-xl font-bold text-philo-indigo mb-3">Closing Discussion Question</h3>
+                        <p class="text-gray-700 leading-relaxed font-serif italic">
+                            "Now that you have finished this unit, what is the <strong class="text-primary">most dangerous claim to mistake for a 'truth'</strong>—an <strong class="text-gray-700">opinion</strong>, a <strong class="text-science-teal">scientific claim</strong>, or a <strong class="text-philo-indigo">philosophical claim</strong>—and <strong class="text-primary">why</strong>?"
+                        </p>
+                        <p class="text-sm text-gray-500 mt-4"> (Focus on the potential real-world impact of the error.)</p>
+                    </div>
+
+                    <div class="text-center mt-10">
+                        <h4 class="font-bold text-primary text-2xl mb-4 border-b-2 inline-block border-holistic-yellow pb-1">The Goal of Doing Philosophy</h4>
+                        <p class="text-lg text-gray-700">
+                            The ultimate truth is found not in separation, but in the <strong class="text-holistic-yellow">synthesis</strong> of empirical evidence and human wisdom.
+                        </p>
+                        <p class="text-sm text-gray-400 mt-6">--- Unit Concluded: Differentiating Truth and Opinion ---</p>
+                    </div>
+
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- JavaScript for Interactivity -->
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 4;
+        const times = ["10 min", "30 min", "15 min", "5 min"]; // Matching the lesson plan timing
+        
+        // --- Navigation Logic ---
+        function updateSlideDisplay() {
+            document.querySelectorAll('.slide').forEach(slide => {
+                const slideNum = parseInt(slide.getAttribute('data-slide'));
+                slide.classList.remove('active');
+                if (slideNum === currentSlide) slide.classList.add('active');
+            });
+
+            // Update Header Text based on Stage
+            const indicator = document.getElementById('slide-indicator');
+            indicator.textContent = `Stage ${currentSlide} / ${totalSlides} (${times[currentSlide-1]})`;
+
+            // Button States
+            document.getElementById('prev-btn').disabled = currentSlide === 1;
+            document.getElementById('next-btn').disabled = currentSlide === totalSlides;
+            
+            // Scroll to top
+            document.querySelector('main').scrollTo(0, 0);
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides) {
+                currentSlide++;
+                updateSlideDisplay();
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 1) {
+                currentSlide--;
+                updateSlideDisplay();
+            }
+        }
+
+        // --- Stage 2 Reveal Logic ---
+        function toggleReveal(caseId) {
+            const content = document.getElementById(`case-reveal-${caseId}`);
+            content.classList.toggle('active');
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            updateSlideDisplay();
+        });
+
+    </script>
+</body>
+</html>
